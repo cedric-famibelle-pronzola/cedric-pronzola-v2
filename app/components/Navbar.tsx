@@ -30,9 +30,13 @@ const Navbar = () => {
     
     if (href.startsWith('/#')) {
       if (window.location.pathname === '/' || window.location.pathname === '') {
-        smoothScrollToSection(href.substring(2));
         if (mobileMenuOpen) {
           setMobileMenuOpen(false);
+          setTimeout(() => {
+            smoothScrollToSection(href.substring(2));
+          }, 100);
+        } else {
+          smoothScrollToSection(href.substring(2));
         }
       } else {
         router.push(href);
@@ -58,10 +62,20 @@ const Navbar = () => {
           onClick={(e) => {
             e.preventDefault();
             if (window.location.pathname === '/' || window.location.pathname === '') {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
+              if (mobileMenuOpen) {
+                setMobileMenuOpen(false);
+                setTimeout(() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }, 100);
+              } else {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }
             } else {
               router.push('/');
             }
@@ -83,7 +97,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground z-50"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"
@@ -105,13 +119,13 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <motion.div 
-          id="mobile-menu"
-          className="md:hidden bg-background/95 backdrop-blur-md"
+      <div 
+        id="mobile-menu"
+        className={`md:hidden fixed top-[72px] left-0 w-full bg-background/95 backdrop-blur-md z-40 ${!mobileMenuOpen ? 'hidden' : ''}`}
+      >
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
+          animate={mobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
           aria-label="Navigation mobile"
         >
@@ -123,7 +137,7 @@ const Navbar = () => {
             <MobileNavLink href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')}>Contact</MobileNavLink>
           </div>
         </motion.div>
-      )}
+      </div>
     </motion.header>
   );
 };

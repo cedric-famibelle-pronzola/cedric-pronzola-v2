@@ -14,7 +14,9 @@ const Footer = () => {
     
     if (href.startsWith('/#')) {
       if (window.location.pathname === '/' || window.location.pathname === '') {
-        smoothScrollToSection(href.substring(2));
+        setTimeout(() => {
+          smoothScrollToSection(href.substring(2));
+        }, 10);
       } else {
         router.push(href);
       }

@@ -42,6 +42,8 @@ const personJsonLd = {
   "sameAs": [
     "https://github.com/ced972",
     "https://x.com/CedricPronzola",
+    "https://youtube.com/@ced97240",
+    "https://instagram.com/cedric_kaubuntu",
     "https://bsky.app/profile/ced972.bsky.social",
   ],
   "jobTitle": "Développeur Web",

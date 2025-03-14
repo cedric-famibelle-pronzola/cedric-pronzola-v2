@@ -67,7 +67,11 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <a href="mailto:contact@cedric-pronzola.re" className="text-foreground/70 hover:text-foreground transition-colors">
+                    <a 
+                      href="mailto:contact@cedric-pronzola.re" 
+                      className="text-foreground/70 hover:text-foreground transition-colors"
+                      aria-label="Envoyer un email à contact@cedric-pronzola.re"
+                    >
                       contact@cedric-pronzola.re
                     </a>
                   </div>
@@ -81,7 +85,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Téléphone</h4>
-                    <p className="text-foreground/70">+262 6 93 62 93 59</p>
+                    <a 
+                      href="tel:+262693629359"
+                      className="text-foreground/70 hover:text-foreground transition-colors"
+                      aria-label="Numéro de téléphone : +262 6 93 62 93 59"
+                    >
+                      +262 6 93 62 93 59
+                    </a>
                   </div>
                 </div>
                 

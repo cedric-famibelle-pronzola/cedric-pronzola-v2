@@ -139,17 +139,7 @@ const Footer = () => {
         <path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/>
       </svg>
       ),
-    },
-    {
-      name: 'Email',
-      url: 'mailto:contact@cedric-pronzola.re',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-      ),
-    },
+    }
   ];
 
   return (
@@ -195,23 +185,43 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold mb-4" id="footer-social">Social</h3>
-            <div className="flex space-x-4" aria-labelledby="footer-social">
-              {socialLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-foreground transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  title={link.name}
-                  aria-label={link.name}
-                >
-                  <span className="sr-only">{link.name}</span>
-                  {link.icon}
-                </motion.a>
-              ))}
+            <div className="flex flex-col space-y-4" aria-labelledby="footer-social">
+              <div className="flex space-x-4">
+                {socialLinks.slice(0, 4).map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/70 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={link.name}
+                    aria-label={link.name}
+                  >
+                    <span className="sr-only">{link.name}</span>
+                    {link.icon}
+                  </motion.a>
+                ))}
+              </div>
+              <div className="flex space-x-4">
+                {socialLinks.slice(4).map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/70 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={link.name}
+                    aria-label={link.name}
+                  >
+                    <span className="sr-only">{link.name}</span>
+                    {link.icon}
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

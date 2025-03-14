@@ -100,7 +100,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background border-t border-foreground/10 py-12">
+    <footer className="bg-background border-t border-foreground/10 py-12" role="contentinfo">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -120,6 +120,7 @@ const Footer = () => {
                 }
               }}
               className="text-2xl font-bold"
+              aria-label="Retour à l'accueil"
             >
               Cédric
             </a>
@@ -129,8 +130,8 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-4" id="footer-navigation">Navigation</h3>
+            <ul className="space-y-2" aria-labelledby="footer-navigation">
               <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="text-foreground/70 hover:text-foreground transition-colors">À propos</a></li>
               <li><a href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')} className="text-foreground/70 hover:text-foreground transition-colors">Projets</a></li>
               <li><a href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')} className="text-foreground/70 hover:text-foreground transition-colors">Stack</a></li>
@@ -140,8 +141,8 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Social</h3>
-            <div className="flex space-x-4">
+            <h3 className="text-lg font-semibold mb-4" id="footer-social">Social</h3>
+            <div className="flex space-x-4" aria-labelledby="footer-social">
               {socialLinks.map((link) => (
                 <motion.a
                   key={link.name}
@@ -152,7 +153,9 @@ const Footer = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   title={link.name}
+                  aria-label={link.name}
                 >
+                  <span className="sr-only">{link.name}</span>
                   {link.icon}
                 </motion.a>
               ))}

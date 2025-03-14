@@ -23,12 +23,12 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden" role="region" aria-label="Introduction">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50 z-0" aria-hidden="true"></div>
       
       {/* Animated background shapes */}
-      <div className="absolute inset-0 overflow-hidden z-0">
+      <div className="absolute inset-0 overflow-hidden z-0" aria-hidden="true">
         {[...Array(5)].map((_, i) => (
           <motion.div
             suppressHydrationWarning={true}
@@ -91,6 +91,7 @@ const Hero = () => {
             href="/#projects"
             onClick={(e) => handleNavClick(e, '/#projects')}
             className="px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors"
+            aria-label="Voir mes projets"
           >
             Voir mes projets
           </a>
@@ -98,6 +99,7 @@ const Hero = () => {
             href="/#contact"
             onClick={(e) => handleNavClick(e, '/#contact')}
             className="px-6 py-3 border border-foreground/20 rounded-md font-medium hover:bg-foreground/10 transition-colors"
+            aria-label="Me contacter"
           >
             Me contacter
           </a>
@@ -108,6 +110,7 @@ const Hero = () => {
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
+          aria-hidden="true"
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -120,6 +123,7 @@ const Hero = () => {
             strokeLinecap="round" 
             strokeLinejoin="round"
             className="text-foreground/60"
+            aria-hidden="true"
           >
             <path d="M12 5v14"></path>
             <path d="m19 12-7 7-7-7"></path>

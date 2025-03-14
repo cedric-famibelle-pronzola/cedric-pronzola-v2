@@ -144,6 +144,30 @@ const Contact = () => {
                       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                     </svg>
                   </motion.a>
+
+                  <motion.a
+                    href="https://gade.o-k-i.net/@ced972"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="24" 
+                      height="24" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
+                      <path d="M9.5 8.5v7l6-3.5-6-3.5z" fill="currentColor" />
+                    </svg>
+                  </motion.a>
                 </div>
                 
                 <div className="flex space-x-4">

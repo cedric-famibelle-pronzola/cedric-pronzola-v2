@@ -56,6 +56,26 @@ const Footer = () => {
       ),
     },
     {
+      name: 'PeerTube',
+      url: 'https://gade.o-k-i.net/@ced972',
+      icon: (
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
+          <path d="M9.5 8.5v7l6-3.5-6-3.5z" fill="currentColor" />
+        </svg>
+      ),
+    },
+    {
       name: 'Instagram',
       url: 'https://instagram.com/cedric_kaubuntu',
       icon: (

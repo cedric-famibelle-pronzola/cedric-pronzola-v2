@@ -43,6 +43,7 @@ const personJsonLd = {
     "https://github.com/ced972",
     "https://x.com/CedricPronzola",
     "https://youtube.com/@ced97240",
+    "https://gade.o-k-i.net/@ced972",
     "https://instagram.com/cedric_kaubuntu",
     "https://bsky.app/profile/ced972.bsky.social",
   ],

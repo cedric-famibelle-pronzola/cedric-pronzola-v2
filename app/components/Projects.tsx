@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
+import ProjectImage from './ProjectImage';
 
 // Sample project data - replace with your actual projects
 const projectsData = [
@@ -13,32 +13,32 @@ const projectsData = [
     title: 'Projet Open Source',
     description: 'Une application web open source pour la gestion de projets collaboratifs.',
     tags: ['React', 'Node.js', 'MongoDB'],
-    image: '/placeholder-project.jpg',
-    link: 'https://github.com/yourusername/project1',
+    image: '/images/projects/placeholder.svg',
+    link: 'https://github.com/cedric-famibelle-pronzola/open-source-project',
   },
   {
     id: 2,
     title: 'Application Web Progressive',
     description: 'Une PWA performante et accessible pour la visualisation de données.',
     tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
-    image: '/placeholder-project.jpg',
-    link: 'https://github.com/yourusername/project2',
+    image: '/images/projects/placeholder.svg',
+    link: 'https://github.com/cedric-famibelle-pronzola/pwa-app',
   },
   {
     id: 3,
     title: 'Bibliothèque JavaScript',
     description: 'Une bibliothèque JavaScript légère pour simplifier les animations web.',
     tags: ['JavaScript', 'Rollup', 'Jest'],
-    image: '/placeholder-project.jpg',
-    link: 'https://github.com/yourusername/project3',
+    image: '/images/projects/placeholder.svg',
+    link: 'https://github.com/cedric-famibelle-pronzola/js-library',
   },
   {
     id: 4,
     title: 'Extension Navigateur',
     description: 'Une extension pour navigateur qui améliore la confidentialité en ligne.',
     tags: ['JavaScript', 'Browser API', 'CSS'],
-    image: '/placeholder-project.jpg',
-    link: 'https://github.com/yourusername/project4',
+    image: '/images/projects/placeholder.svg',
+    link: 'https://github.com/cedric-famibelle-pronzola/browser-extension',
   },
 ];
 
@@ -69,23 +69,12 @@ const Projects = () => {
                 onHoverEnd={() => setHoveredProject(null)}
                 whileHover={{ y: -5 }}
               >
-                <div className="relative h-48 bg-foreground/10">
-                  {/* Replace with actual project images */}
-                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                      <line x1="8" y1="21" x2="16" y2="21"></line>
-                      <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                  </div>
-                  {/* Uncomment and use actual images
-                  <Image
+                <div className="relative h-48">
+                  <ProjectImage
                     src={project.image}
                     alt={project.title}
-                    fill
-                    className="object-cover"
+                    className="w-full h-full object-cover"
                   />
-                  */}
                 </div>
                 
                 <div className="p-6">

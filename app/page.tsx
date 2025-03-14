@@ -41,8 +41,8 @@ const personJsonLd = {
   "image": "https://cedric-pronzola.re/cedric-avatar.png",
   "sameAs": [
     "https://github.com/ced972",
+    "https://x.com/CedricPronzola",
     "https://bsky.app/profile/ced972.bsky.social",
-    "https://linkedin.com/in/cedric-famibelle-pronzola"
   ],
   "jobTitle": "Développeur Web",
   "worksFor": {

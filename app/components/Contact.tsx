@@ -122,6 +122,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="Codeberg"
                   >
                     <svg
                       width="24"
@@ -153,6 +154,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="GitHub"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -166,6 +168,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="Mastodon"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.184-2.737.368-4.185.276-2.368-.092-4.237-.551-4.237-.551 0 .184.014.459.043.643.308 2.294 2.317 2.478 4.22 2.57 1.922.091 3.613-.46 3.613-.46l.087 1.736s-1.342.734-3.738.918c-1.32.091-2.958-.092-4.872-.551-4.143-1.102-4.872-5.51-4.985-10.01-.043-1.653-.014-3.213-.014-4.316 0-5.51 3.652-7.155 3.652-7.155C6.865.184 9.45.092 12.348 0h.072c2.899.092 5.484.184 7.438 1.47 0 0 3.652 1.653 3.652 7.154 0 0 .043 4.086-.367 5.29z"/>
@@ -180,6 +183,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="PeerTube"
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -207,6 +211,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="Bluesky"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -228,6 +233,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="Instagram"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -243,6 +249,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="X (Twitter)"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
@@ -257,6 +264,7 @@ const Contact = () => {
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title="YouTube"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>

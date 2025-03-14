@@ -2,8 +2,26 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { smoothScrollToSection } from '../utils/smoothScroll';
 
 const Hero = () => {
+  const router = useRouter();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    if (href.startsWith('/#')) {
+      if (window.location.pathname === '/' || window.location.pathname === '') {
+        smoothScrollToSection(href.substring(2));
+      } else {
+        router.push(href);
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -69,18 +87,20 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Link 
+          <a 
             href="/#projects"
+            onClick={(e) => handleNavClick(e, '/#projects')}
             className="px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors"
           >
             Voir mes projets
-          </Link>
-          <Link 
+          </a>
+          <a 
             href="/#contact"
+            onClick={(e) => handleNavClick(e, '/#contact')}
             className="px-6 py-3 border border-foreground/20 rounded-md font-medium hover:bg-foreground/10 transition-colors"
           >
             Me contacter
-          </Link>
+          </a>
         </motion.div>
         
         {/* Scroll indicator */}

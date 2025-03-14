@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { smoothScrollToSection } from '../utils/smoothScroll';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +25,23 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    if (href.startsWith('/#')) {
+      if (window.location.pathname === '/' || window.location.pathname === '') {
+        smoothScrollToSection(href.substring(2));
+        if (mobileMenuOpen) {
+          setMobileMenuOpen(false);
+        }
+      } else {
+        router.push(href);
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <motion.header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -32,17 +52,31 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold">
+        <a 
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            if (window.location.pathname === '/' || window.location.pathname === '') {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            } else {
+              router.push('/');
+            }
+          }}
+          className="text-2xl font-bold"
+        >
           Cédric
-        </Link>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <NavLink href="/#about">À propos</NavLink>
-          <NavLink href="/#projects">Projets</NavLink>
-          <NavLink href="/#stack">Stack</NavLink>
+          <NavLink href="/#about" onClick={handleNavClick}>À propos</NavLink>
+          <NavLink href="/#projects" onClick={handleNavClick}>Projets</NavLink>
+          <NavLink href="/#stack" onClick={handleNavClick}>Stack</NavLink>
           <NavLink href="/blog">Blog</NavLink>
-          <NavLink href="/#contact">Contact</NavLink>
+          <NavLink href="/#contact" onClick={handleNavClick}>Contact</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -75,11 +109,11 @@ const Navbar = () => {
           transition={{ duration: 0.3 }}
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <MobileNavLink href="/#about" onClick={() => setMobileMenuOpen(false)}>À propos</MobileNavLink>
-            <MobileNavLink href="/#projects" onClick={() => setMobileMenuOpen(false)}>Projets</MobileNavLink>
-            <MobileNavLink href="/#stack" onClick={() => setMobileMenuOpen(false)}>Stack</MobileNavLink>
+            <MobileNavLink href="/#about" onClick={(e) => handleNavClick(e, '/#about')}>À propos</MobileNavLink>
+            <MobileNavLink href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')}>Projets</MobileNavLink>
+            <MobileNavLink href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')}>Stack</MobileNavLink>
             <MobileNavLink href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</MobileNavLink>
-            <MobileNavLink href="/#contact" onClick={() => setMobileMenuOpen(false)}>Contact</MobileNavLink>
+            <MobileNavLink href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')}>Contact</MobileNavLink>
           </div>
         </motion.div>
       )}
@@ -87,7 +121,28 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const NavLink = ({ 
+  href, 
+  children,
+  onClick
+}: { 
+  href: string; 
+  children: React.ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+}) => {
+  if (onClick && href.startsWith('/#')) {
+    return (
+      <a 
+        href={href}
+        className="relative text-foreground/80 hover:text-foreground transition-colors duration-300 py-2 font-medium"
+        onClick={(e) => onClick(e, href)}
+      >
+        {children}
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    );
+  }
+  
   return (
     <Link 
       href={href}
@@ -106,13 +161,25 @@ const MobileNavLink = ({
 }: { 
   href: string; 
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: ((e: React.MouseEvent<HTMLAnchorElement>) => void) | (() => void);
 }) => {
+  if (typeof onClick === 'function' && href.startsWith('/#')) {
+    return (
+      <a 
+        href={href}
+        className="block py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+  
   return (
     <Link 
       href={href}
       className="block py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
-      onClick={onClick}
+      onClick={onClick as () => void}
     >
       {children}
     </Link>

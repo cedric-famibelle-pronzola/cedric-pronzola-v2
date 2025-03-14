@@ -2,9 +2,26 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { smoothScrollToSection } from '../utils/smoothScroll';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
+  
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    if (href.startsWith('/#')) {
+      if (window.location.pathname === '/' || window.location.pathname === '') {
+        smoothScrollToSection(href.substring(2));
+      } else {
+        router.push(href);
+      }
+    } else {
+      router.push(href);
+    }
+  };
   
   const socialLinks = [
     {
@@ -87,9 +104,25 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-bold">
+            <a 
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                if (window.location.pathname === '/' || window.location.pathname === '') {
+                  // If already on homepage, scroll to top smoothly
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  // Navigate to homepage
+                  router.push('/');
+                }
+              }}
+              className="text-2xl font-bold"
+            >
               Cédric
-            </Link>
+            </a>
             <p className="mt-4 text-foreground/70 max-w-md">
               Développeur passionné et libriste, je crée des solutions web modernes et accessibles.
             </p>
@@ -98,11 +131,11 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              <li><Link href="/#about" className="text-foreground/70 hover:text-foreground transition-colors">À propos</Link></li>
-              <li><Link href="/#projects" className="text-foreground/70 hover:text-foreground transition-colors">Projets</Link></li>
-              <li><Link href="/#stack" className="text-foreground/70 hover:text-foreground transition-colors">Stack</Link></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="text-foreground/70 hover:text-foreground transition-colors">À propos</a></li>
+              <li><a href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')} className="text-foreground/70 hover:text-foreground transition-colors">Projets</a></li>
+              <li><a href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')} className="text-foreground/70 hover:text-foreground transition-colors">Stack</a></li>
               <li><Link href="/blog" className="text-foreground/70 hover:text-foreground transition-colors">Blog</Link></li>
-              <li><Link href="/#contact" className="text-foreground/70 hover:text-foreground transition-colors">Contact</Link></li>
+              <li><a href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')} className="text-foreground/70 hover:text-foreground transition-colors">Contact</a></li>
             </ul>
           </div>
           

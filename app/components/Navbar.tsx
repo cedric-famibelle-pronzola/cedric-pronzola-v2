@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -80,10 +81,18 @@ const Navbar = () => {
               router.push('/');
             }
           }}
-          className="text-2xl font-bold"
+          className="flex items-center"
           aria-label="Accueil"
         >
-          Cédric
+          <Image
+            src="/cedric.png" 
+            alt="Cédric" 
+            width={40} 
+            height={40} 
+            className="rounded-full"
+            priority
+          />
+          <span className="sr-only">Cédric</span>
         </a>
 
         {/* Desktop Navigation */}

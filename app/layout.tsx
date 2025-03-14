@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,9 +12,84 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export const metadata: Metadata = {
-  title: "Cédric Famibelle-Pronzola",
-  description: "Cédric Famibelle-Pronzola - Développeur - Libriste",
+  title: {
+    default: "Cédric Famibelle-Pronzola | Développeur - Libriste",
+    template: "%s | Cédric Famibelle-Pronzola"
+  },
+  description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+  keywords: ["développeur", "web", "libriste", "open source", "javascript", "react", "next.js"],
+  authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.re" }],
+  creator: "Cédric Famibelle-Pronzola",
+  publisher: "Cédric Famibelle-Pronzola",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://cedric-pronzola.re"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Cédric Famibelle-Pronzola | Développeur - Libriste",
+    description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+    url: "https://cedric-pronzola.re",
+    siteName: "Cédric Famibelle-Pronzola",
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: "/api/og",
+        width: 1200,
+        height: 630,
+        alt: "Cédric Famibelle-Pronzola - Développeur Web",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cédric Famibelle-Pronzola | Développeur - Libriste",
+    description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+    creator: "@CedricPronzola",
+    images: ["/api/og"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/android-chrome-192x192.png",
+      },
+      {
+        rel: "android-chrome-512x512",
+        url: "/android-chrome-512x512.png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

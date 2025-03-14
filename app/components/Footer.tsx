@@ -184,43 +184,131 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4" id="footer-social">Social</h3>
+            <h3 className="text-lg font-semibold mb-4" id="footer-social">Réseaux</h3>
             <div className="flex flex-col space-y-4" aria-labelledby="footer-social">
               <div className="flex space-x-4">
-                {socialLinks.slice(0, 4).map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/70 hover:text-foreground transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={link.name}
-                    aria-label={link.name}
-                  >
-                    <span className="sr-only">{link.name}</span>
-                    {link.icon}
-                  </motion.a>
-                ))}
+                {/* First row of links */}
+                <motion.a
+                  key="Codeberg"
+                  href="https://codeberg.org/ced972"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Codeberg"
+                  aria-label="Codeberg"
+                >
+                  <span className="sr-only">Codeberg</span>
+                  {socialLinks[5].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="GitHub"
+                  href="https://github.com/cedric-famibelle-pronzola"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="GitHub"
+                  aria-label="GitHub"
+                >
+                  <span className="sr-only">GitHub</span>
+                  {socialLinks[0].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="Mastodon"
+                  href="https://bokantaj.o-k-i.net/@ced972"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Mastodon"
+                  aria-label="Mastodon"
+                >
+                  <span className="sr-only">Mastodon</span>
+                  {socialLinks[6].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="PeerTube"
+                  href="https://gade.o-k-i.net/@ced972"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="PeerTube"
+                  aria-label="PeerTube"
+                >
+                  <span className="sr-only">PeerTube</span>
+                  {socialLinks[3].icon}
+                </motion.a>
               </div>
               <div className="flex space-x-4">
-                {socialLinks.slice(4).map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/70 hover:text-foreground transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={link.name}
-                    aria-label={link.name}
-                  >
-                    <span className="sr-only">{link.name}</span>
-                    {link.icon}
-                  </motion.a>
-                ))}
+                {/* Second row of links */}
+                <motion.a
+                  key="Bluesky"
+                  href="https://bsky.app/profile/ced972.bsky.social"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Bluesky"
+                  aria-label="Bluesky"
+                >
+                  <span className="sr-only">Bluesky</span>
+                  {socialLinks[7].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="Instagram"
+                  href="https://instagram.com/cedric_kaubuntu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Instagram"
+                  aria-label="Instagram"
+                >
+                  <span className="sr-only">Instagram</span>
+                  {socialLinks[4].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="X"
+                  href="https://x.com/CedricPronzola"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="X (Twitter)"
+                  aria-label="X (Twitter)"
+                >
+                  <span className="sr-only">X (Twitter)</span>
+                  {socialLinks[1].icon}
+                </motion.a>
+                
+                <motion.a
+                  key="YouTube"
+                  href="https://youtube.com/@ced97240"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="YouTube"
+                  aria-label="YouTube"
+                >
+                  <span className="sr-only">YouTube</span>
+                  {socialLinks[2].icon}
+                </motion.a>
               </div>
             </div>
           </div>

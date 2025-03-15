@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BlogContent from '../components/BlogContent';
 import JsonLd from '../components/JsonLd';
+import { getAllPosts } from '../lib/blog';
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0a",
@@ -30,60 +31,49 @@ export const metadata: Metadata = {
   },
 };
 
-const blogJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "headline": "Blog de Cédric Famibelle-Pronzola",
-  "description": "Articles et réflexions sur le développement web, les technologies libres, l'écosystème numérique et la politique.",
-  "author": {
-    "@type": "Person",
-    "name": "Cédric Famibelle-Pronzola",
-    "url": "https://cedric-pronzola.re"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Cédric Famibelle-Pronzola",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://cedric-pronzola.re/cedric-avatar.png"
-    }
-  },
-  "url": "https://cedric-pronzola.re/blog",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://cedric-pronzola.re/blog"
-  },
-  "blogPost": [
-    {
-      "@type": "BlogPosting",
-      "headline": "L’indépendance de La Réunion !",
-      "description": "Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan).",
-      "datePublished": "25 janvier 2025",
-      "author": {
-        "@type": "Person",
-        "name": "Cédric Famibelle-Pronzola"
-      },
-      "url": "https://cedric-pronzola.re/blog/l-independance-de-la-reunion"
+export default async function BlogPage() {
+  const posts = getAllPosts();
+  
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "headline": "Blog de Cédric Famibelle-Pronzola",
+    "description": "Articles et réflexions sur le développement web, les technologies libres, l'écosystème numérique et la politique.",
+    "author": {
+      "@type": "Person",
+      "name": "Cédric Famibelle-Pronzola",
+      "url": "https://cedric-pronzola.re"
     },
-    {
+    "publisher": {
+      "@type": "Person",
+      "name": "Cédric Famibelle-Pronzola",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cedric-pronzola.re/cedric-avatar.png"
+      }
+    },
+    "url": "https://cedric-pronzola.re/blog",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cedric-pronzola.re/blog"
+    },
+    "blogPost": posts.map(post => ({
       "@type": "BlogPosting",
-      "headline": "Les logiciels libres nous libéreront !",
-      "description": "Découvrez comment les logiciels libres peuvent améliorer votre flux de travail de développement et contribuer à un écosystème web plus ouvert.",
-      "datePublished": "8 décembre 2024",
+      "headline": post.title,
+      "description": post.description,
+      "datePublished": post.date,
       "author": {
         "@type": "Person",
-        "name": "Cédric Famibelle-Pronzola"
+        "name": post.author.name
       },
-      "url": "https://cedric-pronzola.re/blog/les-logiciels-libres-nous-libereront"
-    }
-  ]
-};
+      "url": `https://cedric-pronzola.re/blog/${post.slug}`
+    }))
+  };
 
-export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <BlogContent />
+      <BlogContent posts={posts} />
       <Footer />
       <JsonLd data={blogJsonLd} />
     </>

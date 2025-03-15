@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['cedric-pronzola.re'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -35,7 +35,7 @@ const projectsData = [
     id: 4,
     title: 'jwe.ovh - Jeu cartographique interactif',
     description: 'Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.',
-    technologies: ['MapLibre GL JS', 'PHP', 'CSS'],
+    technologies: ['MapLibre GL JS', 'JavaScript', 'PHP', 'CSS'],
     image: '/images/projects/jwe.ovh-800x450.webp',
     link: 'https://jwe.ovh',
   },

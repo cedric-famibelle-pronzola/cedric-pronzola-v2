@@ -17,8 +17,8 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'nuvel.nu - Portail d’actualités multilingue',
-    description: 'Plateforme d’information multilingue avec gestion de contenu dynamique et interface adaptative.',
+    title: "nuvel.nu - Portail d'actualités multilingue",
+    description: "Plateforme d'information multilingue avec gestion de contenu dynamique et interface adaptative.",
     technologies: ['Next.js', 'Node.js', 'Strapi'],
     image: '/images/projects/nuvel.nu-800x450.webp',
     link: 'https://nuvel.nu',
@@ -26,7 +26,7 @@ const projectsData = [
   {
     id: 3,
     title: 'gong.gp - Archives historiques guadeloupéennes',
-    description: 'Plateforme documentaire présentant les archives du Groupe d’Organisation Nationale de la Guadeloupe avec navigation interactive.',
+    description: "Plateforme documentaire présentant les archives du Groupe d'Organisation Nationale de la Guadeloupe avec navigation interactive.",
     technologies: ['HTMx', 'Strapi', 'PHP'],
     image: '/images/projects/gong.gp-800x450.webp',
     link: 'https://gong.gp',

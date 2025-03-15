@@ -20,8 +20,9 @@ const Contact = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
+  const [rateLimitMessage, setRateLimitMessage] = useState<string>('');
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -36,6 +37,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
+    setRateLimitMessage('');
     
     try {
       const response = await fetch('/api/contact', {
@@ -49,7 +51,13 @@ const Contact = () => {
       const data = await response.json();
       
       if (!response.ok) {
-        if (data.errors && Array.isArray(data.errors)) {
+        // Handle rate limiting
+        if (response.status === 429 && data.rateLimited) {
+          setSubmitStatus('rate-limited');
+          setRateLimitMessage(data.message);
+        }
+        // Handle validation errors
+        else if (data.errors && Array.isArray(data.errors)) {
           const fieldErrors: FormErrors = {};
           data.errors.forEach((error: any) => {
             fieldErrors[error.path as keyof FormErrors] = error.msg;
@@ -421,6 +429,16 @@ const Contact = () => {
                   className="p-4 bg-green-500/10 border border-green-500/30 rounded-md text-green-700 dark:text-green-300"
                 >
                   Votre message a été envoyé avec succès. Je vous répondrai dès que possible.
+                </motion.div>
+              )}
+              
+              {submitStatus === 'rate-limited' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-md text-yellow-700 dark:text-yellow-300"
+                >
+                  {rateLimitMessage || 'Veuillez attendre avant d\'envoyer un nouveau message.'}
                 </motion.div>
               )}
               

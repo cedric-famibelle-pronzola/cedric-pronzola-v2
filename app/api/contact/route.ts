@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const RATE_LIMIT_DURATION = 60 * 10000;
+
+const rateLimitStore = new Map<string, number>();
+
 const validateForm = (data: any) => {
   const errors = [];
   
@@ -28,6 +32,20 @@ const validateForm = (data: any) => {
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get('x-forwarded-for') || 'unknown';
+    
+    const lastSubmissionTime = rateLimitStore.get(ip);
+    const currentTime = Date.now();
+    
+    if (lastSubmissionTime && currentTime - lastSubmissionTime < RATE_LIMIT_DURATION) {
+      const secondsToWait = Math.ceil((RATE_LIMIT_DURATION - (currentTime - lastSubmissionTime)) / 1000);
+      return NextResponse.json({ 
+        success: false, 
+        message: `Veuillez attendre ${secondsToWait} secondes avant d'envoyer un nouveau message`,
+        rateLimited: true
+      }, { status: 429 });
+    }
+    
     const data = await req.json();
     
     const validationErrors = validateForm(data);
@@ -52,7 +70,7 @@ export async function POST(req: NextRequest) {
       from: process.env.SMTP_FROM || 'noreply@cedric-pronzola.re',
       to: process.env.CONTACT_EMAIL || 'contact@cedric-pronzola.re',
       replyTo: data.email,
-      subject: `[Contact Form] ${data.subject}`,
+      subject: `[Formulaire cedric-pronzola.re] ${data.subject}`,
       text: `Nom: ${data.name}\nEmail: ${data.email}\nSujet: ${data.subject}\n\nMessage:\n${data.message}`,
       html: `
         <h2>Nouveau message du formulaire de contact</h2>
@@ -66,6 +84,17 @@ export async function POST(req: NextRequest) {
     
     await transporter.sendMail(mailOptions);
     
+    rateLimitStore.set(ip, currentTime);
+    
+    if (Math.random() < 0.1) { // 10% chance to clean up on each request
+      const oneHourAgo = Date.now() - 60 * 60 * 1000;
+      for (const [storedIp, timestamp] of rateLimitStore.entries()) {
+        if (timestamp < oneHourAgo) {
+          rateLimitStore.delete(storedIp);
+        }
+      }
+    }
+    
     return NextResponse.json({ 
       success: true, 
       message: 'Votre message a été envoyé avec succès' 
@@ -75,7 +104,7 @@ export async function POST(req: NextRequest) {
     console.error('Contact form error:', error);
     return NextResponse.json({ 
       success: false, 
-      message: 'Une erreur s’est produite lors de l’envoi de votre message' 
+      message: 'Une erreur s\'est produite lors de l\'envoi de votre message' 
     }, { status: 500 });
   }
 } 

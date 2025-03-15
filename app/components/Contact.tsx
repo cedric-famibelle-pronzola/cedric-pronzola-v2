@@ -4,6 +4,13 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 
+type FormErrors = {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,28 +21,54 @@ const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errors, setErrors] = useState<FormErrors>({});
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrors({});
     
-    // Simulate form submission
     try {
-      // Replace with actual form submission logic
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        if (data.errors && Array.isArray(data.errors)) {
+          const fieldErrors: FormErrors = {};
+          data.errors.forEach((error: any) => {
+            fieldErrors[error.path as keyof FormErrors] = error.msg;
+          });
+          setErrors(fieldErrors);
+          setSubmitStatus('error');
+        } else {
+          setSubmitStatus('error');
+        }
+      } else {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
       
-      // Reset status after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
@@ -289,8 +322,15 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-foreground/20 rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50"
+                  className={`w-full px-4 py-2 border ${errors.name ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
                 />
+                {errors.name && (
+                  <p id="name-error" className="mt-1 text-sm text-red-500">
+                    {errors.name}
+                  </p>
+                )}
               </div>
               
               <div>
@@ -304,8 +344,15 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-foreground/20 rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50"
+                  className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
                 />
+                {errors.email && (
+                  <p id="email-error" className="mt-1 text-sm text-red-500">
+                    {errors.email}
+                  </p>
+                )}
               </div>
               
               <div>
@@ -318,7 +365,9 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-foreground/20 rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50"
+                  className={`w-full px-4 py-2 border ${errors.subject ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
+                  aria-invalid={errors.subject ? 'true' : 'false'}
+                  aria-describedby={errors.subject ? 'subject-error' : undefined}
                 >
                   <option value="">Sélectionnez un sujet</option>
                   <option value="project">Projet</option>
@@ -326,6 +375,11 @@ const Contact = () => {
                   <option value="question">Question</option>
                   <option value="other">Autre</option>
                 </select>
+                {errors.subject && (
+                  <p id="subject-error" className="mt-1 text-sm text-red-500">
+                    {errors.subject}
+                  </p>
+                )}
               </div>
               
               <div>
@@ -339,8 +393,15 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-2 border border-foreground/20 rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50"
+                  className={`w-full px-4 py-2 border ${errors.message ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
+                  aria-invalid={errors.message ? 'true' : 'false'}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
+                {errors.message && (
+                  <p id="message-error" className="mt-1 text-sm text-red-500">
+                    {errors.message}
+                  </p>
+                )}
               </div>
               
               <motion.button
@@ -363,7 +424,7 @@ const Contact = () => {
                 </motion.div>
               )}
               
-              {submitStatus === 'error' && (
+              {submitStatus === 'error' && !Object.keys(errors).length && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}

@@ -6,39 +6,38 @@ import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
 
-// Sample project data - replace with your actual projects
 const projectsData = [
   {
     id: 1,
-    title: 'Projet Open Source',
-    description: 'Une application web open source pour la gestion de projets collaboratifs.',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/open-source-project',
+    title: 'oki.re - Plateforme de transcriptions musicales',
+    description: 'Application web progressive pour la transcription et traduction de productions musicales créoles, avec interface multilingue.',
+    technologies: ['Next.js', 'Node.js', 'Strapi'],
+    image: '/images/projects/oki.re-800x450.webp',
+    link: 'https://oki.re',
   },
   {
     id: 2,
-    title: 'Application Web Progressive',
-    description: 'Une PWA performante et accessible pour la visualisation de données.',
-    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/pwa-app',
+    title: 'nuvel.nu - Portail d’actualités multilingue',
+    description: 'Plateforme d’information multilingue avec gestion de contenu dynamique et interface adaptative.',
+    technologies: ['Next.js', 'Node.js', 'Strapi'],
+    image: '/images/projects/nuvel.nu-800x450.webp',
+    link: 'https://nuvel.nu',
   },
   {
     id: 3,
-    title: 'Bibliothèque JavaScript',
-    description: 'Une bibliothèque JavaScript légère pour simplifier les animations web.',
-    tags: ['JavaScript', 'Rollup', 'Jest'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/js-library',
+    title: 'gong.gp - Archives historiques guadeloupéennes',
+    description: 'Plateforme documentaire présentant les archives du Groupe d’Organisation Nationale de la Guadeloupe avec navigation interactive.',
+    technologies: ['HTMx', 'Strapi', 'PHP'],
+    image: '/images/projects/gong.gp-800x450.webp',
+    link: 'https://gong.gp',
   },
   {
     id: 4,
-    title: 'Extension Navigateur',
-    description: 'Une extension pour navigateur qui améliore la confidentialité en ligne.',
-    tags: ['JavaScript', 'Browser API', 'CSS'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/browser-extension',
+    title: 'jwe.ovh - Jeu cartographique interactif',
+    description: 'Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.',
+    technologies: ['MapLibre GL JS', 'PHP', 'CSS'],
+    image: '/images/projects/jwe.ovh-800x450.webp',
+    link: 'https://jwe.ovh',
   },
 ];
 
@@ -82,12 +81,12 @@ const Projects = () => {
                   <p className="text-foreground/70 mb-4">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
+                    {project.technologies.map((technologie) => (
                       <span 
-                        key={tag}
+                        key={technologie}
                         className="px-2 py-1 bg-foreground/5 text-foreground/70 rounded-md text-xs"
                       >
-                        {tag}
+                        {technologie}
                       </span>
                     ))}
                   </div>

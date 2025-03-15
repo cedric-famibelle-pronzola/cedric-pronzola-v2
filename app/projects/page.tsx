@@ -6,61 +6,46 @@ import ProjectImage from '../components/ProjectImage';
 
 const projects = [
   {
-    title: 'Projet Open Source',
-    description: 'Une application web open source pour la gestion de projets collaboratifs.',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/open-source-project',
-    demoLink: 'https://open-source.cedric-pronzola.re',
+    title: 'oki.re - Plateforme de transcriptions musicales',
+    description: 'Application web progressive pour la transcription et traduction de productions musicales créoles, avec interface multilingue.',
+    technologies: ['Next.js', 'Node.js', 'Strapi'],
+    image: '/images/projects/oki.re-800x450.webp',
+    source: 'https://codeberg.org/OKI/oki.re',
+    link: 'https://oki.re',
   },
   {
-    title: 'Application Web Progressive',
-    description: 'Une PWA performante et accessible pour la visualisation de données.',
-    technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/pwa-app',
-    demoLink: 'https://pwa.cedric-pronzola.re',
+    title: 'nuvel.nu - Portail d’actualités multilingue',
+    description: 'Plateforme d’information multilingue avec gestion de contenu dynamique et interface adaptative.',
+    technologies: ['Next.js', 'Node.js', 'Strapi'],
+    image: '/images/projects/nuvel.nu-800x450.webp',
+    source: 'https://codeberg.org/OKI/nuvel.nu',
+    link: 'https://nuvel.nu',
   },
   {
-    title: 'Bibliothèque JavaScript',
-    description: 'Une bibliothèque JavaScript légère pour simplifier les animations web.',
-    technologies: ['JavaScript', 'Rollup', 'Jest'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/js-library',
-    demoLink: 'https://js-library.cedric-pronzola.re',
+    title: 'gong.gp - Archives historiques guadeloupéennes',
+    description: 'Plateforme documentaire présentant les archives du Groupe d’Organisation Nationale de la Guadeloupe avec navigation interactive.',
+    technologies: ['HTMx', 'Strapi', 'PHP'],
+    image: '/images/projects/gong.gp-800x450.webp',
+    source: 'https://codeberg.org/OKI/gong.gp',
+    link: 'https://gong.gp',
   },
   {
-    title: 'Extension Navigateur',
-    description: 'Une extension pour navigateur qui améliore la confidentialité en ligne.',
-    technologies: ['JavaScript', 'Browser API', 'CSS'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/browser-extension',
-    demoLink: 'https://extension.cedric-pronzola.re',
+    title: 'jwe.ovh - Jeu cartographique interactif',
+    description: 'Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.',
+    technologies: ['MapLibre GL JS', 'PHP', 'CSS'],
+    image: '/images/projects/jwe.ovh-800x450.webp',
+    source: 'https://codeberg.org/OKI/jwe',
+    link: 'https://jwe.ovh',
   },
   {
-    title: 'Portfolio Personnel',
-    description: 'Mon portfolio personnel développé avec Next.js, TypeScript et Tailwind CSS. Un site web moderne, performant et accessible.',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/cedric-pronzola-v2',
-    demoLink: 'https://cedric-pronzola.re',
-  },
-  {
-    title: 'Application de Gestion de Tâches',
-    description: 'Une application web de gestion de tâches avec authentification, CRUD et interface utilisateur intuitive.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/todo-app',
-    demoLink: 'https://todo.cedric-pronzola.re',
-  },
-  {
-    title: 'Blog Personnel',
-    description: 'Un blog personnel développé avec Next.js et MDX pour le contenu. Support des articles en Markdown avec syntaxe highlightée.',
-    technologies: ['Next.js', 'MDX', 'Tailwind CSS', 'Prism.js'],
-    image: '/images/projects/placeholder.svg',
-    link: 'https://github.com/cedric-famibelle-pronzola/blog',
-    demoLink: 'https://blog.cedric-pronzola.re',
-  },
+    title: 'konstitisyon.la - Plateforme de démocratie participative',
+    description: 'Application collaborative permettant aux citoyens de rédiger, proposer des révisions et voter sur les articles d’une constitution.',
+    technologies: ['Next.js', 'Directus'],
+    image: '/images/projects/konstitisyon.la-800x450.webp',
+    source: 'https://codeberg.org/OKI/konstitisyon.la',
+    link: 'https://codeberg.org/OKI/konstitisyon.la',
+    wip: true
+  }
 ];
 
 const ProjectsPage = () => {
@@ -105,21 +90,25 @@ const ProjectsPage = () => {
                     </div>
                     <div className="flex gap-4">
                       <a
-                        href={project.link}
+                        href={project.source}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-foreground/70 hover:text-foreground transition-colors"
                       >
                         Code source
                       </a>
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground/70 hover:text-foreground transition-colors"
-                      >
-                        Démo
-                      </a>
+                      {project.wip ? (
+                        <i>En cours de développement</i>
+                      ) : (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-foreground/70 hover:text-foreground transition-colors"
+                        >
+                          Voir le projet
+                        </a>
+                      )}
                     </div>
                   </div>
                 </motion.div>

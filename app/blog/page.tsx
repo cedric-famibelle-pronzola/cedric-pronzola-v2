@@ -32,7 +32,8 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
+  const safePosts = Array.isArray(posts) ? posts : [];
   
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -57,7 +58,7 @@ export default async function BlogPage() {
       "@type": "WebPage",
       "@id": "https://cedric-pronzola.re/blog"
     },
-    "blogPost": posts.map(post => ({
+    "blogPost": safePosts.map(post => ({
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.description,
@@ -73,7 +74,7 @@ export default async function BlogPage() {
   return (
     <>
       <Navbar />
-      <BlogContent posts={posts} />
+      <BlogContent posts={safePosts} />
       <Footer />
       <JsonLd data={blogJsonLd} />
     </>

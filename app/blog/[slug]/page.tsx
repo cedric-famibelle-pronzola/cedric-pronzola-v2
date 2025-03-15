@@ -4,6 +4,7 @@ import { getPostBySlug, getPostSlugs } from '../../lib/blog';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import JsonLd from '../../components/JsonLd';
+import MarkdownContent from '../../components/MarkdownContent';
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs();
@@ -15,8 +16,9 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await Promise.resolve(params);
-  const post = getPostBySlug(slug);
+  const resolvedParams = await Promise.resolve(params);
+  const { slug } = resolvedParams;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -49,8 +51,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPost({ params }: Props) {
-  const { slug } = await Promise.resolve(params);
-  const post = getPostBySlug(slug);
+  const resolvedParams = await Promise.resolve(params);
+  const { slug } = resolvedParams;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -85,8 +88,8 @@ export default async function BlogPost({ params }: Props) {
     <>
       <Navbar />
       <main className="pt-24 container mx-auto px-4 py-8">
-        <article className="prose prose-invert lg:prose-xl mx-auto">
-          <h1>{post.title}</h1>
+        <article className="mx-auto">
+          <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
           <div className="flex items-center gap-2 text-gray-400 mb-8">
             <time dateTime={post.date}>{post.date}</time>
             <span>•</span>
@@ -94,7 +97,7 @@ export default async function BlogPost({ params }: Props) {
               {post.author.name}
             </a>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <MarkdownContent content={post.content} />
         </article>
       </main>
       <Footer />

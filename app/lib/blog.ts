@@ -1,48 +1,106 @@
 import { BlogPost, BlogPostMetadata } from '../types/blog';
+import fs from 'fs/promises';
+import fsSync from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
 
-const blogPosts: BlogPost[] = [
-  {
-    slug: 'l-independance-de-la-reunion',
-    title: "L'indépendance de La Réunion !",
-    description: "Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan).",
-    date: "25 janvier 2025",
-    content: `# L'indépendance de La Réunion !
+const ARTICLES_DIR = path.join(process.cwd(), 'app/articles');
 
-Contenu de l'article à venir...`,
-    author: {
-      name: "Cédric Famibelle-Pronzola",
-      url: "https://cedric-pronzola.re"
-    }
-  },
-  {
-    slug: 'les-logiciels-libres-nous-libereront',
-    title: "Les logiciels libres nous libéreront !",
-    description: "Découvrez comment les logiciels libres peuvent améliorer votre flux de travail de développement et contribuer à un écosystème web plus ouvert.",
-    date: "8 décembre 2024",
-    content: `# Les logiciels libres nous libéreront !
-
-Contenu de l'article à venir...`,
-    author: {
-      name: "Cédric Famibelle-Pronzola",
-      url: "https://cedric-pronzola.re"
-    }
+async function markdownToHtml(markdown: string) {
+  try {
+    const result = await remark()
+      .use(remarkGfm)
+      .use(html, { sanitize: false })
+      .process(markdown);
+      
+    return result.toString();
+  } catch (error) {
+    console.error('Error converting markdown to HTML:', error);
+    return `<p>Error rendering content</p>`;
   }
-];
-
-export function getAllPosts(): BlogPostMetadata[] {
-  return blogPosts.map(({ slug, title, description, date, author }) => ({
-    slug,
-    title,
-    description,
-    date,
-    author
-  }));
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug);
+export async function getAllPosts(): Promise<BlogPostMetadata[]> {
+  try {
+    if (!fsSync.existsSync(ARTICLES_DIR)) {
+      console.log('Articles directory does not exist, creating it...');
+      fsSync.mkdirSync(ARTICLES_DIR, { recursive: true });
+      return [];
+    }
+
+    const files = fsSync.readdirSync(ARTICLES_DIR);
+    const mdFiles = files.filter(file => file.endsWith('.md'));
+
+    const posts = mdFiles.map(file => {
+      const slug = file.replace(/\.md$/, '');
+      const filePath = path.join(ARTICLES_DIR, file);
+      const fileContent = fsSync.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
+      
+      return {
+        slug,
+        title: data.title || 'Untitled',
+        description: data.description || '',
+        date: data.date || new Date().toISOString(),
+        author: {
+          name: data.author?.name || 'Anonymous',
+          url: data.author?.url || '#',
+        },
+      };
+    });
+
+    return posts.sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  } catch (error) {
+    console.error('Error getting posts:', error);
+    return [];
+  }
 }
 
 export function getPostSlugs(): string[] {
-  return blogPosts.map(post => post.slug);
+  try {
+    if (!fsSync.existsSync(ARTICLES_DIR)) {
+      return [];
+    }
+    
+    const files = fsSync.readdirSync(ARTICLES_DIR);
+    return files
+      .filter(file => file.endsWith('.md'))
+      .map(file => file.replace(/\.md$/, ''));
+  } catch (error) {
+    console.error('Error getting post slugs:', error);
+    return [];
+  }
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const filePath = path.join(ARTICLES_DIR, `${slug}.md`);
+    if (!fsSync.existsSync(filePath)) {
+      return null;
+    }
+
+    const fileContent = fsSync.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(fileContent);
+    const htmlContent = await markdownToHtml(content);
+    
+    return {
+      slug,
+      title: data.title || 'Untitled',
+      description: data.description || '',
+      date: data.date || new Date().toISOString(),
+      content: htmlContent,
+      author: {
+        name: data.author?.name || 'Anonymous',
+        url: data.author?.url || '#',
+      },
+    };
+  } catch (error) {
+    console.error(`Error getting post by slug ${slug}:`, error);
+    return null;
+  }
 }

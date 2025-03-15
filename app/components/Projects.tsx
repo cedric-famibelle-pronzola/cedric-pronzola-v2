@@ -63,7 +63,7 @@ const Projects = () => {
               direction={index % 2 === 0 ? 'left' : 'right'}
             >
               <motion.div
-                className="bg-background border border-foreground/10 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="bg-background border border-foreground/10 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 h-full"
                 onHoverStart={() => setHoveredProject(project.id)}
                 onHoverEnd={() => setHoveredProject(null)}
                 whileHover={{ y: -5 }}
@@ -76,9 +76,9 @@ const Projects = () => {
                   />
                 </div>
                 
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-foreground/70 mb-4">{project.description}</p>
+                  <p className="text-foreground/70 mb-4 flex-grow">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((technologie) => (
@@ -95,7 +95,7 @@ const Projects = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium hover:underline"
+                    className="inline-flex items-center text-sm font-medium hover:underline mt-auto"
                   >
                     Voir le projet
                     <svg 

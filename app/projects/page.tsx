@@ -14,8 +14,8 @@ const projects = [
     link: 'https://oki.re',
   },
   {
-    title: 'nuvel.nu - Portail d’actualités multilingue',
-    description: 'Plateforme d’information multilingue avec gestion de contenu dynamique et interface adaptative.',
+    title: "nuvel.nu - Portail d'actualités multilingue",
+    description: "Plateforme d'information multilingue avec gestion de contenu dynamique et interface adaptative.",
     technologies: ['Next.js', 'Node.js', 'Strapi'],
     image: '/images/projects/nuvel.nu-800x450.webp',
     source: 'https://codeberg.org/OKI/nuvel.nu',
@@ -23,7 +23,7 @@ const projects = [
   },
   {
     title: 'gong.gp - Archives historiques guadeloupéennes',
-    description: 'Plateforme documentaire présentant les archives du Groupe d’Organisation Nationale de la Guadeloupe avec navigation interactive.',
+    description: "Plateforme documentaire présentant les archives du Groupe d'Organisation Nationale de la Guadeloupe avec navigation interactive.",
     technologies: ['HTMx', 'Strapi', 'PHP'],
     image: '/images/projects/gong.gp-800x450.webp',
     source: 'https://codeberg.org/OKI/gong.gp',
@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: 'konstitisyon.la - Plateforme de démocratie participative',
-    description: 'Application collaborative permettant aux citoyens de rédiger, proposer des révisions et voter sur les articles d’une constitution.',
+    description: "Application collaborative permettant aux citoyens de rédiger, proposer des révisions et voter sur les articles d'une constitution.",
     technologies: ['Next.js', 'Directus'],
     image: '/images/projects/konstitisyon.la-800x450.webp',
     source: 'https://codeberg.org/OKI/konstitisyon.la',
@@ -65,7 +65,7 @@ const ProjectsPage = () => {
             {projects.map((project, index) => (
               <AnimatedSection key={project.title} direction="up" delay={index * 0.1}>
                 <motion.div
-                  className="bg-foreground/5 rounded-lg overflow-hidden hover:bg-foreground/10 transition-colors"
+                  className="bg-foreground/5 rounded-lg overflow-hidden hover:bg-foreground/10 transition-colors h-full flex flex-col"
                   whileHover={{ y: -5 }}
                 >
                   <div className="aspect-video relative overflow-hidden">
@@ -75,20 +75,22 @@ const ProjectsPage = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-6">
-                    <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-                    <p className="text-foreground/70 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-foreground/10 rounded-full text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <div className="p-6 flex flex-col flex-grow justify-between">
+                    <div>
+                      <h2 className="text-xl font-bold mb-2">{project.title}</h2>
+                      <p className="text-foreground/70 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-foreground/10 rounded-full text-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex justify-between gap-4 pt-4">
                       <a
                         href={project.source}
                         target="_blank"
@@ -98,15 +100,30 @@ const ProjectsPage = () => {
                         Code source
                       </a>
                       {project.wip ? (
-                        <i>En cours de développement</i>
+                        <i className="text-foreground/70">En cours de développement</i>
                       ) : (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 hover:text-foreground transition-colors"
+                          className="inline-flex items-center text-sm font-medium hover:underline"
                         >
                           Voir le projet
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="16" 
+                            height="16" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                            className="ml-1"
+                          >
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
                         </a>
                       )}
                     </div>

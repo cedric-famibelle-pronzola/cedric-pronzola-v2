@@ -63,7 +63,7 @@ const Projects = () => {
               direction={index % 2 === 0 ? 'left' : 'right'}
             >
               <motion.div
-                className="bg-background border border-foreground/10 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 h-full"
+                className="bg-background border border-foreground/10 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col"
                 onHoverStart={() => setHoveredProject(project.id)}
                 onHoverEnd={() => setHoveredProject(null)}
                 whileHover={{ y: -5 }}
@@ -76,44 +76,57 @@ const Projects = () => {
                   />
                 </div>
                 
-                <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-foreground/70 mb-4 flex-grow">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((technologie) => (
-                      <span 
-                        key={technologie}
-                        className="px-2 py-1 bg-foreground/5 text-foreground/70 rounded-md text-xs"
-                      >
-                        {technologie}
-                      </span>
-                    ))}
+                <div className="p-6 flex flex-col flex-grow justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-foreground/70 mb-4">{project.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((technologie) => (
+                        <span 
+                          key={technologie}
+                          className="px-2 py-1 bg-foreground/5 text-foreground/70 rounded-md text-xs"
+                        >
+                          {technologie}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   
-                  <Link 
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium hover:underline mt-auto"
-                  >
-                    Voir le projet
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                      className="ml-1"
+                  <div className="flex justify-between pt-4">
+                    <a
+                      href={`https://codeberg.org/ced972/${project.link.replace('https://', '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground/70 hover:text-foreground transition-colors"
                     >
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </Link>
+                      Code source
+                    </a>
+                    
+                    <Link 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium hover:underline"
+                    >
+                      Voir le projet
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                        className="ml-1"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             </AnimatedSection>

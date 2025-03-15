@@ -4,40 +4,23 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import AnimatedSection from './AnimatedSection';
 
-// Sample blog posts - replace with your actual blog posts
 const blogPosts = [
   {
     id: 1,
-    title: "Les avantages du logiciel libre dans le développement web",
-    excerpt: "Découvrez comment les logiciels libres peuvent améliorer votre flux de travail de développement et contribuer à un écosystème web plus ouvert.",
-    date: "15 mars 2023",
-    category: "Open Source",
-    slug: "avantages-logiciel-libre-developpement-web",
+    title: "L’indépendance de La Réunion !",
+    excerpt: "L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté.",
+    date: "25 janvier 2025",
+    category: "Politique",
+    slug: "l-independance-de-la-reunion",
   },
   {
     id: 2,
-    title: "Comment optimiser les performances de votre application Next.js",
-    excerpt: "Apprenez les meilleures pratiques pour améliorer les performances de votre application Next.js, de l'optimisation des images à la mise en cache.",
-    date: "22 janvier 2023",
-    category: "Performance",
-    slug: "optimiser-performances-application-nextjs",
-  },
-  {
-    id: 3,
-    title: "Introduction à Deno : une alternative moderne à Node.js",
-    excerpt: "Explorez Deno, le runtime JavaScript sécurisé créé par le fondateur de Node.js, et découvrez ses avantages pour le développement moderne.",
-    date: "10 décembre 2022",
-    category: "JavaScript",
-    slug: "introduction-deno-alternative-nodejs",
-  },
-  {
-    id: 4,
-    title: "Créer des animations fluides avec Framer Motion",
-    excerpt: "Guide pratique pour intégrer des animations élégantes dans vos applications React à l'aide de la bibliothèque Framer Motion.",
-    date: "5 novembre 2022",
-    category: "UI/UX",
-    slug: "animations-fluides-framer-motion",
-  },
+    title: "Les logiciels libres nous libéreront !",
+    excerpt: "Découvrez comment les logiciels libres peuvent nous libérer de la tyrannie oligopolistique des grands groupes de la tech.",
+    date: "8 décembre 2024",
+    category: "Logiciels libres",
+    slug: "les-logiciels-libres-nous-libereront",
+  }
 ];
 
 const BlogContent = () => {
@@ -49,10 +32,10 @@ const BlogContent = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
             <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
             <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-              Mes réflexions sur le développement web, les technologies libres et l&apos;écosystème numérique.
+              Mes réflexions sur le développement web, les technologies libres et l’écosystème numérique et la politique.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {blogPosts.map((post, index) => (
               <AnimatedSection 
@@ -110,4 +93,4 @@ const BlogContent = () => {
 export default BlogContent;
 
 // Export blog posts for JSON-LD
-export { blogPosts }; 
+export { blogPosts };

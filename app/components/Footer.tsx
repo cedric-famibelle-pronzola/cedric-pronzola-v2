@@ -165,7 +165,7 @@ const Footer = () => {
               className="text-2xl font-bold"
               aria-label="Retour à l'accueil"
             >
-              Cédric
+              Cédric Famibelle-Pronzola
             </a>
             <p className="mt-4 text-foreground/70 max-w-md">
               Développeur passionné et libriste, je crée des solutions web modernes et accessibles.
@@ -316,7 +316,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-foreground/60 text-sm">
-          <p>{currentYear} - Cédric Famibelle-Pronzola</p>
+          <p>{currentYear} - Cédric Famibelle-Pronzola - <a href="/mentions-legales">Mentions légales</a></p>
         </div>
       </div>
     </footer>

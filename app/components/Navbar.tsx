@@ -85,7 +85,7 @@ const Navbar = () => {
           aria-label="Accueil"
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_SITE_URL || ''}/cedric.png`}
+            src='/cedric.png'
             alt="Cédric" 
             width={40} 
             height={40} 

@@ -1,10 +1,27 @@
 'use client';
+import { useEffect, useRef } from 'react';
 
 interface MarkdownContentProps {
   content: string;
 }
 
 export default function MarkdownContent({ content }: MarkdownContentProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Function to add target="_blank" rel="noreferrer" to all links
+  useEffect(() => {
+    if (contentRef.current) {
+      const links = contentRef.current.querySelectorAll('a');
+      links.forEach(link => {
+        // Skip anchor links (links that start with #)
+        if (!link.getAttribute('href')?.startsWith('#')) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noreferrer');
+        }
+      });
+    }
+  }, [content]); // Re-run when content changes
+
   return (
     <div className="markdown-content">
       <style jsx global>{`
@@ -166,10 +183,11 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         }
       `}</style>
 
-      {/* Fix table rendering by using regular expression to properly wrap table with a container */}
-      <div dangerouslySetInnerHTML={{ 
-        __html: content
-      }} />
+      {/* Use ref to access the DOM and modify links */}
+      <div 
+        ref={contentRef}
+        dangerouslySetInnerHTML={{ __html: content }} 
+      />
     </div>
   );
 } 

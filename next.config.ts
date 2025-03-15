@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ['cedric-pronzola.re'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cedric-pronzola.re',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

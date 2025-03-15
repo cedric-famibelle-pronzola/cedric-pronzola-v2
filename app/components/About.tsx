@@ -42,9 +42,8 @@ const About = () => {
 
           <AnimatedSection direction="left" delay={0.4} className="relative">
             <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-2xl">
-              {/* Replace with your actual profile image */}
               <Image
-                src="/cedric.png"
+                src={`${process.env.NEXT_PUBLIC_SITE_URL || ''}/cedric.png`}
                 quality={80}
                 alt="Cédric Famibelle-Pronzola"
                 fill

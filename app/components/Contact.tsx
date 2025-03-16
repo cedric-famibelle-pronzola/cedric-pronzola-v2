@@ -155,7 +155,73 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-4">Réseaux</h3>
               <div className="flex flex-col space-y-4">
                 <div className="flex space-x-4">
-                  {/* First row of links */}
+                  {/* First row of links - Encrypted messaging platforms */}
+                  <motion.a
+                    href="https://signal.me/#eu/iRFMyB-jQ0SVtraoMkXbyAfRhi_tiIJfcbczUA7PsZoxVSSwWYxN-rsQbBSKHlFz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title="Signal"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g fill="currentColor">
+                        <path d="M80 0c4.1505 0 8.2271.31607 12.2072.925452l-1.1444 7.413248c-3.6069-.55226-7.3014-.8387-11.0628-.8387-3.7612 0-7.4555.28641-11.0623.83862l-1.1444-7.413245c3.9799-.609332 8.0564-.925375 12.2067-.925375z"/>
+                        <path d="M145 80c0 35.899-29.101 65-65 65-11.3866 0-22.0893-2.928-31.3965-8.072-.8961-.495-1.9417-.658-2.9389-.426l-28.9134 6.747 6.7465-28.914c.2326-.997.0692-2.043-.426-2.939-5.1439-9.307-8.0717-20.0095-8.0717-31.396 0-35.8985 29.1015-65 65-65 35.899 0 65 29.1015 65 65z"/>
+                      </g>
+                    </svg>
+                  </motion.a>
+
+                  <motion.a
+                    href="https://xmpp.link/#ced972@movim.eu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title="XMPP"
+                  >
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="24" height="24">
+                      <path d="M 2.140625 8.4160156 C 1.5464453 8.3779121 1.01425 8.8778125 1.078125 9.5078125 C 2.342125 21.977813 18.578609 42.202563 35.974609 42.976562 C 36.535609 43.001562 37 42.536609 37 41.974609 L 37 41.943359 C 37 41.441359 36.631812 41.006078 36.132812 40.955078 C 28.218812 40.157078 16.370766 28.788078 16.009766 13.705078 C 15.998766 13.283078 15.733031 12.911344 15.332031 12.777344 L 2.3984375 8.4667969 C 2.3125625 8.4381719 2.2255078 8.421459 2.140625 8.4160156 z M 47.857422 8.4199219 C 47.772383 8.4254883 47.685859 8.4419531 47.599609 8.4707031 L 34.669922 12.779297 C 34.269922 12.909297 34.000234 13.280938 33.990234 13.710938 C 33.800234 21.490938 30.559141 28.280625 26.369141 33.140625 C 27.719141 34.550625 29.159844 35.749922 30.589844 36.669922 C 40.619844 29.519922 48.079922 17.799766 48.919922 9.5097656 C 48.981172 8.8797656 48.452695 8.380957 47.857422 8.4199219 z M 19.349609 39.050781 C 17.439609 40.130781 15.569141 40.790937 13.869141 40.960938 C 13.369141 41.010938 13 41.439453 13 41.939453 L 13 41.970703 C 13 42.540703 13.459297 43.000469 14.029297 42.980469 C 16.959297 42.850469 19.860156 42.160781 22.660156 41.050781 C 21.530156 40.450781 20.429609 39.770781 19.349609 39.050781 z"/>
+                    </svg>
+                  </motion.a>
+
+                  <motion.a
+                    href="https://simplex.chat/contact#/?v=2-7&smp=smp%3A%2F%2Fhejn2gVIqNU6xjtGM3OwQeuk8ZEbDXVJXAlnSBJBWUA%3D%40smp16.simplex.im%2FhmwAMS0fMSsq3llW22muUgEQcabP0oh0%23%2F%3Fv%3D1-3%26dh%3DMCowBQYDK2VuAyEAJFc6LIrbRM8gAf1muwgyOuHj-sbqsoc-PNhh75oNZmg%253D%26srv%3Dp3ktngodzi6qrf7w64mmde3syuzrv57y55hxabqcq3l5p6oi7yzze6qd.onion"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title="SimpleXChat"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M3.02958 8.60922L8.622 14.2013L14.3705 8.45375L17.1669 11.2498L11.4183 16.9972L17.0114 22.5895L14.1373 25.4633L8.54422 19.871L2.79636 25.6187L0 22.8227L5.74794 17.075L0.155484 11.483L3.02958 8.60922Z" fill="currentColor"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M14.0923 25.5156L16.944 22.6642L16.9429 22.6634L22.6467 16.9612L17.0513 11.3675L17.0523 11.367L14.2548 8.56979L8.65972 2.97535L11.5114 0.123963L17.1061 5.71849L22.8099 0.015625L25.6074 2.81285L19.9035 8.51562L25.4984 14.1099L31.2025 8.40729L34 11.2045L28.2958 16.907L33.8917 22.5017L31.0399 25.3531L25.4442 19.7584L19.7409 25.4611L25.3365 31.0559L22.4848 33.9073L16.8892 28.3124L11.1864 34.0156L8.38885 31.2184L14.0923 25.5156Z" fill="currentColor"/>
+                    </svg>
+                  </motion.a>
+
+                  <motion.a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigator.clipboard.writeText("05180a84bd3f88e89caae6fed3a492b4af5d9a8dde0e478fb836e0a88b27464878");
+                      alert("ID Session copié");
+                    }}
+                    className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title="Session (Cliquer pour copier l'ID)"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 303.06 336.3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M255.67,170.86l-63.48-35.17h43.03c37.41,0,67.85-30.43,67.85-67.84S272.63,0,235.22,0H85C38.13,0,0,38.13,0,85c0,33.42,18.16,64.25,47.4,80.45l63.48,35.17H67.85C30.44,200.62,0,231.05,0,268.46s30.44,67.85,67.85,67.85h150.22c46.87,0,85-38.13,85-85C303.06,217.88,284.9,187.06,255.67,170.86z M57.58,147.05c-22.06-12.22-35.95-35.25-36.54-60.39C20.19,50.57,50.5,21.02,86.61,21.02h147.25c25.18,0,46.88,19.31,48.12,44.46c1.33,26.88-20.16,49.18-46.76,49.18c0,0-60.99,0.01-84.81,0.01c-5.19,0-9.37,4.21-9.38,9.39l-0.02,69.22L57.58,147.05z M216.46,315.28H69.2c-25.18,0-46.88-19.31-48.12-44.46c-1.33-26.88,20.16-49.18,46.76-49.18h84.81c5.19,0,9.39-4.21,9.39-9.39v-69.23l83.44,46.23c22.06,12.22,35.95,35.25,36.54,60.39C282.87,285.73,252.56,315.28,216.46,315.28z" fill="currentColor"/>
+                    </svg>
+                  </motion.a>
+                </div>
+                
+                <div className="flex space-x-4">
+                  {/* Second row of links - Development platforms */}
                   <motion.a
                     href="https://codeberg.org/ced972"
                     target="_blank"
@@ -244,7 +310,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex space-x-4">
-                  {/* Second row of links */}
+                  {/* Third row of links - Social media */}
                   <motion.a
                     href="https://bsky.app/profile/ced972.bsky.social"
                     target="_blank"

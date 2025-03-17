@@ -120,7 +120,7 @@ Cet article met en perspective deux mondes diamétralement opposés.
 D'un côté nous avons l'appât du gain, l'individualisme et l'opacité. De l'autre, la solidarité, le partage et la transparence.  
 D'un côté un monde fermé et financiarisé à outrance. De l'autre, un monde de liberté et profondément humain.
 
-Les **logiciels libres** nous libéreront de la tyrannie oligopolistique des grands groupes de la tech, tout en ouvrant la voix à un autre monde.  
+Les **logiciels libres** nous libéreront de la tyrannie oligopolistique des grands groupes de la tech, tout en ouvrant la voie à un autre monde.  
 En effet, nous vivons au rythme des _GAFAM_ et des **marchés financiers**. Nous les alimentons en utilisant leurs **geôles numériques.** Sans nous, ils n'existent pas, sans eux **nous sommes libres**.  
 Il est primordial d'**arracher notre indépendance** vis-à-vis de l'état colonial, mais il devient tout aussi nécessaire que nous nous libérions du capitalisme, en changeant nos habitudes de consommation.  
 C'est valable pour **l'alimentaire** autant que pour **le numérique**.  

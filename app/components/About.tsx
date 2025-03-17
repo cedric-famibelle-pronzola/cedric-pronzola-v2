@@ -16,7 +16,7 @@ const About = () => {
           <AnimatedSection direction="right" delay={0.2} className="space-y-6">
             <h3 className="text-2xl font-bold">Qui suis-je ?</h3>
             <p className="text-foreground/80">
-              Bonjour ! Je suis Cédric Famibelle-Pronzola, développeur web passionné par la création d'applications web modernes et performantes.
+              Bonjour ! Je suis Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile passionné par la création d'applications web modernes et performantes.
             </p>
             <p className="text-foreground/80">
               Avec une solide expérience dans le développement front-end et back-end, je m'efforce de créer des solutions élégantes et accessibles qui répondent aux besoins des utilisateurs.

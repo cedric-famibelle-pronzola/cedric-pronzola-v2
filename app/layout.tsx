@@ -18,10 +18,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Cédric Famibelle-Pronzola | Développeur - Libriste",
+    default: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
     template: "%s | Cédric Famibelle-Pronzola"
   },
-  description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+  description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile spécialisé dans les technologies libres et modernes.",
   keywords: ["développeur", "web", "libriste", "open source", "javascript", "react", "next.js"],
   authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.re" }],
   creator: "Cédric Famibelle-Pronzola",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Cédric Famibelle-Pronzola | Développeur - Libriste",
-    description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+    title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
+    description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile spécialisé dans les technologies libres et modernes.",
     url: "https://cedric-pronzola.re",
     siteName: "Cédric Famibelle-Pronzola",
     locale: "fr_FR",
@@ -47,14 +47,14 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "Cédric Famibelle-Pronzola - Développeur Web",
+        alt: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cédric Famibelle-Pronzola | Développeur - Libriste",
-    description: "Cédric Famibelle-Pronzola, développeur web spécialisé dans les technologies libres et modernes.",
+    title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
+    description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile spécialisé dans les technologies libres et modernes.",
     creator: "@CedricPronzola",
     images: ["/api/og"],
   },

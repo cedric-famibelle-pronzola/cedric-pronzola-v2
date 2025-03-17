@@ -13,21 +13,21 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Accueil",
-  description: "Cédric Famibelle-Pronzola, développeur web passionné par les technologies libres et l'innovation numérique.",
+  title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
+  description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile passionné par les technologies libres et l'innovation numérique.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Cédric Famibelle-Pronzola | Développeur Web",
-    description: "Cédric Famibelle-Pronzola, développeur web passionné par les technologies libres et l'innovation numérique.",
+    title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
+    description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile passionné par les technologies libres et l'innovation numérique.",
     url: "/",
     images: [
       {
-        url: "/api/og?title=Cédric Famibelle-Pronzola&subtitle=Développeur Web - Libriste",
+        url: "/api/og?title=Cédric Famibelle-Pronzola&subtitle=Concepteur et Développeur Web/Mobile | Libriste",
         width: 1200,
         height: 630,
-        alt: "Cédric Famibelle-Pronzola - Développeur Web",
+        alt: "Cédric Famibelle-Pronzola - Concepteur et Développeur Web/Mobile | Libriste",
       },
     ],
   },
@@ -47,12 +47,12 @@ const personJsonLd = {
     "https://instagram.com/cedric_kaubuntu",
     "https://bsky.app/profile/ced972.bsky.social",
   ],
-  "jobTitle": "Développeur Web",
+  "jobTitle": "Concepteur et Développeur Web/Mobile",
   "worksFor": {
     "@type": "Organization",
     "name": "Freelance"
   },
-  "description": "Développeur web spécialisé dans les technologies libres et modernes."
+  "description": "Concepteur et Développeur Web/Mobile spécialisé dans les technologies libres et modernes."
 };
 
 export default function Home() {

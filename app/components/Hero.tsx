@@ -65,7 +65,7 @@ const Hero = () => {
             Cédric Famibelle-Pronzola
           </h1>
           <h2 className="text-xl md:text-2xl text-foreground/80 mb-8">
-            Développeur Web & Libriste
+            Concepteur et Développeur Web/Mobile
           </h2>
         </motion.div>
         

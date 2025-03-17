@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     
     // Get title from query params
     const title = searchParams.get('title') || 'Cédric Famibelle-Pronzola';
-    const subtitle = searchParams.get('subtitle') || 'Développeur Web - Libriste';
+    const subtitle = searchParams.get('subtitle') || 'Concepteur et Développeur Web/Mobile | Libriste';
     
     return new ImageResponse(
       (

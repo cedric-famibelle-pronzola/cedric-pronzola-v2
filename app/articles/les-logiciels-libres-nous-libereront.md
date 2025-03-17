@@ -1,6 +1,6 @@
 ---
 title: "Les logiciels libres nous libéreront !"
-description: "Découvrez pourquoi Les logiciels libres sont essentiels pour préserver nos droits et reprendre le contrôle sur notre environnement numérique."
+description: "Les logiciels libres nous libéreront de la tyrannie oligopolistique des grands groupes de la tech, tout en ouvrant la voie à un autre monde."
 date: "8 décembre 2024"
 author:
   name: "Cédric Famibelle-Pronzola"

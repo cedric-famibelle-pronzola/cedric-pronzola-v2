@@ -27,6 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  // Create separate URL object for proper encoding
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cedric-pronzola.re';
+  const urlObj = new URL(`${baseUrl}/api/og`);
+  urlObj.searchParams.set('title', post.title);
+  urlObj.searchParams.set('subtitle', post.description);
+
+  // Get the properly formatted URL string
+  const ogImageUrl = urlObj.toString();
+
   return {
     title: post.title,
     description: post.description,
@@ -40,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description)}`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -54,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: "@CedricPronzola",
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description)}`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,

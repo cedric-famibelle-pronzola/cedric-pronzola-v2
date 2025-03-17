@@ -47,6 +47,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      creator: "@CedricPronzola",
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description)}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ]
+    }
   };
 }
 

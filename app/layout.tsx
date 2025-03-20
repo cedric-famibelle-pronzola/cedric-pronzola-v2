@@ -34,6 +34,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://cedric-pronzola.re"),
   alternates: {
     canonical: "/",
+    types: {
+      'application/rss+xml': [
+        { url: '/rss.xml', title: 'RSS Feed pour le blog de Cédric Famibelle-Pronzola' },
+      ],
+      'application/atom+xml': [
+        { url: '/atom.xml', title: 'Atom Feed pour le blog de Cédric Famibelle-Pronzola' },
+      ],
+      'application/feed+json': [
+        { url: '/feed.json', title: 'JSON Feed pour le blog de Cédric Famibelle-Pronzola' },
+      ],
+    },
   },
   openGraph: {
     title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",

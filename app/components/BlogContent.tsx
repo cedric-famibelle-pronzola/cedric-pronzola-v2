@@ -14,11 +14,65 @@ const BlogContent = ({ posts }: BlogContentProps) => {
       <AnimatedSection className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-            <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
+            <div className="flex items-center justify-center mb-2">
+              <h1 className="text-4xl md:text-5xl font-bold">Blog</h1>
+              <a 
+                href="/rss.xml" 
+                target="_blank"
+                rel="noopener"
+                className="ml-4 text-foreground/60 hover:text-foreground transition-colors" 
+                title="S'abonner au flux RSS"
+                aria-label="S'abonner au flux RSS"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+              </a>
+            </div>
+            <div className="w-20 h-1 bg-foreground/20 mx-auto mt-4"></div>
             <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-              Mes réflexions sur le développement web, les technologies libres et l'écosystème numérique et la politique.
+              Articles sur le développement web, les logiciels libres, l'informatique et la politique.
             </p>
+            <div className="mt-4 flex items-center justify-center space-x-4">
+              <a 
+                href="/rss.xml" 
+                className="text-sm text-foreground/60 hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener"
+              >
+                RSS
+              </a>
+              <span className="text-foreground/30">•</span>
+              <a 
+                href="/atom.xml" 
+                className="text-sm text-foreground/60 hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener"
+              >
+                Atom
+              </a>
+              <span className="text-foreground/30">•</span>
+              <a 
+                href="/feed.json" 
+                className="text-sm text-foreground/60 hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener"
+              >
+                JSON
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

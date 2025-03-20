@@ -66,24 +66,32 @@ export async function GET() {
     ogImageUrl.searchParams.set('title', post.title);
     ogImageUrl.searchParams.set('subtitle', post.description);
     
+    // Include the image as part of the HTML content
+    const descriptionWithImage = `
+      <div>
+        <img src="${ogImageUrl.toString()}" alt="${post.title}" style="max-width: 100%; height: auto; margin-bottom: 1rem;" />
+        <p>${post.description}</p>
+      </div>
+    `;
+    
     feed.addItem({
       title: post.title,
       id: url,
       link: url,
-      description: post.description,
+      description: descriptionWithImage,
+      content: descriptionWithImage,
       author: [
         {
           name: post.author.name,
           link: post.author.url
         }
       ],
-      date: parsedDate,
-      image: ogImageUrl.toString()
+      date: parsedDate
     });
   });
 
   // Generate the RSS feed
-  const rss = feed.rss2();
+  let rss = feed.rss2();
   
   // Return the XML with appropriate content type
   return new NextResponse(rss, {

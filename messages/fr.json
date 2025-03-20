@@ -36,7 +36,29 @@
       "description": "Découvrez une sélection de mes projets récents. Chaque projet est une opportunité d'apprendre et d'explorer de nouvelles technologies.",
       "seeMore": "Voir tous les projets",
       "viewProject": "Voir le projet",
-      "sourceCode": "Code source"
+      "sourceCode": "Code source",
+      "projectsList": {
+        "oki": {
+          "title": "oki.re - Plateforme de transcriptions musicales",
+          "description": "Application web progressive pour la transcription et traduction de productions musicales, avec interface multilingue.",
+          "technologies": "Next.js,Node.js,Strapi"
+        },
+        "nuvel": {
+          "title": "nuvel.nu - Portail d'actualités multilingue",
+          "description": "Plateforme d'information multilingue avec gestion de contenu dynamique et interface adaptative.",
+          "technologies": "Next.js,Node.js,Strapi"
+        },
+        "gong": {
+          "title": "gong.gp - Archives historiques guadeloupéennes",
+          "description": "Plateforme documentaire présentant les archives du Groupe d'Organisation Nationale de la Guadeloupe avec navigation interactive.",
+          "technologies": "HTMx,Strapi,PHP"
+        },
+        "jwe": {
+          "title": "jwe.ovh - Jeu cartographique interactif",
+          "description": "Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.",
+          "technologies": "MapLibre GL JS,JavaScript,PHP,CSS"
+        }
+      }
     },
     "stack": {
       "title": "Ma Stack",

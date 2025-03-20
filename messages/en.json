@@ -36,7 +36,29 @@
       "description": "Discover a selection of my recent projects. Each project is an opportunity to learn and explore new technologies.",
       "seeMore": "See all projects",
       "viewProject": "View Project",
-      "sourceCode": "Source code"
+      "sourceCode": "Source code",
+      "projectsList": {
+        "oki": {
+          "title": "oki.re - Musical Transcription Platform",
+          "description": "Progressive web app for transcription and translation of musical productions, with multilingual interface.",
+          "technologies": "Next.js,Node.js,Strapi"
+        },
+        "nuvel": {
+          "title": "nuvel.nu - Multilingual News Portal",
+          "description": "Multilingual information platform with dynamic content management and adaptive interface.",
+          "technologies": "Next.js,Node.js,Strapi"
+        },
+        "gong": {
+          "title": "gong.gp - Guadeloupe Historical Archives",
+          "description": "Documentary platform presenting the archives of the National Organization Group of Guadeloupe with interactive navigation.",
+          "technologies": "HTMx,Strapi,PHP"
+        },
+        "jwe": {
+          "title": "jwe.ovh - Interactive Mapping Game",
+          "description": "Fun application based on interactive mapping, using MapLibre GL for an immersive experience.",
+          "technologies": "MapLibre GL JS,JavaScript,PHP,CSS"
+        }
+      }
     },
     "stack": {
       "title": "My Stack",

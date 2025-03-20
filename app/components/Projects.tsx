@@ -8,45 +8,22 @@ import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
 import { useTranslations } from 'next-intl';
 
-const projectsData = [
-  {
-    id: 1,
-    title: 'oki.re - Plateforme de transcriptions musicales',
-    description: 'Application web progressive pour la transcription et traduction de productions musicales créoles, avec interface multilingue.',
-    technologies: ['Next.js', 'Node.js', 'Strapi'],
-    image: '/images/projects/oki.re-800x450.webp',
-    link: 'https://oki.re',
-  },
-  {
-    id: 2,
-    title: "nuvel.nu - Portail d'actualités multilingue",
-    description: "Plateforme d'information multilingue avec gestion de contenu dynamique et interface adaptative.",
-    technologies: ['Next.js', 'Node.js', 'Strapi'],
-    image: '/images/projects/nuvel.nu-800x450.webp',
-    link: 'https://nuvel.nu',
-  },
-  {
-    id: 3,
-    title: 'gong.gp - Archives historiques guadeloupéennes',
-    description: "Plateforme documentaire présentant les archives du Groupe d'Organisation Nationale de la Guadeloupe avec navigation interactive.",
-    technologies: ['HTMx', 'Strapi', 'PHP'],
-    image: '/images/projects/gong.gp-800x450.webp',
-    link: 'https://gong.gp',
-  },
-  {
-    id: 4,
-    title: 'jwe.ovh - Jeu cartographique interactif',
-    description: 'Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.',
-    technologies: ['MapLibre GL JS', 'JavaScript', 'PHP', 'CSS'],
-    image: '/images/projects/jwe.ovh-800x450.webp',
-    link: 'https://jwe.ovh',
-  },
-];
+const projectIds = ['oki', 'nuvel', 'gong', 'jwe'];
 
 const Projects = () => {
   const t = useTranslations('home.projects');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | 'web' | 'mobile'>('all');
+
+  const projectsData = projectIds.map((id, index) => ({
+    id: index + 1,
+    projectId: id,
+    title: t(`projectsList.${id}.title`),
+    description: t(`projectsList.${id}.description`),
+    technologies: t(`projectsList.${id}.technologies`).split(','),
+    image: `/images/projects/${id}.${id === 'oki' ? 're' : id === 'nuvel' ? 'nu' : id === 'gong' ? 'gp' : 'ovh'}-800x450.webp`,
+    link: `https://${id}.${id === 'oki' ? 're' : id === 'nuvel' ? 'nu' : id === 'gong' ? 'gp' : 'ovh'}`,
+  }));
 
   return (
     <AnimatedSection id="projects" className="py-24 bg-background/50">

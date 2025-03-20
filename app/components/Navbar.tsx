@@ -3,14 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
 import Image from 'next/image';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslations, useLocale } from 'next-intl';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('navigation');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +26,10 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Initial check for scrolled state on mount
+    handleScroll();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -30,19 +39,35 @@ const Navbar = () => {
     e.preventDefault();
     
     if (href.startsWith('/#')) {
-      if (window.location.pathname === '/' || window.location.pathname === '') {
+      // Extract the section ID
+      const sectionId = href.substring(2);
+      console.log(`Navbar click on section: ${sectionId}, current pathname: ${pathname}`);
+      
+      // Check if we're already on a homepage (with or without locale prefix)
+      const isHomePage = pathname === '/' || pathname === '' || pathname === `/${locale}` || pathname === `/${locale}/`;
+      
+      if (isHomePage) {
+        // We're on a homepage, use smooth scroll
         if (mobileMenuOpen) {
           setMobileMenuOpen(false);
           setTimeout(() => {
-            smoothScrollToSection(href.substring(2));
-          }, 100);
+            console.log(`Using smooth scroll to ${sectionId} after closing mobile menu`);
+            smoothScrollToSection(sectionId);
+          }, 300); // Increased timeout to allow menu to close
         } else {
-          smoothScrollToSection(href.substring(2));
+          console.log(`Using smooth scroll to ${sectionId}`);
+          smoothScrollToSection(sectionId);
         }
       } else {
-        router.push(href);
+        // We're on a different page, navigate to home with the hash
+        const localizedHome = locale === 'fr' ? '/' : `/${locale}`;
+        const newPath = `${localizedHome}#${sectionId}`;
+        console.log(`Not on homepage, navigating to: ${newPath}`);
+        router.push(newPath);
       }
     } else {
+      // For non-hash links, just use regular navigation
+      console.log(`Regular navigation to: ${href}`);
       router.push(href);
     }
   };
@@ -82,7 +107,7 @@ const Navbar = () => {
             }
           }}
           className="flex items-center"
-          aria-label="Accueil"
+          aria-label={t('home')}
         >
           <Image
             src='/cedric.png'
@@ -96,35 +121,42 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8" aria-label="Navigation principale">
-          <NavLink href="/#about" onClick={handleNavClick}>À propos</NavLink>
-          <NavLink href="/#projects" onClick={handleNavClick}>Projets</NavLink>
-          <NavLink href="/#stack" onClick={handleNavClick}>Stack</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
-          <NavLink href="/#contact" onClick={handleNavClick}>Contact</NavLink>
+        <nav className="hidden md:flex items-center space-x-4" aria-label={t('mainNav')}>
+          <NavLink href="/#about" onClick={handleNavClick}>{t('about')}</NavLink>
+          <NavLink href="/#projects" onClick={handleNavClick}>{t('projects')}</NavLink>
+          <NavLink href="/#stack" onClick={handleNavClick}>{t('stack')}</NavLink>
+          <NavLink href="/blog">{t('blog')}</NavLink>
+          <NavLink href="/#contact" onClick={handleNavClick}>{t('contact')}</NavLink>
+          <div className="pl-4 border-l border-foreground/10">
+            <LanguageSwitcher />
+          </div>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-foreground z-50"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {mobileMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          )}
-        </button>
+        <div className="md:hidden flex items-center">
+          <LanguageSwitcher />
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="text-foreground z-50 ml-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? t('closeMenu') : t('openMenu')}
+          >
+            {mobileMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -136,14 +168,14 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={mobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          aria-label="Navigation mobile"
+          aria-label={t('mobileNav')}
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <MobileNavLink href="/#about" onClick={(e) => handleNavClick(e, '/#about')}>À propos</MobileNavLink>
-            <MobileNavLink href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')}>Projets</MobileNavLink>
-            <MobileNavLink href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')}>Stack</MobileNavLink>
-            <MobileNavLink href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</MobileNavLink>
-            <MobileNavLink href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')}>Contact</MobileNavLink>
+            <MobileNavLink href="/#about" onClick={(e) => handleNavClick(e, '/#about')}>{t('about')}</MobileNavLink>
+            <MobileNavLink href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')}>{t('projects')}</MobileNavLink>
+            <MobileNavLink href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')}>{t('stack')}</MobileNavLink>
+            <MobileNavLink href="/blog" onClick={() => setMobileMenuOpen(false)}>{t('blog')}</MobileNavLink>
+            <MobileNavLink href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')}>{t('contact')}</MobileNavLink>
           </div>
         </motion.div>
       </div>
@@ -163,11 +195,19 @@ const NavLink = ({
   const [isActive, setIsActive] = useState(false);
   
   useEffect(() => {
-    if (href.startsWith('/#') && typeof window !== 'undefined') {
-      setIsActive(window.location.hash === href.substring(1));
-    } else if (href === '/blog' && typeof window !== 'undefined') {
-      setIsActive(window.location.pathname === '/blog');
-    }
+    const checkActive = () => {
+      if (href.startsWith('/#') && typeof window !== 'undefined') {
+        setIsActive(window.location.hash === href.substring(1));
+      } else if (href === '/blog' && typeof window !== 'undefined') {
+        setIsActive(window.location.pathname === '/blog');
+      }
+    };
+    
+    checkActive();
+    
+    // Add hash change event listener
+    window.addEventListener('hashchange', checkActive);
+    return () => window.removeEventListener('hashchange', checkActive);
   }, [href]);
 
   if (onClick && href.startsWith('/#')) {

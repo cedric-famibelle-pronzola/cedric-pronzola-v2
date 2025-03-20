@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
+import { useTranslations } from 'next-intl';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const router = useRouter();
+  const t = useTranslations('footer');
   
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -204,29 +206,29 @@ const Footer = () => {
                 }
               }}
               className="text-2xl font-bold"
-              aria-label="Retour à l'accueil"
+              aria-label={t('backToHome')}
             >
               Cédric Famibelle-Pronzola
             </a>
             <p className="mt-4 text-foreground/70 max-w-md">
-              Développeur passionné et libriste, je crée des solutions web modernes et accessibles.
+              {t('description')}
             </p>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4" id="footer-navigation">Navigation</h3>
+            <h3 className="text-lg font-semibold mb-4" id="footer-navigation">{t('navigation')}</h3>
             <ul className="space-y-2" aria-labelledby="footer-navigation">
-              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="text-foreground/70 hover:text-foreground transition-colors">À propos</a></li>
-              <li><a href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')} className="text-foreground/70 hover:text-foreground transition-colors">Projets</a></li>
-              <li><Link href="/projects" className="text-foreground/70 hover:text-foreground transition-colors">Tous les projets</Link></li>
-              <li><a href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')} className="text-foreground/70 hover:text-foreground transition-colors">Stack</a></li>
-              <li><Link href="/blog" className="text-foreground/70 hover:text-foreground transition-colors">Blog</Link></li>
-              <li><a href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')} className="text-foreground/70 hover:text-foreground transition-colors">Contact</a></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="text-foreground/70 hover:text-foreground transition-colors">{t('about')}</a></li>
+              <li><a href="/#projects" onClick={(e) => handleNavClick(e, '/#projects')} className="text-foreground/70 hover:text-foreground transition-colors">{t('projects')}</a></li>
+              <li><Link href="/projects" className="text-foreground/70 hover:text-foreground transition-colors">{t('allProjects')}</Link></li>
+              <li><a href="/#stack" onClick={(e) => handleNavClick(e, '/#stack')} className="text-foreground/70 hover:text-foreground transition-colors">{t('stack')}</a></li>
+              <li><Link href="/blog" className="text-foreground/70 hover:text-foreground transition-colors">{t('blog')}</Link></li>
+              <li><a href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')} className="text-foreground/70 hover:text-foreground transition-colors">{t('contact')}</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4" id="footer-social">Réseaux</h3>
+            <h3 className="text-lg font-semibold mb-4" id="footer-social">{t('social')}</h3>
             <div className="flex flex-col space-y-4" aria-labelledby="footer-social">
               <div className="flex space-x-4">
                 {/* First row of links - Encrypted messaging platforms */}
@@ -424,7 +426,14 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-foreground/60 text-sm">
-          <p>{currentYear} - Cédric Famibelle-Pronzola - <a href="/mentions-legales">Mentions légales</a></p>
+          <p className="mt-12 text-foreground/50 text-sm">
+            © {currentYear} Cédric Famibelle-Pronzola. {t('rightsReserved')}
+          </p>
+          <p className="mt-2 text-foreground/50 text-sm">
+            <Link href="/mentions-legales" className="hover:text-foreground transition-colors">
+              {t('legalNotice')}
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

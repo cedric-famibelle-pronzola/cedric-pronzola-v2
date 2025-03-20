@@ -2,22 +2,42 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
+import { useTranslations, useLocale } from 'next-intl';
 
 const Hero = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('home.hero');
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
+    // Check if this is a hash link (section navigation)
     if (href.startsWith('/#')) {
-      if (window.location.pathname === '/' || window.location.pathname === '') {
-        smoothScrollToSection(href.substring(2));
+      // Extract the section ID
+      const sectionId = href.substring(2);
+      console.log(`Click on section: ${sectionId}, current pathname: ${pathname}`);
+      
+      // Check if we're already on a homepage (with or without locale prefix)
+      const isHomePage = pathname === '/' || pathname === '' || pathname === `/${locale}` || pathname === `/${locale}/`;
+      
+      if (isHomePage) {
+        // We're on a homepage (with or without locale), use smooth scroll
+        console.log(`On homepage, using smooth scroll to ${sectionId}`);
+        smoothScrollToSection(sectionId);
       } else {
-        router.push(href);
+        // We're on a different page, navigate to home with the hash
+        const localizedHome = locale === 'fr' ? '/' : `/${locale}`;
+        const newPath = `${localizedHome}#${sectionId}`;
+        console.log(`Not on homepage, navigating to: ${newPath}`);
+        router.push(newPath);
       }
     } else {
+      // For non-hash links, just use regular navigation
+      console.log(`Regular navigation to: ${href}`);
       router.push(href);
     }
   };
@@ -62,10 +82,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Cédric Famibelle-Pronzola
+            {t('title')}
           </h1>
           <h2 className="text-xl md:text-2xl text-foreground/80 mb-8">
-            Concepteur et Développeur Web/Mobile
+            {t('subtitle')}
           </h2>
         </motion.div>
         
@@ -76,8 +96,7 @@ const Hero = () => {
           className="max-w-2xl mx-auto mb-12"
         >
           <p className="text-lg text-foreground/70">
-            Je conçois et développe des applications web modernes, performantes et accessibles.
-            Passionné par les technologies libres et open source.
+            {t('description')}
           </p>
         </motion.div>
         
@@ -91,43 +110,30 @@ const Hero = () => {
             href="/#projects"
             onClick={(e) => handleNavClick(e, '/#projects')}
             className="px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors"
-            aria-label="Voir mes projets"
+            aria-label={t('viewProjectsAriaLabel')}
           >
-            Voir mes projets
+            {t('viewProjects')}
           </a>
           <a 
             href="/#contact"
             onClick={(e) => handleNavClick(e, '/#contact')}
             className="px-6 py-3 border border-foreground/20 rounded-md font-medium hover:bg-foreground/10 transition-colors"
-            aria-label="Me contacter"
+            aria-label={t('contactAriaLabel')}
           >
-            Me contacter
+            {t('contact')}
           </a>
         </motion.div>
-        
-        {/* Scroll indicator */}
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-6 h-10 rounded-full border-2 border-foreground/20 flex justify-center pt-2"
           aria-hidden="true"
         >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-            className="text-foreground/60"
-            aria-hidden="true"
-          >
-            <path d="M12 5v14"></path>
-            <path d="m19 12-7 7-7-7"></path>
-          </svg>
+          <motion.div className="w-1 h-2 rounded-full bg-foreground/50" />
         </motion.div>
       </div>
     </div>

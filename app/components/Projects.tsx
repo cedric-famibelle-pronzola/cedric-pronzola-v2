@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
+import { useTranslations } from 'next-intl';
 
 const projectsData = [
   {
@@ -42,16 +44,18 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const t = useTranslations('home.projects');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<'all' | 'web' | 'mobile'>('all');
 
   return (
     <AnimatedSection id="projects" className="py-24 bg-background/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
           <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-            Découvrez une sélection de mes projets récents. Chaque projet est une opportunité d'apprendre et d'explorer de nouvelles technologies.
+            {t('description')}
           </p>
         </div>
         
@@ -100,7 +104,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="text-foreground/70 hover:text-foreground transition-colors"
                     >
-                      Code source
+                      {t('sourceCode')}
                     </a>
                     
                     <Link 
@@ -109,7 +113,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-sm font-medium hover:underline"
                     >
-                      Voir le projet
+                      {t('viewProject')}
                       <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         width="16" 
@@ -134,26 +138,11 @@ const Projects = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link 
+          <Link
             href="/projects"
-            className="inline-flex items-center px-6 py-3 border border-foreground/20 rounded-md font-medium hover:bg-foreground/10 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 rounded-md font-medium hover:bg-foreground/10 transition-colors"
           >
-            Voir tous les projets
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-              className="ml-2"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            {t('seeMore')} <span className="ml-2">→</span>
           </Link>
         </div>
       </div>

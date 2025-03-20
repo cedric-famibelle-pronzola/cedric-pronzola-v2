@@ -2,31 +2,34 @@
 
 import Image from 'next/image';
 import AnimatedSection from './AnimatedSection';
+import { useTranslations } from 'next-intl';
 
 const About = () => {
+  const t = useTranslations('home.about');
+  
   return (
     <AnimatedSection id="about" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">À propos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <AnimatedSection direction="right" delay={0.2} className="space-y-6">
-            <h3 className="text-2xl font-bold">Qui suis-je ?</h3>
+            <h3 className="text-2xl font-bold">{t('whoAmI')}</h3>
             <p className="text-foreground/80">
-              Bonjour ! Je suis Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile passionné par la création d'applications web modernes et performantes.
+              {t('paragraph1')}
             </p>
             <p className="text-foreground/80">
-              Avec une solide expérience dans le développement front-end et back-end, je m'efforce de créer des solutions élégantes et accessibles qui répondent aux besoins des utilisateurs.
+              {t('paragraph2')}
             </p>
             <p className="text-foreground/80">
-              En tant que libriste convaincu, je suis un fervent défenseur des logiciels libres et open source.
+              {t('paragraph3')}
             </p>
             
             <div className="pt-4">
-              <h4 className="text-xl font-semibold mb-3">Mes compétences</h4>
+              <h4 className="text-xl font-semibold mb-3">{t('skills')}</h4>
               <div className="flex flex-wrap gap-2">
                 {['HTML / CSS', 'PHP', 'Symfony', 'WordPress', 'JavaScript', 'Next.js', 'Node.js', 'MongoDB', 'MySQL', 'PostgreSQL', 'Git', 'Linux', 'Docker', 'CI/CD', 'Kubernetes'].map((skill) => (
                   <span 

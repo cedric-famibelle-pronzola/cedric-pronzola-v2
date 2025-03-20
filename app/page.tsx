@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '@/config/i18n';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -55,7 +57,12 @@ const personJsonLd = {
   "description": "Concepteur et Développeur Web/Mobile spécialisé dans les technologies libres et modernes."
 };
 
-export default function Home() {
+export default function RootPage() {
+  // Redirect root page visits to the default locale (French)
+  redirect(`/${defaultLocale}`);
+}
+
+export function Home() {
   return (
     <>
       <Navbar />

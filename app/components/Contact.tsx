@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
+import { useTranslations } from 'next-intl';
 
 type FormErrors = {
   name?: string;
@@ -12,6 +13,8 @@ type FormErrors = {
 };
 
 const Contact = () => {
+  const t = useTranslations('home.contact');
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,17 +90,17 @@ const Contact = () => {
     <AnimatedSection id="contact" className="py-24 bg-background/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Me Contacter</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
           <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-            Vous avez un projet en tête ou une question ? N'hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
+            {t('description')}
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <AnimatedSection direction="right" delay={0.2} className="space-y-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Informations de contact</h3>
+              <h3 className="text-xl font-bold mb-4">{t('contactInfo')}</h3>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="mr-4 text-foreground/70">
@@ -111,7 +114,7 @@ const Contact = () => {
                     <a 
                       href="mailto:contact@cedric-pronzola.re" 
                       className="text-foreground/70 hover:text-foreground transition-colors"
-                      aria-label="Envoyer un email à contact@cedric-pronzola.re"
+                      aria-label={t('emailAriaLabel')}
                     >
                       contact@cedric-pronzola.re
                     </a>
@@ -125,11 +128,11 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium">Téléphone</h4>
+                    <h4 className="font-medium">{t('phone')}</h4>
                     <a 
                       href="tel:+262693629359"
                       className="text-foreground/70 hover:text-foreground transition-colors"
-                      aria-label="Numéro de téléphone : +262 6 93 62 93 59"
+                      aria-label={t('phoneAriaLabel')}
                     >
                       +262 6 93 62 93 59
                     </a>
@@ -144,15 +147,15 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium">Localisation</h4>
-                    <p className="text-foreground/70">La Réunion</p>
+                    <h4 className="font-medium">{t('location')}</h4>
+                    <p className="text-foreground/70">{t('locationValue')}</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div>
-              <h3 className="text-xl font-bold mb-4">Réseaux</h3>
+              <h3 className="text-xl font-bold mb-4">{t('networks')}</h3>
               <div className="flex flex-col space-y-4">
                 <div className="flex space-x-4">
                   {/* First row of links - Encrypted messaging platforms */}
@@ -384,140 +387,120 @@ const Contact = () => {
           </AnimatedSection>
           
           <AnimatedSection direction="left" delay={0.4}>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className={`w-full px-4 py-2 border ${errors.name ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
-                  aria-invalid={errors.name ? 'true' : 'false'}
-                  aria-describedby={errors.name ? 'name-error' : undefined}
-                />
-                {errors.name && (
-                  <p id="name-error" className="mt-1 text-sm text-red-500">
-                    {errors.name}
-                  </p>
-                )}
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
-                  aria-invalid={errors.email ? 'true' : 'false'}
-                  aria-describedby={errors.email ? 'email-error' : undefined}
-                />
-                {errors.email && (
-                  <p id="email-error" className="mt-1 text-sm text-red-500">
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Sujet
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className={`w-full px-4 py-2 border ${errors.subject ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
-                  aria-invalid={errors.subject ? 'true' : 'false'}
-                  aria-describedby={errors.subject ? 'subject-error' : undefined}
-                >
-                  <option value="">Sélectionnez un sujet</option>
-                  <option value="project">Projet</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="question">Question</option>
-                  <option value="other">Autre</option>
-                </select>
-                {errors.subject && (
-                  <p id="subject-error" className="mt-1 text-sm text-red-500">
-                    {errors.subject}
-                  </p>
-                )}
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className={`w-full px-4 py-2 border ${errors.message ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/50`}
-                  aria-invalid={errors.message ? 'true' : 'false'}
-                  aria-describedby={errors.message ? 'message-error' : undefined}
-                />
-                {errors.message && (
-                  <p id="message-error" className="mt-1 text-sm text-red-500">
-                    {errors.message}
-                  </p>
-                )}
-              </div>
-              
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors disabled:opacity-70"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
-              </motion.button>
-              
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-500/10 border border-green-500/30 rounded-md text-green-700 dark:text-green-300"
-                >
-                  Votre message a été envoyé avec succès. Je vous répondrai dès que possible.
-                </motion.div>
-              )}
-              
-              {submitStatus === 'rate-limited' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-md text-yellow-700 dark:text-yellow-300"
-                >
-                  {rateLimitMessage || 'Veuillez attendre avant d\'envoyer un nouveau message.'}
-                </motion.div>
-              )}
-              
-              {submitStatus === 'error' && !Object.keys(errors).length && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-red-500/10 border border-red-500/30 rounded-md text-red-700 dark:text-red-300"
-                >
-                  Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.
-                </motion.div>
-              )}
-            </form>
+            <div className="max-w-3xl mx-auto">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                      {t('name')}
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className={`w-full px-4 py-2 border ${errors.name ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/40`}
+                      aria-invalid={errors.name ? 'true' : 'false'}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                    />
+                    {errors.name && (
+                      <p id="name-error" className="mt-1 text-sm text-red-500">
+                        {errors.name}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      {t('email')}
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/40`}
+                      aria-invalid={errors.email ? 'true' : 'false'}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                    {errors.email && (
+                      <p id="email-error" className="mt-1 text-sm text-red-500">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                    {t('subject')}
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className={`w-full px-4 py-2 border ${errors.subject ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/40`}
+                    aria-invalid={errors.subject ? 'true' : 'false'}
+                    aria-describedby={errors.subject ? 'subject-error' : undefined}
+                  >
+                    <option value="">{t('selectSubject')}</option>
+                    <option value="project">{t('project')}</option>
+                    <option value="collaboration">{t('collaboration')}</option>
+                    <option value="question">{t('question')}</option>
+                    <option value="other">{t('other')}</option>
+                  </select>
+                  {errors.subject && (
+                    <p id="subject-error" className="mt-1 text-sm text-red-500">
+                      {errors.subject}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    {t('message')}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className={`w-full px-4 py-2 border ${errors.message ? 'border-red-500' : 'border-foreground/20'} rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-foreground/40 resize-none`}
+                    aria-invalid={errors.message ? 'true' : 'false'}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                  />
+                  {errors.message && (
+                    <p id="message-error" className="mt-1 text-sm text-red-500">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+                <div className="text-center">
+                  <button 
+                    type="submit"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-background" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        {t('sending')}
+                      </span>
+                    ) : (
+                      t('send')
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
           </AnimatedSection>
         </div>
       </div>

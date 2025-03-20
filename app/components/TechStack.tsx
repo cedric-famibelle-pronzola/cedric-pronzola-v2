@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
+import { useTranslations } from 'next-intl';
 
 const techStackData = [
   {
@@ -37,14 +39,16 @@ const techStackData = [
 ];
 
 const TechStack = () => {
+  const t = useTranslations('home.techStack');
+  
   return (
     <AnimatedSection id="stack" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ma Stack Technique</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <div className="w-20 h-1 bg-foreground/20 mx-auto"></div>
           <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-            Voici les technologies et outils que j'utilise quotidiennement pour créer des applications web modernes et performantes.
+            {t('description')}
           </p>
         </div>
         
@@ -56,7 +60,11 @@ const TechStack = () => {
               direction="up"
               className="bg-background border border-foreground/10 rounded-xl p-6"
             >
-              <h3 className="text-xl font-bold mb-6 text-center">{category.category}</h3>
+              <h3 className="text-xl font-bold mb-6 text-center">
+                {category.category === 'Frontend' ? t('frontend') :
+                 category.category === 'Backend' ? t('backend') :
+                 t('tools')}
+              </h3>
               
               <div className="space-y-6">
                 {category.technologies.map((tech, techIndex) => (
@@ -86,15 +94,15 @@ const TechStack = () => {
         </div>
 
         <AnimatedSection delay={0.6} className="mt-16 text-center">
-          <h3 className="text-xl font-bold mb-6">Autres compétences</h3>
+          <h3 className="text-xl font-bold mb-6">{t('otherSkills')}</h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {['MapLibre GL', 'Responsive Design', 'Accessibilité', 'SEO', 'Performance Web', 'UI/UX', 'PWA', 'API REST'].map((skill) => (
+            {['mapLibre', 'responsiveDesign', 'accessibility', 'seo', 'webPerformance', 'uiUx', 'pwa', 'restApi'].map((skillKey) => (
               <motion.span
-                key={skill}
+                key={skillKey}
                 className="px-4 py-2 bg-foreground/5 rounded-full text-foreground/80"
                 whileHover={{ scale: 1.05, backgroundColor: 'rgba(var(--foreground-rgb), 0.1)' }}
               >
-                {skill}
+                {t(`skills.${skillKey}`)}
               </motion.span>
             ))}
           </div>

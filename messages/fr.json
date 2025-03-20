@@ -1,0 +1,115 @@
+{
+  "navigation": {
+    "about": "À propos",
+    "projects": "Projets",
+    "stack": "Stack",
+    "blog": "Blog",
+    "contact": "Contact",
+    "skipToContent": "Aller au contenu principal",
+    "home": "Accueil",
+    "mainNav": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mobileNav": "Navigation mobile"
+  },
+  "home": {
+    "hero": {
+      "title": "Cédric Famibelle-Pronzola",
+      "subtitle": "Concepteur et Développeur Web/Mobile",
+      "description": "Je conçois et développe des applications web modernes, performantes et accessibles. Passionné par les technologies libres et open source.",
+      "cta": "Me contacter",
+      "viewProjects": "Voir mes projets",
+      "viewProjectsAriaLabel": "Voir mes projets",
+      "contact": "Me contacter",
+      "contactAriaLabel": "Me contacter"
+    },
+    "about": {
+      "title": "À propos",
+      "whoAmI": "Qui suis-je ?",
+      "paragraph1": "Bonjour ! Je suis Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile passionné par la création d'applications web modernes et performantes.",
+      "paragraph2": "Avec une solide expérience dans le développement front-end et back-end, je m'efforce de créer des solutions élégantes et accessibles qui répondent aux besoins des utilisateurs.",
+      "paragraph3": "En tant que libriste convaincu, je suis un fervent défenseur des logiciels libres et open source.",
+      "skills": "Mes compétences"
+    },
+    "projects": {
+      "title": "Mes Projets",
+      "description": "Découvrez une sélection de mes projets récents. Chaque projet est une opportunité d'apprendre et d'explorer de nouvelles technologies.",
+      "seeMore": "Voir tous les projets",
+      "viewProject": "Voir le projet",
+      "sourceCode": "Code source"
+    },
+    "stack": {
+      "title": "Ma Stack",
+      "frontEnd": "Front-End",
+      "backEnd": "Back-End",
+      "tools": "Outils"
+    },
+    "techStack": {
+      "title": "Ma Stack Technique",
+      "description": "Voici les technologies et outils que j'utilise quotidiennement pour créer des applications web modernes et performantes.",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Outils",
+      "otherSkills": "Autres compétences",
+      "skills": {
+        "mapLibre": "MapLibre GL",
+        "responsiveDesign": "Responsive Design",
+        "accessibility": "Accessibilité",
+        "seo": "SEO",
+        "webPerformance": "Performance Web",
+        "uiUx": "UI/UX",
+        "pwa": "PWA",
+        "restApi": "API REST"
+      }
+    },
+    "contact": {
+      "title": "Me Contacter",
+      "description": "Vous avez un projet en tête ou une question ? N'hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.",
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "selectSubject": "Sélectionnez un sujet",
+      "project": "Projet",
+      "collaboration": "Collaboration",
+      "question": "Question",
+      "other": "Autre",
+      "message": "Message",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.",
+      "error": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
+      "rateLimited": "Veuillez patienter avant d'envoyer un autre message.",
+      "contactInfo": "Informations de contact",
+      "emailAriaLabel": "Envoyer un email à contact@cedric-pronzola.re",
+      "phone": "Téléphone",
+      "phoneAriaLabel": "Numéro de téléphone : +262 6 93 62 93 59",
+      "location": "Localisation",
+      "locationValue": "La Réunion",
+      "networks": "Réseaux"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Réflexions sur le développement web, les logiciels libres, l'écosystème numérique et la politique.",
+    "readArticle": "Lire l'article"
+  },
+  "projects": {
+    "title": "Projets",
+    "description": "Une sélection de projets sur lesquels j'ai travaillé.",
+    "viewProject": "Voir le projet"
+  },
+  "footer": {
+    "backToHome": "Retour à l'accueil",
+    "description": "Développeur passionné et libriste, je crée des solutions web modernes et accessibles.",
+    "navigation": "Navigation",
+    "about": "À propos",
+    "projects": "Projets",
+    "allProjects": "Tous les projets",
+    "stack": "Stack",
+    "blog": "Blog",
+    "contact": "Contact",
+    "social": "Réseaux",
+    "rightsReserved": "Tous droits réservés.",
+    "legalNotice": "Mentions légales"
+  }
+} 

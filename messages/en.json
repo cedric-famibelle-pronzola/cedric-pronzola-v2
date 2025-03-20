@@ -1,0 +1,115 @@
+{
+  "navigation": {
+    "about": "About",
+    "projects": "Projects",
+    "stack": "Stack",
+    "blog": "Blog",
+    "contact": "Contact",
+    "skipToContent": "Skip to main content",
+    "home": "Home",
+    "mainNav": "Main Navigation",
+    "openMenu": "Open Menu",
+    "closeMenu": "Close Menu",
+    "mobileNav": "Mobile Navigation"
+  },
+  "home": {
+    "hero": {
+      "title": "Cédric Famibelle-Pronzola",
+      "subtitle": "Web/Mobile Designer and Developer",
+      "description": "I design and develop modern, performant, and accessible web applications. Passionate about free and open source technologies.",
+      "cta": "Let's Talk",
+      "viewProjects": "View My Projects",
+      "viewProjectsAriaLabel": "View my projects",
+      "contact": "Contact Me",
+      "contactAriaLabel": "Contact me"
+    },
+    "about": {
+      "title": "About Me",
+      "whoAmI": "Who am I?",
+      "paragraph1": "Hello ! I'm Cédric Famibelle-Pronzola, a Web/Mobile designer and developer with a passion for creating modern, high-performance web applications.",
+      "paragraph2": "With a solid background in front-end and back-end development, I strive to create elegant and accessible solutions that meet users' needs.",
+      "paragraph3": "As a committed free software advocate, I'm a strong proponent of free and open source software.",
+      "skills": "My Skills"
+    },
+    "projects": {
+      "title": "My Projects",
+      "description": "Discover a selection of my recent projects. Each project is an opportunity to learn and explore new technologies.",
+      "seeMore": "See all projects",
+      "viewProject": "View Project",
+      "sourceCode": "Source code"
+    },
+    "stack": {
+      "title": "My Stack",
+      "frontEnd": "Front-End",
+      "backEnd": "Back-End",
+      "tools": "Tools"
+    },
+    "techStack": {
+      "title": "My Tech Stack",
+      "description": "Here are the technologies and tools I use daily to create modern and performant web applications.",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools",
+      "otherSkills": "Other Skills",
+      "skills": {
+        "mapLibre": "MapLibre GL",
+        "responsiveDesign": "Responsive Design",
+        "accessibility": "Accessibility",
+        "seo": "SEO",
+        "webPerformance": "Web Performance",
+        "uiUx": "UI/UX",
+        "pwa": "PWA",
+        "restApi": "REST API"
+      }
+    },
+    "contact": {
+      "title": "Contact Me",
+      "description": "Have a project in mind or a question? Feel free to contact me. I'll get back to you as soon as possible.",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "selectSubject": "Select a subject",
+      "project": "Project",
+      "collaboration": "Collaboration",
+      "question": "Question",
+      "other": "Other",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully. I'll get back to you as soon as possible.",
+      "error": "An error occurred while sending your message. Please try again.",
+      "rateLimited": "Please wait before sending another message.",
+      "contactInfo": "Contact Information",
+      "emailAriaLabel": "Send an email to contact@cedric-pronzola.re",
+      "phone": "Phone",
+      "phoneAriaLabel": "Phone number: +262 6 93 62 93 59",
+      "location": "Location",
+      "locationValue": "Reunion Island",
+      "networks": "Networks"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts on web development, free software, digital ecosystem and politics.",
+    "readArticle": "Read Article"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A selection of projects I've worked on.",
+    "viewProject": "View Project"
+  },
+  "footer": {
+    "backToHome": "Back to home",
+    "description": "Passionate developer and free software advocate, I create modern and accessible web solutions.",
+    "navigation": "Navigation",
+    "about": "About",
+    "projects": "Projects",
+    "allProjects": "All Projects",
+    "stack": "Stack",
+    "blog": "Blog", 
+    "contact": "Contact",
+    "social": "Networks",
+    "rightsReserved": "All rights reserved.",
+    "legalNotice": "Legal Notice"
+  }
+} 

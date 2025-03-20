@@ -61,6 +61,11 @@ export async function GET() {
       }
     }
     
+    // Generate the OG image URL (same as used for Twitter cards)
+    const ogImageUrl = new URL(`${siteURL}/api/og`);
+    ogImageUrl.searchParams.set('title', post.title);
+    ogImageUrl.searchParams.set('subtitle', post.description);
+    
     feed.addItem({
       title: post.title,
       id: url,
@@ -72,7 +77,8 @@ export async function GET() {
           link: post.author.url
         }
       ],
-      date: parsedDate
+      date: parsedDate,
+      image: ogImageUrl.toString()
     });
   });
 

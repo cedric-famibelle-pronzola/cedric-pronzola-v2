@@ -95,7 +95,7 @@ const Projects = () => {
                   
                   <div className="flex justify-between pt-4">
                     <a
-                      href={`https://codeberg.org/ced972/${project.link.replace('https://', '')}`}
+                      href={`https://codeberg.org/OKI/${project.link.replace('https://', '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground/70 hover:text-foreground transition-colors"

@@ -11,13 +11,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Articles et réflexions sur le développement web, les technologies libres, l'écosystème numérique et la politique par Cédric Famibelle-Pronzola.",
+  description: "Articles sur le développement web, les logiciels libres, l'informatique et la politique par Cédric Famibelle-Pronzola.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
     title: "Blog | Cédric Famibelle-Pronzola",
-    description: "Articles et réflexions sur le développement web, les technologies libres, l'écosystème numérique et la politique par Cédric Famibelle-Pronzola.",
+    description: "Articles sur le développement web, les logiciels libres, l'informatique et la politique par Cédric Famibelle-Pronzola.",
     url: "/blog",
     type: "website",
     images: [
@@ -39,7 +39,7 @@ export default async function BlogPage() {
     "@context": "https://schema.org",
     "@type": "Blog",
     "headline": "Blog de Cédric Famibelle-Pronzola",
-    "description": "Articles et réflexions sur le développement web, les technologies libres, l'écosystème numérique et la politique.",
+    "description": "Articles sur le développement web, les logiciels libres, l'informatique et la politique.",
     "author": {
       "@type": "Person",
       "name": "Cédric Famibelle-Pronzola",

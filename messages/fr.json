@@ -57,6 +57,11 @@
           "title": "jwe.ovh - Jeu cartographique interactif",
           "description": "Application ludique basée sur la cartographie interactive, utilisant MapLibre GL pour une expérience immersive.",
           "technologies": "MapLibre GL JS,JavaScript,PHP,CSS"
+        },
+        "konstitisyon": {
+          "title": "konstitisyon.la - Plateforme constitutionnelle",
+          "description": "Application collaborative permettant aux citoyens de rédiger, proposer des révisions et voter sur les articles d'une constitution.",
+          "technologies": "Next.js,Directus"
         }
       }
     },
@@ -117,8 +122,13 @@
   },
   "projects": {
     "title": "Projets",
-    "description": "Une sélection de projets sur lesquels j'ai travaillé.",
-    "viewProject": "Voir le projet"
+    "description": "Découvrez mes projets de développement web et applications. Chaque projet est une opportunité d'apprendre et d'innover.",
+    "viewProject": "Voir le projet",
+    "allProjects": "Tous les projets",
+    "categories": {
+      "web": "Web",
+      "mobile": "Mobile"
+    }
   },
   "footer": {
     "backToHome": "Retour à l'accueil",

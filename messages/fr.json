@@ -7,10 +7,16 @@
     "contact": "Contact",
     "skipToContent": "Aller au contenu principal",
     "home": "Accueil",
-    "mainNav": "Navigation principale",
-    "openMenu": "Ouvrir le menu",
-    "closeMenu": "Fermer le menu",
-    "mobileNav": "Navigation mobile"
+    "mainNav": "Navigation Principale",
+    "openMenu": "Ouvrir le Menu",
+    "closeMenu": "Fermer le Menu",
+    "mobileNav": "Navigation Mobile"
+  },
+  "theme": {
+    "toggle": "Changer de thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
   },
   "home": {
     "hero": {

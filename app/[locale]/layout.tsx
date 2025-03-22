@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import "../globals.css";
 import "flag-icons/css/flag-icons.min.css";
+import { Providers } from './providers';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -156,9 +157,9 @@ export default async function RootLayout({
         >
           {locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
         </a>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <Providers locale={locale} messages={messages}>
           {children}
-        </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -12,6 +12,12 @@
     "closeMenu": "Close Menu",
     "mobileNav": "Mobile Navigation"
   },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
   "home": {
     "hero": {
       "title": "Cédric Famibelle-Pronzola",

@@ -10,6 +10,11 @@ export default getRequestConfig(async ({ locale }) => {
 
   return {
     locale: safeLocale,
-    messages: (await import(`./messages/${safeLocale}.json`)).default
+    messages: (await import(`./messages/${safeLocale}.json`)).default,
+    timeZone: 'Indian/Reunion'
   };
 });
+
+export const getMessages = async (locale: string) => {
+  return (await import(`./messages/${locale}.json`)).default;
+};

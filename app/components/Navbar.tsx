@@ -7,6 +7,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
 import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
+import ThemeToggle from './ThemeToggle';
 import { useTranslations, useLocale } from 'next-intl';
 
 const Navbar = () => {
@@ -127,13 +128,15 @@ const Navbar = () => {
           <NavLink href="/#stack" onClick={handleNavClick}>{t('stack')}</NavLink>
           <NavLink href="/blog">{t('blog')}</NavLink>
           <NavLink href="/#contact" onClick={handleNavClick}>{t('contact')}</NavLink>
-          <div className="pl-4 border-l border-foreground/10">
+          <div className="pl-4 border-l border-foreground/10 flex items-center space-x-3">
             <LanguageSwitcher />
+            <ThemeToggle />
           </div>
         </nav>
 
-        <div className="md:hidden flex items-center">
+        <div className="flex items-center space-x-2 sm:space-x-4 md:hidden">
           <LanguageSwitcher />
+          <ThemeToggle />
           
           {/* Mobile Menu Button */}
           <button 

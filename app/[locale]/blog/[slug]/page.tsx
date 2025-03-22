@@ -171,6 +171,28 @@ export async function generateMetadata(
     alternates: {
       canonical: `/blog/${slug}`,
     },
+    openGraph: {
+      title: article.metadata.title,
+      description: article.metadata.description || t('description'),
+      url: `/${locale}/blog/${slug}`,
+      type: "article",
+      publishedTime: article.metadata.date,
+      authors: [article.metadata.author.name],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(article.metadata.title)}&subtitle=${encodeURIComponent(article.metadata.description || '')}`,
+          width: 1200,
+          height: 630,
+          alt: article.metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.metadata.title,
+      description: article.metadata.description || t('description'),
+      images: [`/api/og?title=${encodeURIComponent(article.metadata.title)}&subtitle=${encodeURIComponent(article.metadata.description || '')}`],
+    }
   };
 }
 

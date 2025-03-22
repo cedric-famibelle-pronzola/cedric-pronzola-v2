@@ -23,7 +23,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
             <div className="flex items-center justify-center mb-2">
               <h1 className="text-4xl md:text-5xl font-bold">{t('title')}</h1>
               <a 
-                href="/rss.xml" 
+                href={`/${locale}/rss.xml`} 
                 target="_blank"
                 rel="noopener"
                 className="ml-4 text-foreground/60 hover:text-foreground transition-colors" 
@@ -53,7 +53,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
             </p>
             <div className="mt-4 flex items-center justify-center space-x-4">
               <a 
-                href="/rss.xml" 
+                href={`/${locale}/rss.xml`} 
                 className="text-sm text-foreground/60 hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener"
@@ -62,7 +62,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
               </a>
               <span className="text-foreground/30">•</span>
               <a 
-                href="/atom.xml" 
+                href={`/${locale}/atom.xml`} 
                 className="text-sm text-foreground/60 hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener"
@@ -71,7 +71,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
               </a>
               <span className="text-foreground/30">•</span>
               <a 
-                href="/feed.json" 
+                href={`/${locale}/feed.json`} 
                 className="text-sm text-foreground/60 hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener"

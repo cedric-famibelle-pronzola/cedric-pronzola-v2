@@ -46,13 +46,16 @@ export const metadata: Metadata = {
     },
     types: {
       'application/rss+xml': [
-        { url: '/rss.xml', title: 'RSS Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/en/rss.xml', title: 'English RSS Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/fr/rss.xml', title: 'Flux RSS en français du blog de Cédric Famibelle-Pronzola' },
       ],
       'application/atom+xml': [
-        { url: '/atom.xml', title: 'Atom Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/en/atom.xml', title: 'English Atom Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/fr/atom.xml', title: 'Flux Atom en français du blog de Cédric Famibelle-Pronzola' },
       ],
       'application/feed+json': [
-        { url: '/feed.json', title: 'JSON Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/en/feed.json', title: 'English JSON Feed for Cédric Famibelle-Pronzola\'s blog' },
+        { url: '/fr/feed.json', title: 'Flux JSON en français du blog de Cédric Famibelle-Pronzola' },
       ],
     },
   },

@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
-import AnimatedSection from '../../../components/AnimatedSection';
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import JsonLd from '../../../components/JsonLd';
@@ -215,7 +214,7 @@ export default async function ArticlePage(
     <>
       <Navbar />
       <main className="pt-24">
-        <AnimatedSection className="py-16 bg-background">
+        <div className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto mb-12">
               <a 
@@ -250,7 +249,7 @@ export default async function ArticlePage(
               <MarkdownContent content={htmlContent} />
             </article>
           </div>
-        </AnimatedSection>
+        </div>
       </main>
       <Footer />
       

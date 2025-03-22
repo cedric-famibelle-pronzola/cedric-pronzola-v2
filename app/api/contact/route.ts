@@ -71,12 +71,13 @@ export async function POST(req: NextRequest) {
       to: process.env.CONTACT_EMAIL || 'contact@cedric-pronzola.re',
       replyTo: data.email,
       subject: `[Formulaire cedric-pronzola.re] ${data.subject}`,
-      text: `Nom: ${data.name}\nEmail: ${data.email}\nSujet: ${data.subject}\n\nMessage:\n${data.message}`,
+      text: `Nom: ${data.name}\nEmail: ${data.email}\nSujet: ${data.subject}\nIP: ${ip}\n\nMessage:\n${data.message}`,
       html: `
         <h2>Nouveau message du formulaire de contact</h2>
         <p><strong>Nom:</strong> ${data.name}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Sujet:</strong> ${data.subject}</p>
+        <p><strong>IP:</strong> ${ip}</p>
         <p><strong>Message:</strong></p>
         <p>${data.message.replace(/\n/g, '<br>')}</p>
       `,

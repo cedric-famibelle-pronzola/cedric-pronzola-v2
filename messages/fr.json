@@ -154,6 +154,12 @@
     "rightsReserved": "Tous droits réservés.",
     "legalNotice": "Mentions légales"
   },
+  "notFound": {
+    "title": "404",
+    "heading": "Page non trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "returnHome": "Retour à l'accueil"
+  },
   "legal": {
     "title": "Mentions Légales",
     "description": "Informations légales concernant le site cedric-pronzola.re et son fonctionnement.",

@@ -1,17 +1,28 @@
+'use client';
+
+import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { locales, defaultLocale } from '@/config/i18n';
+
+// Need to use client component for reliable locale detection in 404 page
 export default function NotFound() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
-      <h1 className="text-4xl md:text-6xl font-bold mb-6">404</h1>
-      <h2 className="text-2xl md:text-3xl font-semibold mb-4">Page non trouvée</h2>
-      <p className="text-lg mb-8 max-w-md">
-        La page que vous recherchez n&apos;existe pas ou a été déplacée.
-      </p>
-      <a 
-        href="/"
-        className="px-6 py-3 bg-foreground text-background rounded-md hover:opacity-90 transition-opacity"
-      >
-        Retour à l&apos;accueil
-      </a>
-    </div>
-  );
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  useEffect(() => {
+    // Try to extract locale from URL path if available
+    let currentLocale = defaultLocale;
+    
+    // Check if the path starts with a locale
+    const segments = pathname.split('/').filter(Boolean);
+    if (segments.length > 0 && locales.includes(segments[0] as any)) {
+      currentLocale = segments[0];
+    }
+    
+    // Redirect to the 404 page in the current locale
+    router.replace(`/${currentLocale}/404`);
+  }, [pathname, router]);
+  
+  // Return empty div while redirecting
+  return <div aria-hidden="true" />;
 } 

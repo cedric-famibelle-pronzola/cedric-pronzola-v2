@@ -154,6 +154,12 @@
     "rightsReserved": "All rights reserved.",
     "legalNotice": "Legal Notice"
   },
+  "notFound": {
+    "title": "404",
+    "heading": "Page not found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "returnHome": "Return home"
+  },
   "legal": {
     "title": "Legal Notice",
     "description": "Legal information about the website cedric-pronzola.re and its operation.",

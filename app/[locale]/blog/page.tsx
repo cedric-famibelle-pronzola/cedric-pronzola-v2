@@ -10,7 +10,13 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0a",
 };
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: { locale: string } }
+): Promise<Metadata> {
+  // Need to await params to avoid errors
+  const paramValues = await Promise.resolve(params);
+  const { locale } = paramValues;
+  
   const t = await getTranslations('blog');
   
   return {
@@ -36,8 +42,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function BlogPage() {
-  const posts = await getAllPosts();
+export default async function BlogPage(
+  { params }: { params: { locale: string } }
+) {
+  // Need to await params to avoid errors
+  const paramValues = await Promise.resolve(params);
+  const { locale } = paramValues;
+  
+  // Pass the locale to getAllPosts to get localized articles
+  const posts = await getAllPosts(locale);
   const safePosts = Array.isArray(posts) ? posts : [];
   const t = await getTranslations('blog');
   

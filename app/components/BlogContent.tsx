@@ -4,6 +4,7 @@ import Link from 'next/link';
 import AnimatedSection from './AnimatedSection';
 import type { BlogPostMetadata } from '../types/blog';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 interface BlogContentProps {
   posts: BlogPostMetadata[];
@@ -11,6 +12,8 @@ interface BlogContentProps {
 
 const BlogContent = ({ posts }: BlogContentProps) => {
   const t = useTranslations('blog');
+  const params = useParams();
+  const locale = params.locale as string;
   
   return (
     <main className="pt-24">
@@ -97,7 +100,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
                     <p className="text-foreground/70 mb-6 flex-grow">{post.description}</p>
                     
                     <Link 
-                      href={`/blog/${post.slug}`}
+                      href={`/${locale}/blog/${post.slug}`}
                       className="inline-flex items-center text-sm font-medium hover:underline mt-auto"
                     >
                       {t('readArticle')}

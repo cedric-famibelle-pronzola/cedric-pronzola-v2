@@ -7,7 +7,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
 
-const ARTICLES_DIR = path.join(process.cwd(), 'app/articles');
+const ARTICLES_BASE_DIR = path.join(process.cwd(), 'app/articles');
 
 async function markdownToHtml(markdown: string) {
   try {
@@ -23,20 +23,26 @@ async function markdownToHtml(markdown: string) {
   }
 }
 
-export async function getAllPosts(): Promise<BlogPostMetadata[]> {
+export async function getAllPosts(locale: string = 'en'): Promise<BlogPostMetadata[]> {
   try {
-    if (!fsSync.existsSync(ARTICLES_DIR)) {
-      console.log('Articles directory does not exist, creating it...');
-      fsSync.mkdirSync(ARTICLES_DIR, { recursive: true });
+    // Use the localized articles folder
+    const localizedDir = path.join(ARTICLES_BASE_DIR, locale);
+    
+    // Fall back to the root articles directory if localized directory doesn't exist
+    const articlesDir = fsSync.existsSync(localizedDir) ? localizedDir : ARTICLES_BASE_DIR;
+    
+    if (!fsSync.existsSync(articlesDir)) {
+      console.log(`Articles directory ${articlesDir} does not exist, creating it...`);
+      fsSync.mkdirSync(articlesDir, { recursive: true });
       return [];
     }
 
-    const files = fsSync.readdirSync(ARTICLES_DIR);
+    const files = fsSync.readdirSync(articlesDir);
     const mdFiles = files.filter(file => file.endsWith('.md'));
 
     const posts = mdFiles.map(file => {
       const slug = file.replace(/\.md$/, '');
-      const filePath = path.join(ARTICLES_DIR, file);
+      const filePath = path.join(articlesDir, file);
       const fileContent = fsSync.readFileSync(filePath, 'utf-8');
       const { data } = matter(fileContent);
       
@@ -61,13 +67,19 @@ export async function getAllPosts(): Promise<BlogPostMetadata[]> {
   }
 }
 
-export function getPostSlugs(): string[] {
+export function getPostSlugs(locale: string = 'en'): string[] {
   try {
-    if (!fsSync.existsSync(ARTICLES_DIR)) {
+    // Use the localized articles folder
+    const localizedDir = path.join(ARTICLES_BASE_DIR, locale);
+    
+    // Fall back to the root articles directory if localized directory doesn't exist
+    const articlesDir = fsSync.existsSync(localizedDir) ? localizedDir : ARTICLES_BASE_DIR;
+    
+    if (!fsSync.existsSync(articlesDir)) {
       return [];
     }
     
-    const files = fsSync.readdirSync(ARTICLES_DIR);
+    const files = fsSync.readdirSync(articlesDir);
     return files
       .filter(file => file.endsWith('.md'))
       .map(file => file.replace(/\.md$/, ''));
@@ -77,11 +89,19 @@ export function getPostSlugs(): string[] {
   }
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlug(slug: string, locale: string = 'en'): Promise<BlogPost | null> {
   try {
-    const filePath = path.join(ARTICLES_DIR, `${slug}.md`);
+    // Use the localized articles folder
+    const localizedDir = path.join(ARTICLES_BASE_DIR, locale);
+    
+    // Check first in the localized directory
+    let filePath = path.join(localizedDir, `${slug}.md`);
     if (!fsSync.existsSync(filePath)) {
-      return null;
+      // If not found, check in the root articles directory
+      filePath = path.join(ARTICLES_BASE_DIR, `${slug}.md`);
+      if (!fsSync.existsSync(filePath)) {
+        return null;
+      }
     }
 
     const fileContent = fsSync.readFileSync(filePath, 'utf-8');
@@ -100,7 +120,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       },
     };
   } catch (error) {
-    console.error(`Error getting post by slug ${slug}:`, error);
+    console.error(`Error getting post by slug "${slug}":`, error);
     return null;
   }
 }

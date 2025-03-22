@@ -5,6 +5,20 @@ import { useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { locales, localeCountryMap } from '@/config/i18n';
 
+// Map article slugs between languages (copied from article page for consistency)
+const articleSlugMap: Record<string, Record<string, string>> = {
+  // English articles
+  'en': {
+    'reunion-independence': 'l-independance-de-la-reunion',
+    'free-software-will-liberate-us': 'les-logiciels-libres-nous-libereront'
+  },
+  // French articles
+  'fr': {
+    'l-independance-de-la-reunion': 'reunion-independence',
+    'les-logiciels-libres-nous-libereront': 'free-software-will-liberate-us'
+  }
+};
+
 export default function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
@@ -16,10 +30,31 @@ export default function LanguageSwitcher() {
   const handleLocaleChange = (locale: string) => {
     if (locale === currentLocale) return; // Don't navigate to same locale
     
-    // Create the new path based on the locale
-    const newPath = `/${locale}${pathnameWithoutLocale === '/' ? '' : pathnameWithoutLocale}`;
+    // Check if we're on an article page by matching the path pattern
+    const articlePathRegex = /^\/blog\/([^\/]+)$/;
+    const match = pathnameWithoutLocale.match(articlePathRegex);
     
-    // Use window.location for a full page navigation instead of client-side routing
+    if (match) {
+      // We're on an article page, get the current slug
+      const currentSlug = match[1];
+      
+      // Find the equivalent slug in the target language
+      let targetSlug = currentSlug;
+      
+      // Look up the mapping from current locale to target locale
+      const localeMap = articleSlugMap[currentLocale as keyof typeof articleSlugMap];
+      if (localeMap && localeMap[currentSlug]) {
+        targetSlug = localeMap[currentSlug];
+      }
+      
+      // Create the new path with the mapped slug
+      const newPath = `/${locale}/blog/${targetSlug}`;
+      window.location.href = newPath;
+      return;
+    }
+    
+    // For non-article pages, use the standard path
+    const newPath = `/${locale}${pathnameWithoutLocale === '/' ? '' : pathnameWithoutLocale}`;
     window.location.href = newPath;
   };
 

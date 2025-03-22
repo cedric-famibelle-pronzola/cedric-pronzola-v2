@@ -13,6 +13,31 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
 
+// Map article slugs between languages
+const articleSlugMap: Record<string, Record<string, string>> = {
+  // English articles
+  'en': {
+    'reunion-independence': 'l-independance-de-la-reunion',
+    'free-software-will-liberate-us': 'les-logiciels-libres-nous-libereront'
+  },
+  // French articles
+  'fr': {
+    'l-independance-de-la-reunion': 'reunion-independence',
+    'les-logiciels-libres-nous-libereront': 'free-software-will-liberate-us'
+  }
+};
+
+// Function to get equivalent slug in another language
+function getSlugInOtherLocale(slug: string, currentLocale: string, targetLocale: string): string {
+  if (currentLocale === targetLocale) return slug;
+  
+  // Get the mapping for current locale
+  const mappings = articleSlugMap[currentLocale];
+  
+  // If mapping exists, return the mapped slug, otherwise return the original
+  return mappings?.[slug] || slug;
+}
+
 // Function to convert markdown to HTML
 async function markdownToHtml(markdown: string) {
   try {
@@ -29,27 +54,93 @@ async function markdownToHtml(markdown: string) {
 }
 
 // Function to get article content
-async function getArticleContent(slug: string) {
+async function getArticleContent(slug: string, locale: string) {
   try {
-    const filePath = path.join(process.cwd(), 'app/articles', `${slug}.md`);
-    const fileContent = await fs.readFile(filePath, 'utf8');
+    // Try to get the article from the localized folder
+    const localizedPath = path.join(process.cwd(), 'app/articles', locale, `${slug}.md`);
     
-    // Parse frontmatter from markdown
-    const { data, content } = matter(fileContent);
-    
-    return {
-      content,
-      metadata: {
-        title: data.title || slug.replace(/-/g, ' '),
-        description: data.description || '',
-        date: data.date || '',
-        author: {
-          name: data.author?.name || 'Cédric Famibelle-Pronzola',
-          url: data.author?.url || 'https://cedric-pronzola.re'
-        },
-        slug: slug
+    // Check if the file exists in the localized folder
+    try {
+      const fileContent = await fs.readFile(localizedPath, 'utf8');
+      
+      // Parse frontmatter from markdown
+      const { data, content } = matter(fileContent);
+      
+      return {
+        content,
+        metadata: {
+          title: data.title || slug.replace(/-/g, ' '),
+          description: data.description || '',
+          date: data.date || '',
+          author: {
+            name: data.author?.name || 'Cédric Famibelle-Pronzola',
+            url: data.author?.url || 'https://cedric-pronzola.re'
+          },
+          slug: slug
+        }
+      };
+    } catch (error) {
+      // If we can't find the file in the localized folder, try other approaches
+      console.log(`Article not found in ${locale} folder as ${slug}.md, trying alternative approaches...`);
+      
+      // Try with a mapped slug if available
+      const otherLocale = locale === 'en' ? 'fr' : 'en';
+      const alternativeSlug = getSlugInOtherLocale(slug, locale, otherLocale);
+      
+      // Check if we got a different slug from the mapping
+      if (alternativeSlug !== slug) {
+        // Try with the alternative slug in the current locale folder
+        try {
+          const alternativePath = path.join(process.cwd(), 'app/articles', locale, `${alternativeSlug}.md`);
+          const fileContent = await fs.readFile(alternativePath, 'utf8');
+          
+          // Parse frontmatter from markdown
+          const { data, content } = matter(fileContent);
+          
+          return {
+            content,
+            metadata: {
+              title: data.title || alternativeSlug.replace(/-/g, ' '),
+              description: data.description || '',
+              date: data.date || '',
+              author: {
+                name: data.author?.name || 'Cédric Famibelle-Pronzola',
+                url: data.author?.url || 'https://cedric-pronzola.re'
+              },
+              slug: slug // Keep the original slug
+            }
+          };
+        } catch (alternativeError) {
+          console.log(`Alternative approach with ${alternativeSlug} also failed.`);
+        }
       }
-    };
+      
+      // Final fallback: try the non-localized folder
+      try {
+        const defaultPath = path.join(process.cwd(), 'app/articles', `${slug}.md`);
+        const fileContent = await fs.readFile(defaultPath, 'utf8');
+        
+        // Parse frontmatter from markdown
+        const { data, content } = matter(fileContent);
+        
+        return {
+          content,
+          metadata: {
+            title: data.title || slug.replace(/-/g, ' '),
+            description: data.description || '',
+            date: data.date || '',
+            author: {
+              name: data.author?.name || 'Cédric Famibelle-Pronzola',
+              url: data.author?.url || 'https://cedric-pronzola.re'
+            },
+            slug: slug
+          }
+        };
+      } catch (fallbackError) {
+        console.log(`All attempts to load article ${slug} failed.`);
+        throw fallbackError; // Re-throw to be caught by the outer catch
+      }
+    }
   } catch (error) {
     console.error(`Error reading article content for slug: ${slug}`, error);
     return null;
@@ -60,12 +151,12 @@ async function getArticleContent(slug: string) {
 export async function generateMetadata(
   { params }: { params: { locale: string; slug: string } }
 ): Promise<Metadata> {
-  // Need to await params before destructuring
+  // Need to await params to avoid errors
   const paramValues = await Promise.resolve(params);
   const { slug, locale } = paramValues;
   
-  const t = await getTranslations('blog');
-  const article = await getArticleContent(slug);
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  const article = await getArticleContent(slug, locale);
   
   if (!article) {
     return {
@@ -87,12 +178,12 @@ export async function generateMetadata(
 export default async function ArticlePage(
   { params }: { params: { locale: string; slug: string } }
 ) {
-  // Need to await params before destructuring
+  // Need to await params to avoid errors
   const paramValues = await Promise.resolve(params);
   const { slug, locale } = paramValues;
   
-  const article = await getArticleContent(slug);
-  const t = await getTranslations('blog');
+  const article = await getArticleContent(slug, locale);
+  const t = await getTranslations({ locale, namespace: 'blog' });
   
   // If article doesn't exist, return 404
   if (!article) {

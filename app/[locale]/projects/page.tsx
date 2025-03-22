@@ -8,10 +8,9 @@ import Footer from '@/app/components/Footer';
 export async function generateMetadata({
   params
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'projects' });
   
   return {
@@ -21,12 +20,11 @@ export async function generateMetadata({
 }
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export default async function ProjectsPage({ params }: Props) {
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'projects' });
   
   return (

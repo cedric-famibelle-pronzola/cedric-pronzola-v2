@@ -11,11 +11,9 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata(
-  { params }: { params: { locale: string } }
+  { params }: { params: Promise<{ locale: string }> }
 ): Promise<Metadata> {
-  // Need to await params to avoid errors
-  const paramValues = await Promise.resolve(params);
-  const { locale } = paramValues;
+  const { locale } = await params;
   
   const t = await getTranslations('blog');
   
@@ -43,11 +41,9 @@ export async function generateMetadata(
 }
 
 export default async function BlogPage(
-  { params }: { params: { locale: string } }
+  { params }: { params: Promise<{ locale: string }> }
 ) {
-  // Need to await params to avoid errors
-  const paramValues = await Promise.resolve(params);
-  const { locale } = paramValues;
+  const { locale } = await params;
   
   // Pass the locale to getAllPosts to get localized articles
   const posts = await getAllPosts(locale);

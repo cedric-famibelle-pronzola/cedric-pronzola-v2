@@ -11,7 +11,7 @@ import { getTranslations } from 'next-intl/server';
 import { locales } from '@/config/i18n';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export function generateStaticParams() {
@@ -19,8 +19,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const _params = await Promise.resolve(params);
-  const locale = _params.locale;
+  const { locale } = await params;
   
   const t = await getTranslations({ locale, namespace: 'home' });
   
@@ -31,8 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Home({ params }: Props) {
-  const _params = await Promise.resolve(params);
-  const locale = _params.locale;
+  const { locale } = await params;
   
   const jsonLd = {
     "@context": "https://schema.org",

@@ -1,88 +1,9 @@
-import { Metadata, Viewport } from 'next';
-import { getTranslations } from 'next-intl/server';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import BlogContent from '../components/BlogContent';
-import JsonLd from '../components/JsonLd';
-import { getAllPosts } from '../lib/blog';
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '@/config/i18n';
 
-export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
-};
+export const dynamic = 'force-dynamic';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('blog');
-  
-  return {
-    title: t('title'),
-    description: t('description'),
-    alternates: {
-      canonical: "/blog",
-    },
-    openGraph: {
-      title: `${t('title')} | Cédric Famibelle-Pronzola`,
-      description: t('description'),
-      url: "/blog",
-      type: "website",
-      images: [
-        {
-          url: `/api/og?title=${t('title')}&subtitle=${t('subtitle')}`,
-          width: 1200,
-          height: 630,
-          alt: t('ogAlt'),
-        },
-      ],
-    },
-  };
-}
-
-export default async function BlogPage() {
-  const posts = await getAllPosts();
-  const safePosts = Array.isArray(posts) ? posts : [];
-  const t = await getTranslations('blog');
-  
-  const blogJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "headline": t('jsonLd.headline'),
-    "description": t('jsonLd.description'),
-    "author": {
-      "@type": "Person",
-      "name": "Cédric Famibelle-Pronzola",
-      "url": "https://cedric-pronzola.re"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Cédric Famibelle-Pronzola",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cedric-pronzola.re/cedric-avatar.png"
-      }
-    },
-    "url": "https://cedric-pronzola.re/blog",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://cedric-pronzola.re/blog"
-    },
-    "blogPost": safePosts.map(post => ({
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.description,
-      "datePublished": post.date,
-      "author": {
-        "@type": "Person",
-        "name": post.author.name
-      },
-      "url": `https://cedric-pronzola.re/blog/${post.slug}`
-    }))
-  };
-
-  return (
-    <>
-      <Navbar />
-      <BlogContent posts={safePosts} />
-      <Footer />
-      <JsonLd data={blogJsonLd} />
-    </>
-  );
+export default function BlogIndexRedirect() {
+  // Redirect to the default locale blog index
+  redirect(`/${defaultLocale}/blog`);
 } 

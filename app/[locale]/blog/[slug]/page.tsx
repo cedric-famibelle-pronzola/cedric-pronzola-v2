@@ -149,11 +149,9 @@ async function getArticleContent(slug: string, locale: string) {
 
 // Generate metadata for the article page
 export async function generateMetadata(
-  { params }: { params: { locale: string; slug: string } }
+  { params }: { params: Promise<{ locale: string; slug: string }> }
 ): Promise<Metadata> {
-  // Need to await params to avoid errors
-  const paramValues = await Promise.resolve(params);
-  const { slug, locale } = paramValues;
+  const { locale, slug } = await params;
   
   const t = await getTranslations({ locale, namespace: 'blog' });
   const article = await getArticleContent(slug, locale);
@@ -198,11 +196,9 @@ export async function generateMetadata(
 
 // Main component for the article page
 export default async function ArticlePage(
-  { params }: { params: { locale: string; slug: string } }
+  { params }: { params: Promise<{ locale: string; slug: string }> }
 ) {
-  // Need to await params to avoid errors
-  const paramValues = await Promise.resolve(params);
-  const { slug, locale } = paramValues;
+  const { locale, slug } = await params;
   
   const article = await getArticleContent(slug, locale);
   const t = await getTranslations({ locale, namespace: 'blog' });

@@ -1,10 +1,13 @@
 import { Feed } from 'feed';
 import { getAllPosts } from '../../lib/blog';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 
-export async function GET(request: Request, { params }: { params: { locale: string } }) {
-  const locale = params.locale;
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ locale: string }> }
+) {
+  const { locale } = await params;
   
   // Get localized articles for this feed
   const posts = await getAllPosts(locale);

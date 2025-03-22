@@ -3,26 +3,29 @@
 import Link from 'next/link';
 import AnimatedSection from './AnimatedSection';
 import type { BlogPostMetadata } from '../types/blog';
+import { useTranslations } from 'next-intl';
 
 interface BlogContentProps {
   posts: BlogPostMetadata[];
 }
 
 const BlogContent = ({ posts }: BlogContentProps) => {
+  const t = useTranslations('blog');
+  
   return (
     <main className="pt-24">
       <AnimatedSection className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-2">
-              <h1 className="text-4xl md:text-5xl font-bold">Blog</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">{t('title')}</h1>
               <a 
                 href="/rss.xml" 
                 target="_blank"
                 rel="noopener"
                 className="ml-4 text-foreground/60 hover:text-foreground transition-colors" 
-                title="S'abonner au flux RSS"
-                aria-label="S'abonner au flux RSS"
+                title={t('rssTitle')}
+                aria-label={t('rssAriaLabel')}
               >
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -43,7 +46,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
             </div>
             <div className="w-20 h-1 bg-foreground/20 mx-auto mt-4"></div>
             <p className="mt-6 text-foreground/70 max-w-2xl mx-auto">
-              Articles sur le développement web, les logiciels libres, l'informatique et la politique.
+              {t('subtitle')}
             </p>
             <div className="mt-4 flex items-center justify-center space-x-4">
               <a 
@@ -97,7 +100,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
                       href={`/blog/${post.slug}`}
                       className="inline-flex items-center text-sm font-medium hover:underline mt-auto"
                     >
-                      Lire l&apos;article
+                      {t('readArticle')}
                       <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         width="16" 

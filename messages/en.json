@@ -119,7 +119,16 @@
   "blog": {
     "title": "Blog",
     "description": "Thoughts on web development, free software, digital ecosystem and politics.",
-    "readArticle": "Read Article"
+    "subtitle": "Articles about web development, free software, technology, and politics.",
+    "readArticle": "Read Article",
+    "backToArticles": "Back to articles",
+    "rssTitle": "Subscribe to RSS feed",
+    "rssAriaLabel": "Subscribe to RSS feed",
+    "ogAlt": "Cédric Famibelle-Pronzola's Blog",
+    "jsonLd": {
+      "headline": "Cédric Famibelle-Pronzola's Blog",
+      "description": "Articles about web development, free software, technology, and politics."
+    }
   },
   "projects": {
     "title": "Projects",

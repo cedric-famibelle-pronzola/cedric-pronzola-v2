@@ -1,10 +1,10 @@
 import { Metadata, Viewport } from 'next';
 import { getTranslations } from 'next-intl/server';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import BlogContent from '../components/BlogContent';
-import JsonLd from '../components/JsonLd';
-import { getAllPosts } from '../lib/blog';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import BlogContent from '../../components/BlogContent';
+import JsonLd from '../../components/JsonLd';
+import { getAllPosts } from '../../lib/blog';
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0a",

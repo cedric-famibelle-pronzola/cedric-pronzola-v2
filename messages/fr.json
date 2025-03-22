@@ -119,7 +119,16 @@
   "blog": {
     "title": "Blog",
     "description": "Réflexions sur le développement web, les logiciels libres, l'écosystème numérique et la politique.",
-    "readArticle": "Lire l'article"
+    "subtitle": "Articles sur le développement web, les logiciels libres, l'informatique et la politique.",
+    "readArticle": "Lire l'article",
+    "backToArticles": "Retour aux articles",
+    "rssTitle": "S'abonner au flux RSS",
+    "rssAriaLabel": "S'abonner au flux RSS",
+    "ogAlt": "Blog de Cédric Famibelle-Pronzola",
+    "jsonLd": {
+      "headline": "Blog de Cédric Famibelle-Pronzola",
+      "description": "Articles sur le développement web, les logiciels libres, l'informatique et la politique."
+    }
   },
   "projects": {
     "title": "Projets",

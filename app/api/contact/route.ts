@@ -5,26 +5,64 @@ const RATE_LIMIT_DURATION = 60 * 10000;
 
 const rateLimitStore = new Map<string, number>();
 
-const validateForm = (data: any) => {
-  const errors = [];
+interface ValidationError {
+  path: string;
+  msg: string;
+}
+
+// Sanitize input to prevent XSS attacks
+const sanitizeInput = (input: string): string => {
+  if (!input) return '';
+  
+  // Replace < and > with their HTML entities
+  return input
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .trim();
+};
+
+const validateForm = (data: any, locale: string = 'fr'): ValidationError[] => {
+  const errors: ValidationError[] = [];
+  
+  const errorMessages = {
+    en: {
+      nameRequired: 'Name is required',
+      emailInvalid: 'Invalid email address',
+      subjectRequired: 'Subject is required',
+      messageRequired: 'Message is required',
+      messageMinLength: 'Message must be at least 10 characters long'
+    },
+    fr: {
+      nameRequired: 'Le nom est requis',
+      emailInvalid: 'Email invalide',
+      subjectRequired: 'Le sujet est requis',
+      messageRequired: 'Le message est requis',
+      messageMinLength: 'Le message doit contenir au moins 10 caractères'
+    }
+  };
+  
+  // Default to French if locale is not supported
+  const msgs = errorMessages[locale as keyof typeof errorMessages] || errorMessages.fr;
   
   if (!data.name || data.name.trim() === '') {
-    errors.push({ path: 'name', msg: 'Le nom est requis' });
+    errors.push({ path: 'name', msg: msgs.nameRequired });
   }
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!data.email || !emailRegex.test(data.email)) {
-    errors.push({ path: 'email', msg: 'Email invalide' });
+    errors.push({ path: 'email', msg: msgs.emailInvalid });
   }
   
   if (!data.subject || data.subject === '') {
-    errors.push({ path: 'subject', msg: 'Le sujet est requis' });
+    errors.push({ path: 'subject', msg: msgs.subjectRequired });
   }
   
   if (!data.message || data.message.trim() === '') {
-    errors.push({ path: 'message', msg: 'Le message est requis' });
+    errors.push({ path: 'message', msg: msgs.messageRequired });
   } else if (data.message.trim().length < 10) {
-    errors.push({ path: 'message', msg: 'Le message doit contenir au moins 10 caractères' });
+    errors.push({ path: 'message', msg: msgs.messageMinLength });
   }
   
   return errors;
@@ -33,6 +71,17 @@ const validateForm = (data: any) => {
 export async function POST(req: NextRequest) {
   try {
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
+    const locale = req.headers.get('accept-language')?.split(',')[0]?.startsWith('fr') ? 'fr' : 'en';
+    const csrfToken = req.headers.get('x-csrf-token');
+    
+    // Verify CSRF token validity - In a real production app, you'd have a more secure implementation
+    // For now, we'll just check if it exists
+    if (!csrfToken) {
+      return NextResponse.json({ 
+        success: false, 
+        message: locale === 'fr' ? 'Token de sécurité invalide' : 'Invalid security token',
+      }, { status: 403 });
+    }
     
     const lastSubmissionTime = rateLimitStore.get(ip);
     const currentTime = Date.now();
@@ -48,13 +97,30 @@ export async function POST(req: NextRequest) {
     
     const data = await req.json();
     
-    const validationErrors = validateForm(data);
+    // Check for honeypot field - if it contains data, it's likely a bot
+    if (data.website) {
+      // Silently reject bot submissions but pretend it succeeded
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Your message has been sent successfully.' 
+      });
+    }
+    
+    const validationErrors = validateForm(data, locale);
     if (validationErrors.length > 0) {
       return NextResponse.json({ 
         success: false, 
         errors: validationErrors 
       }, { status: 400 });
     }
+    
+    // Sanitize all input data
+    const sanitizedData = {
+      name: sanitizeInput(data.name),
+      email: sanitizeInput(data.email),
+      subject: sanitizeInput(data.subject),
+      message: sanitizeInput(data.message)
+    };
     
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -69,17 +135,17 @@ export async function POST(req: NextRequest) {
     const mailOptions = {
       from: process.env.SMTP_FROM || 'noreply@cedric-pronzola.re',
       to: process.env.CONTACT_EMAIL || 'contact@cedric-pronzola.re',
-      replyTo: data.email,
-      subject: `[Formulaire cedric-pronzola.re] ${data.subject}`,
-      text: `Nom: ${data.name}\nEmail: ${data.email}\nSujet: ${data.subject}\nIP: ${ip}\n\nMessage:\n${data.message}`,
+      replyTo: sanitizedData.email,
+      subject: `[Formulaire cedric-pronzola.re] ${sanitizedData.subject}`,
+      text: `Nom: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\nSujet: ${sanitizedData.subject}\nIP: ${ip}\n\nMessage:\n${sanitizedData.message}`,
       html: `
         <h2>Nouveau message du formulaire de contact</h2>
-        <p><strong>Nom:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Sujet:</strong> ${data.subject}</p>
+        <p><strong>Nom:</strong> ${sanitizedData.name}</p>
+        <p><strong>Email:</strong> ${sanitizedData.email}</p>
+        <p><strong>Sujet:</strong> ${sanitizedData.subject}</p>
         <p><strong>IP:</strong> ${ip}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${sanitizedData.message.replace(/\n/g, '<br>')}</p>
       `,
     };
     
@@ -98,7 +164,7 @@ export async function POST(req: NextRequest) {
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Votre message a été envoyé avec succès' 
+      message: locale === 'fr' ? 'Votre message a été envoyé avec succès' : 'Your message has been sent successfully' 
     });
     
   } catch (error) {

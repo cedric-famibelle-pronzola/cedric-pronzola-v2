@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useTranslations } from 'next-intl';
@@ -20,12 +20,25 @@ const Contact = () => {
     email: '',
     subject: '',
     message: '',
+    website: '', // Honeypot field
   });
   
+  const [csrfToken, setCsrfToken] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
   const [rateLimitMessage, setRateLimitMessage] = useState<string>('');
+  
+  // Generate CSRF token when component mounts
+  useEffect(() => {
+    // Simple CSRF token generation
+    const token = Math.random().toString(36).substring(2, 15) + 
+                 Math.random().toString(36).substring(2, 15);
+    setCsrfToken(token);
+    
+    // Store token in session storage
+    sessionStorage.setItem('csrfToken', token);
+  }, []);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -42,11 +55,20 @@ const Contact = () => {
     setErrors({});
     setRateLimitMessage('');
     
+    // Verify CSRF token
+    const storedToken = sessionStorage.getItem('csrfToken');
+    if (storedToken !== csrfToken) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         body: JSON.stringify(formData),
       });
@@ -72,7 +94,7 @@ const Contact = () => {
         }
       } else {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -389,6 +411,23 @@ const Contact = () => {
           <AnimatedSection direction="left" delay={0.4}>
             <div className="max-w-3xl mx-auto">
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden honeypot field */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website (Leave this empty)</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+                
+                {/* Hidden CSRF token field */}
+                <input type="hidden" name="csrfToken" value={csrfToken} />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">

@@ -5,12 +5,45 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { smoothScrollToSection } from '../utils/smoothScroll';
 import { useTranslations, useLocale } from 'next-intl';
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('home.hero');
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth <= 380) {
+          if (titleRef.current) {
+            titleRef.current.style.marginTop = '20px';
+          }
+          if (heroRef.current) {
+            heroRef.current.style.paddingTop = '20px';
+          }
+        } else {
+          if (titleRef.current) {
+            titleRef.current.style.marginTop = '';
+          }
+          if (heroRef.current) {
+            heroRef.current.style.paddingTop = '';
+          }
+        }
+      }
+    };
+
+    // Run on mount and when window is resized
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -43,7 +76,13 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden" role="region" aria-label="Introduction">
+    <div 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden hero-region" 
+      role="region" 
+      aria-label="Introduction" 
+      style={{paddingTop: "20px"}}
+      ref={heroRef}
+    >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50 z-0" aria-hidden="true"></div>
       
@@ -75,13 +114,17 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
+      <div className="container mx-auto px-4 z-10 text-center" style={{marginTop: "20px"}}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 
+            className="text-4xl md:text-6xl font-bold mb-6" 
+            style={{marginTop: "20px"}}
+            ref={titleRef}
+          >
             {t('title')}
           </h1>
           <h2 className="text-xl md:text-2xl text-foreground/80 mb-8">

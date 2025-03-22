@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --focus-ring: #4f46e5;
+  --small-screen-margin: 0px;
 }
 
 [data-theme="dark"] {
@@ -24,6 +25,22 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --focus-ring: #818cf8;
+  }
+}
+
+/* Small screen adjustments - using device width to be reliable */
+@media screen and (max-width: 380px) {
+  :root {
+    --small-screen-margin: 1rem;
+  }
+  
+  /* Force extra top margin on small screens */
+  h1 {
+    margin-top: 20px !important;
+  }
+  
+  .hero-region {
+    padding-top: 20px !important;
   }
 }
 

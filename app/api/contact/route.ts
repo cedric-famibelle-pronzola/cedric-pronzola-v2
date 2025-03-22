@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       const secondsToWait = Math.ceil((RATE_LIMIT_DURATION - (currentTime - lastSubmissionTime)) / 1000);
       return NextResponse.json({ 
         success: false, 
-        message: `Veuillez attendre ${secondsToWait} secondes avant d'envoyer un nouveau message`,
+        message: `${secondsToWait}`,
         rateLimited: true
       }, { status: 429 });
     }

@@ -483,7 +483,7 @@ const Contact = () => {
                 <div className="text-center">
                   <button 
                     type="submit"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -499,6 +499,25 @@ const Contact = () => {
                     )}
                   </button>
                 </div>
+                
+                {/* Display status messages below the send button */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded-md mt-4">
+                    {t('success')}
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 rounded-md mt-4">
+                    {t('error')}
+                  </div>
+                )}
+                
+                {submitStatus === 'rate-limited' && (
+                  <div className="p-4 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-md mt-4">
+                    {rateLimitMessage ? t('rateLimitedWithTime', { seconds: rateLimitMessage }) : t('rateLimited')}
+                  </div>
+                )}
               </form>
             </div>
           </AnimatedSection>

@@ -106,6 +106,7 @@
       "success": "Your message has been sent successfully. I'll get back to you as soon as possible.",
       "error": "An error occurred while sending your message. Please try again.",
       "rateLimited": "Please wait before sending another message.",
+      "rateLimitedWithTime": "Please wait {seconds} seconds before sending another message.",
       "contactInfo": "Contact Information",
       "emailAriaLabel": "Send an email to contact@cedric-pronzola.re",
       "phone": "Phone",

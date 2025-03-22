@@ -106,6 +106,7 @@
       "success": "Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.",
       "error": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
       "rateLimited": "Veuillez patienter avant d'envoyer un autre message.",
+      "rateLimitedWithTime": "Veuillez attendre {seconds} secondes avant d'envoyer un nouveau message.",
       "contactInfo": "Informations de contact",
       "emailAriaLabel": "Envoyer un email à contact@cedric-pronzola.re",
       "phone": "Téléphone",

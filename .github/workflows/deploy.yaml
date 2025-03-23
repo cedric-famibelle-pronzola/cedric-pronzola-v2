@@ -11,22 +11,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-      - name: Add known hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-      
       - name: Deploy to server
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Charger NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Vérifier la version de Node.js
             cd ${{ secrets.PROJECT_PATH }}
+            nvm use 22 || nvm install 22
+            node -v
+            
+            # Installation de PM2 globalement si nécessaire
+            if ! command -v pm2 &> /dev/null; then
+              npm install -g pm2
+            fi
+            
+            # Déploiement de l'application
             git pull origin master
             npm install
             npm run build
-            pm2 restart ${{ secrets.PM2_APP_NAME }}
-          EOF
+            
+            # Utiliser le chemin complet vers PM2 si nécessaire
+            $(npm bin -g)/pm2 restart ${{ secrets.PM2_APP_NAME }} || pm2 restart ${{ secrets.PM2_APP_NAME }}

@@ -6,10 +6,16 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('theme');
+
+  // Handle client-side mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -25,9 +31,13 @@ export default function ThemeToggle() {
     };
   }, []);
 
-  // Get the current theme icon
+  // Get the current theme icon based on the active theme
   const getCurrentThemeIcon = () => {
-    switch(theme) {
+    if (!mounted) return null;
+    
+    const displayTheme = theme === 'system' ? resolvedTheme : theme;
+    
+    switch(displayTheme) {
       case 'light':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -48,7 +58,7 @@ export default function ThemeToggle() {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         );
-      case 'system':
+      default:
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -67,11 +77,12 @@ export default function ThemeToggle() {
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t('toggle')}
       >
-        {getCurrentThemeIcon()}
+        {mounted ? getCurrentThemeIcon() : 
+          <div className="w-5 h-5" /> /* Placeholder with same dimensions */}
       </button>
       
       <AnimatePresence>
-        {isOpen && (
+        {mounted && isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,11 +138,22 @@ export default function ThemeToggle() {
                   theme === 'system' ? 'bg-foreground/10 font-medium' : 'hover:bg-foreground/5'
                 }`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
+                <div className="relative mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                  
+                  {theme === 'system' && (
+                    <div className="absolute bottom-0 right-0 w-2 h-2 rounded-full" 
+                         style={{ 
+                           backgroundColor: resolvedTheme === 'dark' ? '#818cf8' : '#4f46e5',
+                           boxShadow: `0 0 2px ${resolvedTheme === 'dark' ? '#818cf8' : '#4f46e5'}`
+                         }} 
+                    />
+                  )}
+                </div>
                 {t('system')}
               </button>
             </div>

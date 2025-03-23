@@ -85,7 +85,7 @@ export default function ThemeToggle() {
                   setTheme('light');
                   setIsOpen(false);
                 }}
-                className={`flex items-center w-full px-3 py-2 text-sm rounded-md ${
+                className={`flex items-center w-full px-3 py-2 text-sm rounded-md cursor-pointer ${
                   theme === 'light' ? 'bg-foreground/10 font-medium' : 'hover:bg-foreground/5'
                 }`}
               >
@@ -108,7 +108,7 @@ export default function ThemeToggle() {
                   setTheme('dark');
                   setIsOpen(false);
                 }}
-                className={`flex items-center w-full px-3 py-2 text-sm rounded-md ${
+                className={`flex items-center w-full px-3 py-2 text-sm rounded-md cursor-pointer ${
                   theme === 'dark' ? 'bg-foreground/10 font-medium' : 'hover:bg-foreground/5'
                 }`}
               >
@@ -123,7 +123,7 @@ export default function ThemeToggle() {
                   setTheme('system');
                   setIsOpen(false);
                 }}
-                className={`flex items-center w-full px-3 py-2 text-sm rounded-md ${
+                className={`flex items-center w-full px-3 py-2 text-sm rounded-md cursor-pointer ${
                   theme === 'system' ? 'bg-foreground/10 font-medium' : 'hover:bg-foreground/5'
                 }`}
               >

@@ -26,7 +26,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
     <div className="markdown-content">
       <style jsx global>{`
         .markdown-content {
-          color: white;
+          color: var(--foreground);
           line-height: 1.6;
           font-size: 1.125rem;
         }
@@ -68,7 +68,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
 
         .markdown-content strong {
           font-weight: 700;
-          color: white;
+          color: var(--foreground);
         }
 
         .markdown-content em {
@@ -82,7 +82,8 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
           margin-right: 0;
           margin-bottom: 1.5rem;
           font-style: italic;
-          color: #d1d5db;
+          color: var(--foreground, #d1d5db);
+          opacity: 0.8;
         }
 
         .markdown-content ul {
@@ -102,7 +103,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         }
 
         .markdown-content code {
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: rgba(0, 0, 0, 0.1);
           padding: 0.2rem 0.4rem;
           border-radius: 0.25rem;
           font-family: monospace;
@@ -110,19 +111,29 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         }
 
         .markdown-content pre {
-          background-color: #1e1e1e;
+          background-color: rgba(0, 0, 0, 0.05);
           border-radius: 0.375rem;
           padding: 1rem;
           overflow-x: auto;
           margin-bottom: 1.5rem;
+          border: 1px solid var(--foreground, #374151);
+          border-opacity: 0.1;
         }
 
         .markdown-content pre code {
           background-color: transparent;
           padding: 0;
           font-size: 0.9em;
-          color: #e5e7eb;
+          color: var(--foreground);
           line-height: 1.5;
+        }
+
+        [data-theme="dark"] .markdown-content pre {
+          background-color: #1e1e1e;
+        }
+
+        [data-theme="dark"] .markdown-content code {
+          background-color: rgba(0, 0, 0, 0.2);
         }
 
         .markdown-content img {
@@ -161,21 +172,24 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         }
 
         .markdown-content table th {
-          color: white;
+          color: var(--foreground);
           font-weight: 600;
           text-align: left;
           padding: 0.75rem 1rem;
-          border: 1px solid #374151;
+          border: 1px solid var(--foreground, #374151);
+          border-opacity: 0.2;
         }
 
         .markdown-content table td {
           padding: 0.75rem 1rem;
-          border: 1px solid #374151;
+          border: 1px solid var(--foreground, #374151);
+          border-opacity: 0.2;
           vertical-align: top;
         }
 
         .markdown-content table tr:nth-child(even) {
-          background-color: rgba(255, 255, 255, 0.025);
+          background-color: var(--foreground, rgba(255, 255, 255, 0.025));
+          opacity: 0.05;
         }
 
         .markdown-content table a {

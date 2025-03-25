@@ -1,4 +1,3 @@
-# .github/workflows/deploy.yml
 name: Deploy to production
 
 on:
@@ -18,12 +17,19 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Utiliser HTTPS avec un token d'accès personnel
+            cd ${{ secrets.PROJECT_PATH }}
+            git config --global credential.helper cache
+            git remote set-url origin https://${{ secrets.TOKEN }}@github.com/cedric-famibelle-pronzola/cedric-pronzola-v2.git
+            
+            # Reste du script de déploiement
+            git pull origin master
+            
             # Charger NVM
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             
             # Vérifier la version de Node.js
-            cd ${{ secrets.PROJECT_PATH }}
             nvm use 22 || nvm install 22
             node -v
             
@@ -32,8 +38,6 @@ jobs:
               npm install -g pm2
             fi
             
-            # Déploiement de l'application
-            git pull origin master
             npm install
             npm run build
             

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 interface ShareButtonsProps {
@@ -12,6 +12,10 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const t = useTranslations('blog');
   const [copied, setCopied] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [mastodonModalOpen, setMastodonModalOpen] = useState(false);
+  const [mastodonInstance, setMastodonInstance] = useState('');
+  const modalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -85,18 +89,28 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         </svg>
       ),
     },
-    {
-      name: 'Mastodon',
-      url: `https://mastodon.social/share?text=${encodedTitle}%20${encodedUrl}`,
-      className: "bg-gray-800 border border-gray-700 text-white dark:bg-white dark:border-gray-200 dark:text-black",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.184-2.737.368-4.185.276-2.368-.092-4.237-.551-4.237-.551 0 .184.014.459.043.643.308 2.294 2.317 2.478 4.22 2.57 1.922.091 3.613-.46 3.613-.46l.087 1.736s-1.342.734-3.738.918c-1.32.091-2.958-.092-4.872-.551-4.143-1.102-4.872-5.51-4.985-10.01-.043-1.653-.014-3.213-.014-4.316 0-5.51 3.652-7.155 3.652-7.155C6.865.184 9.45.092 12.348 0h.072c2.899.092 5.484.184 7.438 1.47 0 0 3.652 1.653 3.652 7.154 0 0 .043 4.086-.367 5.29z"/>
-          <path d="M17.834 7.904v4.274h-1.692V8.08c0-.868-.367-1.31-1.102-1.31-.808 0-1.218.524-1.218 1.56v2.26h-1.684V8.33c0-1.037-.404-1.56-1.211-1.56-.735 0-1.102.442-1.102 1.31v4.098h-1.693V7.904c0-.867.221-1.56.662-2.076.455-.524 1.058-.788 1.795-.788.857 0 1.51.33 1.97.982l.426.706.419-.706c.462-.652 1.114-.982 1.97-.982.738 0 1.34.264 1.795.788.442.517.663 1.21.663 2.076z" fill="currentColor"/>
-        </svg>
-      ),
-    },
   ];
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setMastodonModalOpen(false);
+      }
+    }
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Focus the input when modal opens
+  useEffect(() => {
+    if (mastodonModalOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [mastodonModalOpen]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(url);
@@ -104,6 +118,35 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
     setShowMessage(true);
     setTimeout(() => setCopied(false), 2000);
     setTimeout(() => setShowMessage(false), 2000);
+  };
+
+  const openMastodonModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMastodonModalOpen(true);
+  };
+
+  const handleMastodonShare = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!mastodonInstance) return;
+    
+    // Make sure instance has https:// prefix
+    let instanceUrl = mastodonInstance;
+    if (!instanceUrl.startsWith('http://') && !instanceUrl.startsWith('https://')) {
+      instanceUrl = 'https://' + instanceUrl;
+    }
+    
+    // Remove trailing slash if present
+    if (instanceUrl.endsWith('/')) {
+      instanceUrl = instanceUrl.slice(0, -1);
+    }
+    
+    // Open the share URL in a new window
+    window.open(`${instanceUrl}/share?text=${encodedTitle}%20${encodedUrl}`, '_blank');
+    
+    // Close the modal and reset the instance field
+    setMastodonModalOpen(false);
+    setMastodonInstance('');
   };
 
   return (
@@ -122,6 +165,20 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
             {link.icon}
           </a>
         ))}
+
+        {/* Mastodon Button */}
+        <button
+          onClick={openMastodonModal}
+          className="inline-flex items-center justify-center p-2 rounded-full bg-gray-800 border border-gray-700 text-white dark:bg-white dark:border-gray-200 dark:text-black transition-transform hover:scale-110 shadow-md cursor-pointer"
+          aria-label="Share on Mastodon"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.184-2.737.368-4.185.276-2.368-.092-4.237-.551-4.237-.551 0 .184.014.459.043.643.308 2.294 2.317 2.478 4.22 2.57 1.922.091 3.613-.46 3.613-.46l.087 1.736s-1.342.734-3.738.918c-1.32.091-2.958-.092-4.872-.551-4.143-1.102-4.872-5.51-4.985-10.01-.043-1.653-.014-3.213-.014-4.316 0-5.51 3.652-7.155 3.652-7.155C6.865.184 9.45.092 12.348 0h.072c2.899.092 5.484.184 7.438 1.47 0 0 3.652 1.653 3.652 7.154 0 0 .043 4.086-.367 5.29z"/>
+            <path d="M17.834 7.904v4.274h-1.692V8.08c0-.868-.367-1.31-1.102-1.31-.808 0-1.218.524-1.218 1.56v2.26h-1.684V8.33c0-1.037-.404-1.56-1.211-1.56-.735 0-1.102.442-1.102 1.31v4.098h-1.693V7.904c0-.867.221-1.56.662-2.076.455-.524 1.058-.788 1.795-.788.857 0 1.51.33 1.97.982l.426.706.419-.706c.462-.652 1.114-.982 1.97-.982.738 0 1.34.264 1.795.788.442.517.663 1.21.663 2.076z" fill="currentColor"/>
+          </svg>
+        </button>
+
+        {/* Copy Link Button */}
         <div className="relative inline-flex">
           <button
             onClick={copyToClipboard}
@@ -146,6 +203,57 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
           )}
         </div>
       </div>
+
+      {/* Mastodon Instance Modal */}
+      {mastodonModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+          <div 
+            ref={modalRef}
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md mx-4 border border-gray-300 dark:border-gray-600"
+          >
+            <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-white">{t('mastodonShare')}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{t('mastodonDescription')}</p>
+            
+            <form onSubmit={handleMastodonShare}>
+              <div className="mb-4">
+                <label htmlFor="mastodon-instance" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  {t('mastodonInstance')}
+                </label>
+                <div className="flex">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    id="mastodon-instance"
+                    placeholder="mastodon.social"
+                    className="flex-1 rounded-l-md border border-gray-300 dark:border-gray-600 py-2 px-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={mastodonInstance}
+                    onChange={(e) => setMastodonInstance(e.target.value)}
+                    required
+                  />
+                </div>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{t('mastodonExamples')}</p>
+              </div>
+              
+              <div className="flex justify-end space-x-3">
+                <button
+                  type="button"
+                  className="py-2 px-4 rounded-md border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                  onClick={() => setMastodonModalOpen(false)}
+                >
+                  {t('cancel')}
+                </button>
+                <button
+                  type="submit"
+                  className="py-2 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors cursor-pointer"
+                  disabled={!mastodonInstance}
+                >
+                  {t('share')}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 } 

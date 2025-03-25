@@ -8,6 +8,7 @@ import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import JsonLd from '../../../components/JsonLd';
 import MarkdownContent from '../../../components/MarkdownContent';
+import ShareButtons from '../../../components/ShareButtons';
 import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
@@ -246,6 +247,10 @@ export default async function ArticlePage(
                 <time dateTime={article.metadata.date}>{article.metadata.date}</time> • 
                 <span className="ml-2">{article.metadata.author.name}</span>
               </div>
+              <ShareButtons 
+                url={`https://cedric-pronzola.re/${locale}/blog/${slug}`}
+                title={article.metadata.title}
+              />
               <MarkdownContent content={htmlContent} />
             </article>
           </div>

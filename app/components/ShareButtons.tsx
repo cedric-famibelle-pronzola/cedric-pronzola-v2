@@ -11,6 +11,7 @@ interface ShareButtonsProps {
 export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const t = useTranslations('blog');
   const [copied, setCopied] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -110,13 +111,15 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(url);
     setCopied(true);
+    setShowMessage(true);
     setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setShowMessage(false), 2000);
   };
 
   return (
     <div className="my-8">
       <h3 className="text-lg font-medium mb-3">{t('share')}</h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 items-center">
         {shareLinks.map((link) => (
           <a
             key={link.name}
@@ -129,22 +132,29 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
             {link.icon}
           </a>
         ))}
-        <button
-          onClick={copyToClipboard}
-          className="inline-flex items-center justify-center p-2 rounded-full bg-gray-800 border border-gray-700 text-white dark:bg-white dark:border-gray-200 dark:text-black transition-transform hover:scale-110 shadow-md"
-          aria-label="Copy link"
-        >
-          {copied ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-            </svg>
+        <div className="relative inline-flex">
+          <button
+            onClick={copyToClipboard}
+            className="inline-flex items-center justify-center p-2 rounded-full bg-gray-800 border border-gray-700 text-white dark:bg-white dark:border-gray-200 dark:text-black transition-transform hover:scale-110 shadow-md cursor-pointer"
+            aria-label="Copy link"
+          >
+            {copied ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            )}
+          </button>
+          {showMessage && (
+            <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-black text-xs rounded py-1 px-2 whitespace-nowrap">
+              {t('copied')}
+            </div>
           )}
-        </button>
+        </div>
       </div>
     </div>
   );

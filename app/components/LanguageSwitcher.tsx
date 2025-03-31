@@ -9,11 +9,13 @@ import { locales, localeCountryMap } from '@/config/i18n';
 const articleSlugMap: Record<string, Record<string, string>> = {
   // English articles
   'en': {
+    'forced-assimilation-and-eradication-of-local-culture': 'l-assimilation-forcee-et-l-eradication-de-la-culture-locale',
     'reunion-independence': 'l-independance-de-la-reunion',
     'free-software-will-liberate-us': 'les-logiciels-libres-nous-libereront'
   },
   // French articles
   'fr': {
+    'l-assimilation-forcee-et-l-eradication-de-la-culture-locale': 'forced-assimilation-and-eradication-of-local-culture',
     'l-independance-de-la-reunion': 'reunion-independence',
     'les-logiciels-libres-nous-libereront': 'free-software-will-liberate-us'
   }

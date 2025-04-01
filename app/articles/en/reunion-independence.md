@@ -7,7 +7,7 @@ author:
   url: "https://cedric-pronzola.re"
 ---
 
-## Speech delivered on January 21, 2025 in Baku (Azerbaijan) during the conference entitled **"The independence of Reunion Island: looking back at France's colonial legacy and the path to sovereignty"** 
+## Speech delivered on January 21, 2025 in Baku (Azerbaijan) during the conference entitled **"The independence of Reunion Island: looking back at France's colonial legacy and the path to sovereignty"**
 
 ---
 
@@ -69,4 +69,6 @@ Thank you for your attention.
 
 ---
 
-*This article was written by Cédric Famibelle-Pronzola and is available under a [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license* (_Attribution - NonCommercial - ShareAlike_) 
+*This article was written by Cédric Famibelle-Pronzola and is available under a [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license* (_Attribution - NonCommercial - ShareAlike_)
+
+<div style="position: relative; padding-top: 56.25%;"><iframe title="&quot;Seule la lutte libère !&quot; Thomas Sankara" width="100%" height="100%" src="https://gade.o-k-i.net/videos/embed/jUmqBN8f9DxcLHzo5FqJFN" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" style="position: absolute; inset: 0px;"></iframe></div>

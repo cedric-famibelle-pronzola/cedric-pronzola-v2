@@ -7,7 +7,7 @@ author:
   url: "https://cedric-pronzola.re"
 ---
 
-## Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée **« L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté »** 
+## Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée **« L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté »**
 
 ---
 
@@ -70,3 +70,5 @@ Je vous remercie pour votre attention.
 ---
 
 *Cet article a été rédigé par Cédric Famibelle-Pronzola et est disponible sous licence [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)* (_Attribution - Utilisation non commerciale - Partage dans les mêmes conditions_)
+
+<div style="position: relative; padding-top: 56.25%;"><iframe title="&quot;Seule la lutte libère !&quot; Thomas Sankara" width="100%" height="100%" src="https://gade.o-k-i.net/videos/embed/jUmqBN8f9DxcLHzo5FqJFN" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" style="position: absolute; inset: 0px;"></iframe></div>

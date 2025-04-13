@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cedric-pronzola.re',
+        hostname: 'cedric-pronzola.dev',
         pathname: '/**',
       },
     ],

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://cedric-pronzola.re/sitemap.xml',
+    sitemap: 'https://cedric-pronzola.dev/sitemap.xml',
   };
-} 
+}

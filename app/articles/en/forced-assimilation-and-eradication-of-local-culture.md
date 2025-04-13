@@ -4,10 +4,10 @@ description: "Speech delivered on March 29, 2025, in Baku (Azerbaijan) during th
 date: "April 1st, 2025"
 author:
   name: "Cédric Famibelle-Pronzola"
-  url: "https://cedric-pronzola.re"
+  url: "https://cedric-pronzola.dev"
 ---
 
-## Speech delivered on March 29, 2025, in Baku (Azerbaijan) during the conference entitled **"Colonialism: An Erasure of National and Religious Identities"** 
+## Speech delivered on March 29, 2025, in Baku (Azerbaijan) during the conference entitled **"Colonialism: An Erasure of National and Religious Identities"**
 
 ---
 
@@ -66,4 +66,4 @@ Thank you for your attention.
 
 ---
 
-*This article was written by Cédric Famibelle-Pronzola and is available under a [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license* (_Attribution - NonCommercial - ShareAlike_) 
+*This article was written by Cédric Famibelle-Pronzola and is available under a [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license* (_Attribution - NonCommercial - ShareAlike_)

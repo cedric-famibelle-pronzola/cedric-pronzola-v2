@@ -20,9 +20,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  
+
   const t = await getTranslations({ locale, namespace: 'home' });
-  
+
   return {
     title: `Cédric Famibelle-Pronzola | ${t('hero.subtitle')}`,
     description: `${t('about.paragraph1')} ${t('about.paragraph2')}`,
@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
-  
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Cédric Famibelle-Pronzola",
-    "url": "https://cedric-pronzola.re",
-    "image": "https://cedric-pronzola.re/cedric-avatar.png",
+    "url": "https://cedric-pronzola.dev",
+    "image": "https://cedric-pronzola.dev/cedric-avatar.png",
     "sameAs": [
       "https://github.com/ced972",
       "https://twitter.com/CedricPronzola"
@@ -64,4 +64,4 @@ export default async function Home({ params }: Props) {
       <JsonLd data={jsonLd} />
     </>
   );
-} 
+}

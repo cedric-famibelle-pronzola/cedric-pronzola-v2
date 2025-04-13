@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile spécialisé dans les technologies libres et modernes.",
   keywords: ["développeur", "web", "libriste", "open source", "javascript", "react", "next.js"],
-  authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.re" }],
+  authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.dev" }],
   creator: "Cédric Famibelle-Pronzola",
   publisher: "Cédric Famibelle-Pronzola",
   formatDetection: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://cedric-pronzola.re"),
+  metadataBase: new URL("https://cedric-pronzola.dev"),
   alternates: {
     canonical: "/",
     types: {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cédric Famibelle-Pronzola | Concepteur et Développeur Web/Mobile | Libriste",
     description: "Cédric Famibelle-Pronzola, concepteur et développeur Web/Mobile spécialisé dans les technologies libres et modernes.",
-    url: "https://cedric-pronzola.re",
+    url: "https://cedric-pronzola.dev",
     siteName: "Cédric Famibelle-Pronzola",
     locale: "fr_FR",
     type: "website",
@@ -124,8 +124,8 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <a 
-            href="#main-content" 
+          <a
+            href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-background focus:text-foreground focus:p-4 focus:m-4 focus:rounded-md"
           >
             Aller au contenu principal

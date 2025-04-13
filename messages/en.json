@@ -114,7 +114,7 @@
       "rateLimited": "Please wait before sending another message.",
       "rateLimitedWithTime": "Please wait {seconds} seconds before sending another message.",
       "contactInfo": "Contact Information",
-      "emailAriaLabel": "Send an email to contact@cedric-pronzola.re",
+      "emailAriaLabel": "Send an email to contact@cedric-pronzola.dev",
       "phone": "Phone",
       "phoneAriaLabel": "Phone number: +262 6 93 62 93 59",
       "location": "Location",
@@ -161,7 +161,7 @@
     "projects": "Projects",
     "allProjects": "All Projects",
     "stack": "Stack",
-    "blog": "Blog", 
+    "blog": "Blog",
     "contact": "Contact",
     "social": "Networks",
     "rightsReserved": "All rights reserved.",
@@ -175,22 +175,22 @@
   },
   "legal": {
     "title": "Legal Notice",
-    "description": "Legal information about the website cedric-pronzola.re and its operation.",
-    
+    "description": "Legal information about the website cedric-pronzola.dev and its operation.",
+
     "definitions": {
       "title": "Definitions",
       "client": "Client",
       "clientDesc": "Any professional or natural person capable within the meaning of articles 1123 et seq. of the Civil Code, or legal entity, who visits the Site that is the subject of these general conditions.",
       "services": "Services",
-      "servicesDesc": "Services provided by cedric-pronzola.re",
+      "servicesDesc": "Services provided by cedric-pronzola.dev",
       "content": "Content",
       "contentDesc": "All elements constituting the information present on the Site, notably texts - images - videos.",
       "userInfo": "User Information",
-      "userInfoDesc": "Hereinafter referred to as 'Information(s)' which corresponds to all personal data that may be held by cedric-pronzola.re for the management of your account, customer relationship management, and for analysis and statistics purposes.",
+      "userInfoDesc": "Hereinafter referred to as 'Information(s)' which corresponds to all personal data that may be held by cedric-pronzola.dev for the management of your account, customer relationship management, and for analysis and statistics purposes.",
       "personalInfo": "Personal Information",
       "personalInfoDesc": "Information that allows, in any form whatsoever, directly or indirectly, the identification of the natural persons to whom it applies (article 4 of law n° 78-17 of January 6, 1978)."
     },
-    
+
     "identity": {
       "title": "Website Identity",
       "owner": "Owner",
@@ -199,106 +199,106 @@
       "host": "Host",
       "dpo": "Data Protection Officer"
     },
-    
+
     "usage": {
       "title": "Terms of Use",
       "paragraph1": "The Site constitutes an intellectual work protected by the provisions of the Intellectual Property Code and applicable International Regulations.",
-      "paragraph2": "The use of the cedric-pronzola.re website implies full acceptance of the terms of use described herein.",
-      "paragraph3": "This website is normally accessible to users at all times. An interruption due to technical maintenance may however be decided by cedric-pronzola.re, which will then endeavor to communicate to users the dates and times of the intervention beforehand."
+      "paragraph2": "The use of the cedric-pronzola.dev website implies full acceptance of the terms of use described herein.",
+      "paragraph3": "This website is normally accessible to users at all times. An interruption due to technical maintenance may however be decided by cedric-pronzola.dev, which will then endeavor to communicate to users the dates and times of the intervention beforehand."
     },
-    
+
     "services": {
       "title": "Description of Services",
-      "paragraph1": "The cedric-pronzola.re website aims to provide information concerning all the company's activities.",
-      "paragraph2": "cedric-pronzola.re strives to provide information that is as accurate as possible on the cedric-pronzola.re website. However, it cannot be held responsible for omissions, inaccuracies and deficiencies in updating, whether by its own doing or by third-party partners who provide this information."
+      "paragraph1": "The cedric-pronzola.dev website aims to provide information concerning all the company's activities.",
+      "paragraph2": "cedric-pronzola.dev strives to provide information that is as accurate as possible on the cedric-pronzola.dev website. However, it cannot be held responsible for omissions, inaccuracies and deficiencies in updating, whether by its own doing or by third-party partners who provide this information."
     },
-    
+
     "technicalLimits": {
       "title": "Technical Limitations",
       "paragraph1": "The site uses JavaScript technology.",
       "paragraph2": "The website cannot be held responsible for material damage related to the use of the site. In addition, the user of the site agrees to access the site using recent equipment that does not contain viruses and with an up-to-date latest-generation browser.",
-      "paragraph3": "The cedric-pronzola.re site is hosted by a provider in the European Union in accordance with the provisions of the General Data Protection Regulation (GDPR: No. 2016-679)."
+      "paragraph3": "The cedric-pronzola.dev site is hosted by a provider in the European Union in accordance with the provisions of the General Data Protection Regulation (GDPR: No. 2016-679)."
     },
-    
+
     "copyright": {
       "title": "Intellectual Property",
-      "paragraph1": "All content on this site (illustrations, texts, logos, brand names, images, videos) is the property of cedric-pronzola.re and is protected by current copyright laws. Therefore, any reproduction, even partial, of this site is prohibited without express permission.",
+      "paragraph1": "All content on this site (illustrations, texts, logos, brand names, images, videos) is the property of cedric-pronzola.dev and is protected by current copyright laws. Therefore, any reproduction, even partial, of this site is prohibited without express permission.",
       "paragraph2": "Any unauthorized use of the site or any of its content is considered to constitute an infringement and is prosecutable under intellectual property law."
     },
-    
+
     "liability": {
       "title": "Limitations of Liability",
-      "paragraph1": "cedric-pronzola.re acts as the publisher of the site. cedric-pronzola.re is responsible for the quality and veracity of the Content it publishes.",
-      "paragraph2": "cedric-pronzola.re cannot be held responsible for direct and indirect damage caused to the user's equipment when accessing the cedric-pronzola.re website, and resulting either from the use of equipment that does not meet the specifications indicated in point 4, or from the appearance of a bug or incompatibility.",
-      "paragraph3": "cedric-pronzola.re cannot also be held liable for consequential damages (such as a loss of market or loss of opportunity) resulting from the use of the cedric-pronzola.re site."
+      "paragraph1": "cedric-pronzola.dev acts as the publisher of the site. cedric-pronzola.dev is responsible for the quality and veracity of the Content it publishes.",
+      "paragraph2": "cedric-pronzola.dev cannot be held responsible for direct and indirect damage caused to the user's equipment when accessing the cedric-pronzola.dev website, and resulting either from the use of equipment that does not meet the specifications indicated in point 4, or from the appearance of a bug or incompatibility.",
+      "paragraph3": "cedric-pronzola.dev cannot also be held liable for consequential damages (such as a loss of market or loss of opportunity) resulting from the use of the cedric-pronzola.dev site."
     },
-    
+
     "dataProtection": {
       "title": "Personal Data Management",
       "section1": {
         "title": "Data Collection Managers",
-        "paragraph1": "For Personal Data collected as part of the creation of the User's personal account and their navigation on the Site, the controller of Personal Data is: Cédric Famibelle-Pronzola. cedric-pronzola.re is represented by Cédric Famibelle-Pronzola, its legal representative.",
-        "paragraph2": "As the data controller it collects, cedric-pronzola.re undertakes to comply with the legal provisions in force. It is the Client's responsibility in particular to establish the purposes of its data processing, to provide its prospects and clients, based on the collection of their consent, with complete information on the processing of their personal data and to maintain a register of processing in line with reality."
+        "paragraph1": "For Personal Data collected as part of the creation of the User's personal account and their navigation on the Site, the controller of Personal Data is: Cédric Famibelle-Pronzola. cedric-pronzola.dev is represented by Cédric Famibelle-Pronzola, its legal representative.",
+        "paragraph2": "As the data controller it collects, cedric-pronzola.dev undertakes to comply with the legal provisions in force. It is the Client's responsibility in particular to establish the purposes of its data processing, to provide its prospects and clients, based on the collection of their consent, with complete information on the processing of their personal data and to maintain a register of processing in line with reality."
       },
       "section2": {
         "title": "Purpose of Collected Data",
-        "paragraph1": "cedric-pronzola.re is likely to process all or part of the data:",
+        "paragraph1": "cedric-pronzola.dev is likely to process all or part of the data:",
         "item1": "to enable navigation on the Site and the management and traceability of services and benefits ordered by the user: connection and usage data of the Site, invoicing, order history, etc.",
         "item2": "to prevent and fight against computer fraud (spamming, hacking, etc.): computer equipment used for navigation, IP address, password (hash)",
         "item3": "to improve navigation on the Site: connection and usage data",
-        "item4": "to conduct optional satisfaction surveys on cedric-pronzola.re: email address"
+        "item4": "to conduct optional satisfaction surveys on cedric-pronzola.dev: email address"
       },
       "section3": {
         "title": "Rights of Access, Rectification and Opposition",
-        "paragraph1": "In accordance with current European regulations, Users of cedric-pronzola.re have the following rights:",
+        "paragraph1": "In accordance with current European regulations, Users of cedric-pronzola.dev have the following rights:",
         "item1": "right of access (article 15 GDPR) and of rectification (article 16 GDPR), updating, completeness of Users' data, right to lock or delete Users' personal data (article 17 GDPR), when they are inaccurate, incomplete, equivocal, outdated, or whose collection, use, communication or conservation is prohibited",
         "item2": "right to withdraw consent at any time (article 13-2c GDPR)",
         "item3": "right to limitation of the processing of Users' data (article 18 GDPR)",
         "item4": "right to object to the processing of Users' data (article 21 GDPR)",
         "item5": "right to the portability of data that Users have provided, when this data is subject to automated processing based on their consent or on a contract (article 20 GDPR)",
-        "item6": "right to define the fate of Users' data after their death and to choose to whom cedric-pronzola.re should communicate (or not) their data to a third party that they have previously designated",
-        "item7": "as soon as cedric-pronzola.re becomes aware of the death of a User and in the absence of instructions from them, cedric-pronzola.re undertakes to destroy their data, unless their retention proves necessary for evidential purposes or to meet a legal obligation",
-        "paragraph2": "If the User wishes to know how cedric-pronzola.re uses their Personal Data, asks to rectify them or opposes their processing, the User can contact cedric-pronzola.re in writing at the following address: Cédric Famibelle-Pronzola – DPO, Cédric Famibelle-Pronzola, 97413 Cilaos."
+        "item6": "right to define the fate of Users' data after their death and to choose to whom cedric-pronzola.dev should communicate (or not) their data to a third party that they have previously designated",
+        "item7": "as soon as cedric-pronzola.dev becomes aware of the death of a User and in the absence of instructions from them, cedric-pronzola.dev undertakes to destroy their data, unless their retention proves necessary for evidential purposes or to meet a legal obligation",
+        "paragraph2": "If the User wishes to know how cedric-pronzola.dev uses their Personal Data, asks to rectify them or opposes their processing, the User can contact cedric-pronzola.dev in writing at the following address: Cédric Famibelle-Pronzola – DPO, Cédric Famibelle-Pronzola, 97413 Cilaos."
       },
       "section4": {
         "title": "Non-disclosure of Personal Data",
-        "paragraph1": "cedric-pronzola.re refrains from processing, hosting or transferring the Information collected on its Clients to a country located outside the European Union or recognized as 'inadequate' by the European Commission without first informing the client. However, cedric-pronzola.re remains free to choose its technical and commercial subcontractors on the condition that they present sufficient guarantees with regard to the requirements of the General Data Protection Regulation (GDPR: no. 2016-679).",
-        "paragraph2": "cedric-pronzola.re undertakes to take all necessary precautions to preserve the security of the Information and in particular that they are not communicated to unauthorized persons. However, if an incident impacting the integrity or confidentiality of the Client's Information is brought to the attention of cedric-pronzola.re, the latter must inform the Client as soon as possible and communicate the corrective measures taken."
+        "paragraph1": "cedric-pronzola.dev refrains from processing, hosting or transferring the Information collected on its Clients to a country located outside the European Union or recognized as 'inadequate' by the European Commission without first informing the client. However, cedric-pronzola.dev remains free to choose its technical and commercial subcontractors on the condition that they present sufficient guarantees with regard to the requirements of the General Data Protection Regulation (GDPR: no. 2016-679).",
+        "paragraph2": "cedric-pronzola.dev undertakes to take all necessary precautions to preserve the security of the Information and in particular that they are not communicated to unauthorized persons. However, if an incident impacting the integrity or confidentiality of the Client's Information is brought to the attention of cedric-pronzola.dev, the latter must inform the Client as soon as possible and communicate the corrective measures taken."
       }
     },
-    
+
     "securityIncident": {
       "title": "Incident Notification",
       "paragraph1": "No matter how hard we try, no method of transmission over the Internet and no method of electronic storage is completely secure. We cannot therefore guarantee absolute security.",
       "paragraph2": "If we become aware of a security breach, we would alert affected users so that they can take appropriate action. Our incident notification procedures take into account our legal obligations, whether at the national or European level. We are committed to fully informing our customers of all matters relating to the security of their account and providing them with all the information they need to help them meet their own regulatory reporting obligations.",
       "security": "Security",
-      "paragraph3": "To ensure the security and confidentiality of Personal Data, cedric-pronzola.re uses networks protected by standard devices such as firewalls, pseudonymization, encryption and passwords.",
-      "paragraph4": "When processing Personal Data, cedric-pronzola.re takes all reasonable measures to protect it against any loss, misuse, unauthorized access, disclosure, alteration or destruction."
+      "paragraph3": "To ensure the security and confidentiality of Personal Data, cedric-pronzola.dev uses networks protected by standard devices such as firewalls, pseudonymization, encryption and passwords.",
+      "paragraph4": "When processing Personal Data, cedric-pronzola.dev takes all reasonable measures to protect it against any loss, misuse, unauthorized access, disclosure, alteration or destruction."
     },
-    
+
     "cookies": {
       "title": "Hypertext links, cookies and internet tags",
-      "paragraph1": "The cedric-pronzola.re site contains a number of hypertext links to other sites, set up with the authorization of cedric-pronzola.re. However, cedric-pronzola.re does not have the possibility of verifying the content of the sites thus visited, and therefore assumes no responsibility for this fact.",
+      "paragraph1": "The cedric-pronzola.dev site contains a number of hypertext links to other sites, set up with the authorization of cedric-pronzola.dev. However, cedric-pronzola.dev does not have the possibility of verifying the content of the sites thus visited, and therefore assumes no responsibility for this fact.",
       "section1": {
         "title": "Cookies",
         "paragraph1": "A 'cookie' is a small information file sent to the User's browser and recorded within the User's terminal (e.g. computer, smartphone), (hereinafter 'Cookies'). This file includes information such as the User's domain name, the User's Internet service provider, the User's operating system, and the date and time of access. Cookies in no way risk damaging the User's terminal.",
-        "paragraph2": "cedric-pronzola.re is likely to process information about the User's visit to the Site, such as the pages consulted and the searches carried out. This information enables cedric-pronzola.re to improve the content of the Site and the User's navigation.",
-        "paragraph3": "As Cookies facilitate navigation and/or the provision of services offered by the Site, the User can configure their browser to allow them to decide whether or not they wish to accept them so that Cookies are stored in the terminal or, on the contrary, that they are rejected, either systematically or according to their issuer. The User can also configure their browser software so that the acceptance or rejection of Cookies is offered punctually, before a Cookie is likely to be stored in their terminal. cedric-pronzola.re informs the User that, in this case, not all the functionalities of their browser software may be available.",
-        "paragraph4": "If the User refuses the storage of Cookies in their terminal or browser, or if the User deletes those stored there, the User is informed that their navigation and experience on the Site may be limited. This could also be the case when cedric-pronzola.re or one of its service providers cannot recognize, for technical compatibility purposes, the type of browser used by the terminal, the language and display settings or the country from which the terminal seems to be connected to the Internet.",
-        "paragraph5": "If applicable, cedric-pronzola.re declines all responsibility for the consequences related to the degraded functioning of the Site and any services offered by cedric-pronzola.re, resulting (i) from the User's refusal of Cookies (ii) the impossibility for cedric-pronzola.re to store or consult the Cookies necessary for their operation due to the User's choice. For the management of Cookies and the User's choices, the configuration of each browser is different. It is described in the browser's help menu, which will allow the User to know how to modify their wishes regarding Cookies.",
-        "paragraph6": "At any time, the User can choose to express and modify their wishes regarding Cookies. cedric-pronzola.re may also use the services of external providers to help collect and process the information described in this section."
+        "paragraph2": "cedric-pronzola.dev is likely to process information about the User's visit to the Site, such as the pages consulted and the searches carried out. This information enables cedric-pronzola.dev to improve the content of the Site and the User's navigation.",
+        "paragraph3": "As Cookies facilitate navigation and/or the provision of services offered by the Site, the User can configure their browser to allow them to decide whether or not they wish to accept them so that Cookies are stored in the terminal or, on the contrary, that they are rejected, either systematically or according to their issuer. The User can also configure their browser software so that the acceptance or rejection of Cookies is offered punctually, before a Cookie is likely to be stored in their terminal. cedric-pronzola.dev informs the User that, in this case, not all the functionalities of their browser software may be available.",
+        "paragraph4": "If the User refuses the storage of Cookies in their terminal or browser, or if the User deletes those stored there, the User is informed that their navigation and experience on the Site may be limited. This could also be the case when cedric-pronzola.dev or one of its service providers cannot recognize, for technical compatibility purposes, the type of browser used by the terminal, the language and display settings or the country from which the terminal seems to be connected to the Internet.",
+        "paragraph5": "If applicable, cedric-pronzola.dev declines all responsibility for the consequences related to the degraded functioning of the Site and any services offered by cedric-pronzola.dev, resulting (i) from the User's refusal of Cookies (ii) the impossibility for cedric-pronzola.dev to store or consult the Cookies necessary for their operation due to the User's choice. For the management of Cookies and the User's choices, the configuration of each browser is different. It is described in the browser's help menu, which will allow the User to know how to modify their wishes regarding Cookies.",
+        "paragraph6": "At any time, the User can choose to express and modify their wishes regarding Cookies. cedric-pronzola.dev may also use the services of external providers to help collect and process the information described in this section."
       },
       "section2": {
         "title": "Internet Tags",
-        "paragraph1": "cedric-pronzola.re may occasionally use Internet tags (also called 'tags', or action tags, GIFs of a pixel, transparent GIFs, invisible GIFs and one-to-one GIFs) and deploy them through a specialist web analytics partner who may be located (and therefore store the corresponding information, including the User's IP address) in a foreign country.",
+        "paragraph1": "cedric-pronzola.dev may occasionally use Internet tags (also called 'tags', or action tags, GIFs of a pixel, transparent GIFs, invisible GIFs and one-to-one GIFs) and deploy them through a specialist web analytics partner who may be located (and therefore store the corresponding information, including the User's IP address) in a foreign country.",
         "paragraph2": "These tags are placed both in online advertisements allowing users to access the Site, and on the various pages of the Site.",
-        "paragraph3": "This technology allows cedric-pronzola.re to evaluate visitors' responses to the Site and the effectiveness of its actions (for example, the number of times a page is opened and the information consulted), as well as the User's use of the Site."
+        "paragraph3": "This technology allows cedric-pronzola.dev to evaluate visitors' responses to the Site and the effectiveness of its actions (for example, the number of times a page is opened and the information consulted), as well as the User's use of the Site."
       }
     },
-    
+
     "applicableLaw": {
       "title": "Applicable Law",
-      "paragraph1": "Any dispute in connection with the use of the cedric-pronzola.re site is subject to French law. In addition to the cases where the law does not allow it, exclusive jurisdiction is attributed to the competent courts of La Réunion."
+      "paragraph1": "Any dispute in connection with the use of the cedric-pronzola.dev site is subject to French law. In addition to the cases where the law does not allow it, exclusive jurisdiction is attributed to the competent courts of La Réunion."
     }
   }
-} 
+}

@@ -14,7 +14,7 @@ type FormErrors = {
 
 const Contact = () => {
   const t = useTranslations('home.contact');
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,39 +22,39 @@ const Contact = () => {
     message: '',
     website: '', // Honeypot field
   });
-  
+
   const [csrfToken, setCsrfToken] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
   const [rateLimitMessage, setRateLimitMessage] = useState<string>('');
-  
+
   // Generate CSRF token when component mounts
   useEffect(() => {
     // Simple CSRF token generation
-    const token = Math.random().toString(36).substring(2, 15) + 
+    const token = Math.random().toString(36).substring(2, 15) +
                  Math.random().toString(36).substring(2, 15);
     setCsrfToken(token);
-    
+
     // Store token in session storage
     sessionStorage.setItem('csrfToken', token);
   }, []);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
+
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
     setRateLimitMessage('');
-    
+
     // Verify CSRF token
     const storedToken = sessionStorage.getItem('csrfToken');
     if (storedToken !== csrfToken) {
@@ -62,7 +62,7 @@ const Contact = () => {
       setIsSubmitting(false);
       return;
     }
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -72,9 +72,9 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         // Handle rate limiting
         if (response.status === 429 && data.rateLimited) {
@@ -101,13 +101,13 @@ const Contact = () => {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      
+
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
     }
   };
-  
+
   return (
     <AnimatedSection id="contact" className="py-24 bg-background/50">
       <div className="container mx-auto px-4">
@@ -118,7 +118,7 @@ const Contact = () => {
             {t('description')}
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <AnimatedSection direction="right" delay={0.2} className="space-y-8">
             <div>
@@ -133,16 +133,16 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <a 
-                      href="mailto:contact@cedric-pronzola.re" 
+                    <a
+                      href="mailto:contact@cedric-pronzola.dev"
                       className="text-foreground/70 hover:text-foreground transition-colors"
                       aria-label={t('emailAriaLabel')}
                     >
-                      contact@cedric-pronzola.re
+                      contact@cedric-pronzola.dev
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="mr-4 text-foreground/70">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -151,7 +151,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">{t('phone')}</h4>
-                    <a 
+                    <a
                       href="tel:+262693629359"
                       className="text-foreground/70 hover:text-foreground transition-colors"
                       aria-label={t('phoneAriaLabel')}
@@ -160,7 +160,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="mr-4 text-foreground/70">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -175,7 +175,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-bold mb-4">{t('networks')}</h3>
               <div className="flex flex-col space-y-4">
@@ -244,7 +244,7 @@ const Contact = () => {
                     </svg>
                   </motion.a>
                 </div>
-                
+
                 <div className="flex space-x-4">
                   {/* Second row of links - Development platforms */}
                   <motion.a
@@ -317,15 +317,15 @@ const Contact = () => {
                     whileTap={{ scale: 0.95 }}
                     title="PeerTube"
                   >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="24" 
-                      height="24" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                       strokeLinejoin="round"
                     >
                       <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
@@ -333,7 +333,7 @@ const Contact = () => {
                     </svg>
                   </motion.a>
                 </div>
-                
+
                 <div className="flex space-x-4">
                   {/* Third row of links - Social media */}
                   <motion.a
@@ -357,7 +357,7 @@ const Contact = () => {
                       <path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/>
                     </svg>
                   </motion.a>
-                  
+
                   <motion.a
                     href="https://instagram.com/cedric_kaubuntu"
                     target="_blank"
@@ -373,7 +373,7 @@ const Contact = () => {
                       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                   </motion.a>
-                  
+
                   <motion.a
                     href="https://x.com/CedricPronzola"
                     target="_blank"
@@ -388,7 +388,7 @@ const Contact = () => {
                       <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/>
                     </svg>
                   </motion.a>
-                  
+
                   <motion.a
                     href="https://youtube.com/@ced97240"
                     target="_blank"
@@ -407,7 +407,7 @@ const Contact = () => {
               </div>
             </div>
           </AnimatedSection>
-          
+
           <AnimatedSection direction="left" delay={0.4}>
             <div className="max-w-3xl mx-auto">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -424,10 +424,10 @@ const Contact = () => {
                     autoComplete="off"
                   />
                 </div>
-                
+
                 {/* Hidden CSRF token field */}
                 <input type="hidden" name="csrfToken" value={csrfToken} />
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -520,7 +520,7 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="text-center">
-                  <button 
+                  <button
                     type="submit"
                     className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background rounded-md font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
                     disabled={isSubmitting}
@@ -538,20 +538,20 @@ const Contact = () => {
                     )}
                   </button>
                 </div>
-                
+
                 {/* Display status messages below the send button */}
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded-md mt-4">
                     {t('success')}
                   </div>
                 )}
-                
+
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 rounded-md mt-4">
                     {t('error')}
                   </div>
                 )}
-                
+
                 {submitStatus === 'rate-limited' && (
                   <div className="p-4 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-md mt-4">
                     {rateLimitMessage ? t('rateLimitedWithTime', { seconds: rateLimitMessage }) : t('rateLimited')}
@@ -566,4 +566,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

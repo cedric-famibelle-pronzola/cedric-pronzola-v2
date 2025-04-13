@@ -68,16 +68,16 @@ export default async function LegalPage({
                   <span className="font-semibold">{t('identity.owner')}:</span> Micro-entreprise Cédric Famibelle-Pronzola – Cilaos 97413 Cilaos
                 </p>
                 <p>
-                  <span className="font-semibold">{t('identity.publisher')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.re
+                  <span className="font-semibold">{t('identity.publisher')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.dev
                 </p>
                 <p>
-                  <span className="font-semibold">{t('identity.webmaster')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.re
+                  <span className="font-semibold">{t('identity.webmaster')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.dev
                 </p>
                 <p>
                   <span className="font-semibold">{t('identity.host')}:</span> OVH – 2 rue Kellermann 59100 Roubaix
                 </p>
                 <p>
-                  <span className="font-semibold">{t('identity.dpo')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.re
+                  <span className="font-semibold">{t('identity.dpo')}:</span> Cédric Famibelle-Pronzola – contact@cedric-pronzola.dev
                 </p>
               </div>
             </section>
@@ -127,7 +127,7 @@ export default async function LegalPage({
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold mb-4">{t('dataProtection.title')}</h2>
-              
+
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-2">{t('dataProtection.section1.title')}</h3>
                 <div className="space-y-2">
@@ -135,7 +135,7 @@ export default async function LegalPage({
                   <p>{t('dataProtection.section1.paragraph2')}</p>
                 </div>
               </div>
-              
+
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-2">{t('dataProtection.section2.title')}</h3>
                 <p>{t('dataProtection.section2.paragraph1')}</p>
@@ -146,7 +146,7 @@ export default async function LegalPage({
                   <li>{t('dataProtection.section2.item4')}</li>
                 </ul>
               </div>
-              
+
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-2">{t('dataProtection.section3.title')}</h3>
                 <p>{t('dataProtection.section3.paragraph1')}</p>
@@ -161,7 +161,7 @@ export default async function LegalPage({
                 </ul>
                 <p className="mt-2">{t('dataProtection.section3.paragraph2')}</p>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-semibold mb-2">{t('dataProtection.section4.title')}</h3>
                 <div className="space-y-2">
@@ -176,7 +176,7 @@ export default async function LegalPage({
               <div className="space-y-4">
                 <p>{t('securityIncident.paragraph1')}</p>
                 <p>{t('securityIncident.paragraph2')}</p>
-                
+
                 <h3 className="text-xl font-semibold">{t('securityIncident.security')}</h3>
                 <p>{t('securityIncident.paragraph3')}</p>
                 <p>{t('securityIncident.paragraph4')}</p>
@@ -186,7 +186,7 @@ export default async function LegalPage({
             <section className="mb-8">
               <h2 className="text-2xl font-bold mb-4">{t('cookies.title')}</h2>
               <p>{t('cookies.paragraph1')}</p>
-              
+
               <div className="mt-4 mb-6">
                 <h3 className="text-xl font-semibold mb-2">{t('cookies.section1.title')}</h3>
                 <div className="space-y-2">
@@ -198,7 +198,7 @@ export default async function LegalPage({
                   <p>{t('cookies.section1.paragraph6')}</p>
                 </div>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-semibold mb-2">{t('cookies.section2.title')}</h3>
                 <div className="space-y-2">
@@ -219,4 +219,4 @@ export default async function LegalPage({
       <Footer />
     </>
   )
-} 
+}

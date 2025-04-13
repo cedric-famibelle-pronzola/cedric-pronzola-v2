@@ -14,9 +14,9 @@ export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> }
 ): Promise<Metadata> {
   const { locale } = await params;
-  
+
   const t = await getTranslations('blog');
-  
+
   return {
     title: t('title'),
     description: t('description'),
@@ -44,12 +44,12 @@ export default async function BlogPage(
   { params }: { params: Promise<{ locale: string }> }
 ) {
   const { locale } = await params;
-  
+
   // Pass the locale to getAllPosts to get localized articles
   const posts = await getAllPosts(locale);
   const safePosts = Array.isArray(posts) ? posts : [];
   const t = await getTranslations('blog');
-  
+
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -58,20 +58,20 @@ export default async function BlogPage(
     "author": {
       "@type": "Person",
       "name": "Cédric Famibelle-Pronzola",
-      "url": "https://cedric-pronzola.re"
+      "url": "https://cedric-pronzola.dev"
     },
     "publisher": {
       "@type": "Person",
       "name": "Cédric Famibelle-Pronzola",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://cedric-pronzola.re/cedric-avatar.png"
+        "url": "https://cedric-pronzola.dev/cedric-avatar.png"
       }
     },
-    "url": "https://cedric-pronzola.re/blog",
+    "url": "https://cedric-pronzola.dev/blog",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://cedric-pronzola.re/blog"
+      "@id": "https://cedric-pronzola.dev/blog"
     },
     "blogPost": safePosts.map(post => ({
       "@type": "BlogPosting",
@@ -82,7 +82,7 @@ export default async function BlogPage(
         "@type": "Person",
         "name": post.author.name
       },
-      "url": `https://cedric-pronzola.re/blog/${post.slug}`
+      "url": `https://cedric-pronzola.dev/blog/${post.slug}`
     }))
   };
 
@@ -94,4 +94,4 @@ export default async function BlogPage(
       <JsonLd data={blogJsonLd} />
     </>
   );
-} 
+}

@@ -47,14 +47,14 @@ export async function GET(request: NextRequest) {
             }}
           >
             {/* Avatar */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 marginBottom: '30px',
               }}
             >
               <img
-                src={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://cedric-pronzola.re'}/cedric-avatar.png`}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://cedric-pronzola.dev'}/cedric-avatar.png`}
                 width="120"
                 height="120"
                 style={{
@@ -63,19 +63,19 @@ export async function GET(request: NextRequest) {
                 alt="Cédric Famibelle-Pronzola"
               />
             </div>
-            
+
             <h1 style={{ fontSize: '60px', margin: '0', textAlign: 'center' }}>{title}</h1>
-            <h2 style={{ 
-              fontSize: '32px', 
-              color: '#444', 
-              margin: '20px 0', 
+            <h2 style={{
+              fontSize: '32px',
+              color: '#444',
+              margin: '20px 0',
               textAlign: 'center',
               backgroundColor: 'rgba(240, 240, 240, 0.7)',
               padding: '15px 20px',
               borderRadius: '10px',
               maxWidth: '90%',
             }}>{subtitle}</h2>
-            <p style={{ fontSize: '24px', color: '#666', marginTop: '15px' }}>cedric-pronzola.re</p>
+            <p style={{ fontSize: '24px', color: '#666', marginTop: '15px' }}>cedric-pronzola.dev</p>
           </div>
         </div>
       ),
@@ -90,4 +90,4 @@ export async function GET(request: NextRequest) {
       status: 500,
     });
   }
-} 
+}

@@ -4,10 +4,10 @@ description: "Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors
 date: "25 janvier 2025"
 author:
   name: "Cédric Famibelle-Pronzola"
-  url: "https://cedric-pronzola.re"
+  url: "https://cedric-pronzola.dev"
 ---
 
-## Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée **« L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté »** 
+## Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée **« L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté »**
 
 ---
 

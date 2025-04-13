@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   description: "Cédric Famibelle-Pronzola, web/mobile developer specialized in free and modern technologies.",
   keywords: ["developer", "web", "free software", "open source", "javascript", "react", "next.js"],
-  authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.re" }],
+  authors: [{ name: "Cédric Famibelle-Pronzola", url: "https://cedric-pronzola.dev" }],
   creator: "Cédric Famibelle-Pronzola",
   publisher: "Cédric Famibelle-Pronzola",
   formatDetection: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://cedric-pronzola.re"),
+  metadataBase: new URL("https://cedric-pronzola.dev"),
   alternates: {
     canonical: "/",
     languages: {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cédric Famibelle-Pronzola | Web/Mobile Developer | Free Software Advocate",
     description: "Cédric Famibelle-Pronzola, web/mobile developer specialized in free and modern technologies.",
-    url: "https://cedric-pronzola.re",
+    url: "https://cedric-pronzola.dev",
     siteName: "Cédric Famibelle-Pronzola",
     locale: "fr_FR",
     type: "website",
@@ -130,7 +130,7 @@ export default async function RootLayout({
 }>) {
   // Access params in a way that works with Next.js async context
   const { locale } = await params;
-  
+
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) {
     notFound();
@@ -151,8 +151,8 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <a 
-          href="#main-content" 
+        <a
+          href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-background focus:text-foreground focus:p-4 focus:m-4 focus:rounded-md"
         >
           {locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
@@ -163,4 +163,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-} 
+}

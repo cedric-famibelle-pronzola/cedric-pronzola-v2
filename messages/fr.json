@@ -115,8 +115,6 @@
       "rateLimitedWithTime": "Veuillez attendre {seconds} secondes avant d'envoyer un nouveau message.",
       "contactInfo": "Informations de contact",
       "emailAriaLabel": "Envoyer un email à contact@cedric-pronzola.dev",
-      "phone": "Téléphone",
-      "phoneAriaLabel": "Numéro de téléphone : +262 6 93 62 93 59",
       "location": "Localisation",
       "locationValue": "La Réunion",
       "networks": "Réseaux"

@@ -115,8 +115,6 @@
       "rateLimitedWithTime": "Please wait {seconds} seconds before sending another message.",
       "contactInfo": "Contact Information",
       "emailAriaLabel": "Send an email to contact@cedric-pronzola.dev",
-      "phone": "Phone",
-      "phoneAriaLabel": "Phone number: +262 6 93 62 93 59",
       "location": "Location",
       "locationValue": "Reunion Island",
       "networks": "Networks"

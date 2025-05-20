@@ -13,7 +13,7 @@ author:
 
 Bonjour à tous, que la paix soit sur vous.
 
-Merci à Dieu tout puissant de nous avoir permis d’être présent aujourd’hui. Dieu est grand.
+Merci à Dieu tout-puissant de nous avoir permis d’être présent aujourd’hui. Dieu est grand.
 
 Merci au GIB (Groupe d’initiative de Bakou) pour l’invitation et pour son travail quotidien et sans relâche en faveur des territoires à décoloniser.
 
@@ -33,9 +33,9 @@ Jules Ferry, disait ceci :
 
 > « les races supérieures ont le devoir de civiliser les races inférieurs ».
 
-Ce n’est donc pas un hasard, si le processus d’assimilation forcée, commence dès l’école. En effet, dans les colonies françaises on nous apprend l’histoire de France, la géogaphie Française, la langue française, mais rien sur nous, notre culture, notre langue, les royaumes africains, la science africaine, la culture, la tradition et la spiritualité africaine.
+Ce n’est donc pas un hasard, si le processus d’assimilation forcée, commence dès l’école. En effet, dans les colonies françaises on nous apprend l’histoire de France, la géographie Française, la langue française, mais rien sur nous, notre culture, notre langue, les royaumes africains, la science africaine, la culture, la tradition et la spiritualité africaine.
 
-Pour nos pays, le français est valorisée et nos langues dévalorisés. C'est une des caractéristiques du colonialisme.
+Pour nos pays, le français est valorisé et nos langues dévalorisées. C'est une des caractéristiques du colonialisme.
 
 À La Réunion, le **« Maloya »** a été interdit jusqu'en 1981. En Guadeloupe c’est le **« Gwo Ka »** qui était interdit jusque dans les années 60. Ce qui signifie que même lorsque nous sommes devenus "**département français**" en **1946**, nos musiques et nos danses traditionnelles était réprimées par le système colonial. Des personnes pouvaient être enfermées pour avoir joué du **« Maloya »** ou du **« Gwo Ka »**.
 
@@ -45,9 +45,9 @@ En conclusion nous pouvons dire que l’essence même du colonialisme français,
 
 Son but est de nous imprégner de la culture et de l'identité du dominant, pour mieux nous dominer.
 
-Pour nous libérer de son joug, nous devons nous réaproprier notre culture, notre histoire, notre langue.
+Pour nous libérer de son joug, nous devons nous réapproprier notre culture, notre histoire, notre langue.
 
-Pour nous libérer de son joug, nous devons nous réaproprier notre culture, notre histoire, notre langue.
+Pour nous libérer de son joug, nous devons nous réapproprier notre culture, notre histoire, notre langue.
 
 Marcus Garvey disait :
 > « un peuple ignorant de son histoire est comme un arbre sans racine ».
@@ -60,7 +60,7 @@ Nos productions seront disponibles sous une licence libre, appelée **Creative C
 
 Ce projet, qui est très important pour nous, s’inscrit dans notre lutte pour l’émancipation.
 
-Avec l’aide de Dieu nous mènerons à bien ce projet essentielle à la prise de conscience de tout un peuple.
+Avec l’aide de Dieu, nous mènerons à bien ce projet essentiel à la prise de conscience de tout un peuple.
 
 Je vous remercie pour votre attention.
 

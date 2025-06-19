@@ -10,10 +10,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const router = useRouter();
   const t = useTranslations('footer');
-  
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
+
     if (href.startsWith('/#')) {
       if (window.location.pathname === '/' || window.location.pathname === '') {
         setTimeout(() => {
@@ -26,7 +26,7 @@ const Footer = () => {
       router.push(href);
     }
   };
-  
+
   const socialLinks = [
     {
       name: 'GitHub',
@@ -61,15 +61,15 @@ const Footer = () => {
       name: 'PeerTube',
       url: 'https://gade.o-k-i.net/@ced972',
       icon: (
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
           strokeLinejoin="round"
         >
           <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
@@ -79,7 +79,7 @@ const Footer = () => {
     },
     {
       name: 'Instagram',
-      url: 'https://instagram.com/cedric_kaubuntu',
+      url: 'https://instagram.com/cedric_pronzola',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -190,7 +190,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <a 
+            <a
               href="/"
               onClick={(e) => {
                 e.preventDefault();
@@ -214,7 +214,7 @@ const Footer = () => {
               {t('description')}
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4" id="footer-navigation">{t('navigation')}</h3>
             <ul className="space-y-2" aria-labelledby="footer-navigation">
@@ -226,7 +226,7 @@ const Footer = () => {
               <li><a href="/#contact" onClick={(e) => handleNavClick(e, '/#contact')} className="text-foreground/70 hover:text-foreground transition-colors">{t('contact')}</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4" id="footer-social">{t('social')}</h3>
             <div className="flex flex-col space-y-4" aria-labelledby="footer-social">
@@ -246,7 +246,7 @@ const Footer = () => {
                   <span className="sr-only">Signal</span>
                   {socialLinks[8].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="XMPP"
                   href="https://xmpp.link/#ced972@movim.eu"
@@ -261,7 +261,7 @@ const Footer = () => {
                   <span className="sr-only">XMPP</span>
                   {socialLinks[9].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="SimpleXChat"
                   href="https://simplex.chat/contact#/?v=2-7&smp=smp%3A%2F%2Fhejn2gVIqNU6xjtGM3OwQeuk8ZEbDXVJXAlnSBJBWUA%3D%40smp16.simplex.im%2FhmwAMS0fMSsq3llW22muUgEQcabP0oh0%23%2F%3Fv%3D1-3%26dh%3DMCowBQYDK2VuAyEAJFc6LIrbRM8gAf1muwgyOuHj-sbqsoc-PNhh75oNZmg%253D%26srv%3Dp3ktngodzi6qrf7w64mmde3syuzrv57y55hxabqcq3l5p6oi7yzze6qd.onion"
@@ -276,7 +276,7 @@ const Footer = () => {
                   <span className="sr-only">SimpleXChat</span>
                   {socialLinks[10].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="Session"
                   href="#"
@@ -312,7 +312,7 @@ const Footer = () => {
                   <span className="sr-only">Codeberg</span>
                   {socialLinks[5].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="GitHub"
                   href="https://github.com/cedric-famibelle-pronzola"
@@ -327,7 +327,7 @@ const Footer = () => {
                   <span className="sr-only">GitHub</span>
                   {socialLinks[0].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="Mastodon"
                   href="https://bokantaj.o-k-i.net/@ced972"
@@ -342,7 +342,7 @@ const Footer = () => {
                   <span className="sr-only">Mastodon</span>
                   {socialLinks[6].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="PeerTube"
                   href="https://gade.o-k-i.net/@ced972"
@@ -375,10 +375,10 @@ const Footer = () => {
                   <span className="sr-only">Bluesky</span>
                   {socialLinks[7].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="Instagram"
-                  href="https://instagram.com/cedric_kaubuntu"
+                  href="https://instagram.com/cedric_pronzola"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground/70 hover:text-foreground transition-colors"
@@ -390,7 +390,7 @@ const Footer = () => {
                   <span className="sr-only">Instagram</span>
                   {socialLinks[4].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="X"
                   href="https://x.com/CedricPronzola"
@@ -405,7 +405,7 @@ const Footer = () => {
                   <span className="sr-only">X (Twitter)</span>
                   {socialLinks[1].icon}
                 </motion.a>
-                
+
                 <motion.a
                   key="YouTube"
                   href="https://youtube.com/@ced97240"
@@ -424,7 +424,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-foreground/60 text-sm">
           <p className="mt-12 text-foreground/50 text-sm">
             © {currentYear} Cédric Famibelle-Pronzola. {t('rightsReserved')}
@@ -440,4 +440,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

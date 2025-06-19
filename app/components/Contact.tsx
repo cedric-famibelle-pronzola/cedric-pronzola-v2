@@ -341,7 +341,7 @@ const Contact = () => {
                   </motion.a>
 
                   <motion.a
-                    href="https://instagram.com/cedric_kaubuntu"
+                    href="https://instagram.com/cedric_pronzola"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"

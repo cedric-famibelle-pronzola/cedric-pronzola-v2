@@ -276,9 +276,9 @@ const Contact = () => {
                   </motion.a>
 
                   <motion.a
-                    href="https://bokantaj.o-k-i.net/@ced972"
+                    href="https://koze.kaubuntu.re/@cedric"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me noopener noreferrer"
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}

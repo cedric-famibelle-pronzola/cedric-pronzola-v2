@@ -44,6 +44,11 @@
       "viewProject": "Voir le projet",
       "sourceCode": "Code source",
       "projectsList": {
+        "kaubuntu": {
+          "title": "kaubuntu.re - Plateforme multimédia",
+          "description": "Application web progressive intégrant PeerTube et Mastodon pour le mouvement politique Ka-Ubuntu, promouvant la souveraineté numérique à La Réunion.",
+          "technologies": "PHP,JavaScript,PWA,HTML5,CSS3"
+        },
         "oki": {
           "title": "oki.re - Plateforme de transcriptions musicales",
           "description": "Application web progressive pour la transcription et traduction de productions musicales, avec interface multilingue.",

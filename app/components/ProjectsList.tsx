@@ -7,7 +7,7 @@ import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
 import { useTranslations } from 'next-intl';
 
-const projectIds = ['oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
+const projectIds = ['kaubuntu', 'oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
 
 type ProjectsListProps = {
   showAll?: boolean;
@@ -39,6 +39,7 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
   // Helper function to get the domain extension for each project
   function getDomainExtension(id: string): string {
     switch(id) {
+      case 'kaubuntu': return '.re';
       case 'oki': return '.re';
       case 'nuvel': return '.nu';
       case 'gong': return '.gp';
@@ -90,7 +91,7 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
                 
                 <div className="flex justify-between pt-4">
                   <a
-                    href={`https://codeberg.org/OKI/${project.link.replace('https://', '')}`}
+                    href={`https://codeberg.org/${project.projectId === 'kaubuntu' ? 'Ka-Ubuntu' : 'OKI'}/${project.link.replace('https://', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground/70 hover:text-foreground transition-colors"

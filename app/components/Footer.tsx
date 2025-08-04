@@ -100,7 +100,7 @@ const Footer = () => {
     },
     {
       name: 'Codeberg',
-      url: 'https://codeberg.org/ced972',
+      url: 'https://codeberg.org/cedric-famibelle-pronzola',
       icon: (
         <svg
         width="24"
@@ -334,7 +334,7 @@ const Footer = () => {
 
                 <motion.a
                   key="Codeberg"
-                  href="https://codeberg.org/ced972"
+                  href="https://codeberg.org/cedric-famibelle-pronzola"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground/70 hover:text-foreground transition-colors"

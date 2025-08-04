@@ -249,7 +249,7 @@ const Contact = () => {
                   </motion.a>
 
                   <motion.a
-                    href="https://codeberg.org/ced972"
+                    href="https://codeberg.org/cedric-famibelle-pronzola"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"

@@ -30,7 +30,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'Mastodon',
-      url: 'https://koze.kaubuntu.re/@cedric',
+      url: 'https://bokantaj.o-k-i.net/@ced972',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.184-2.737.368-4.185.276-2.368-.092-4.237-.551-4.237-.551 0 .184.014.459.043.643.308 2.294 2.317 2.478 4.22 2.57 1.922.091 3.613-.46 3.613-.46l.087 1.736s-1.342.734-3.738.918c-1.32.091-2.958-.092-4.872-.551-4.143-1.102-4.872-5.51-4.985-10.01-.043-1.653-.014-3.213-.014-4.316 0-5.51 3.652-7.155 3.652-7.155C6.865.184 9.45.092 12.348 0h.072c2.899.092 5.484.184 7.438 1.47 0 0 3.652 1.653 3.652 7.154 0 0 .043 4.086-.367 5.29z"/>
@@ -234,7 +234,7 @@ const Footer = () => {
                 {/* First row of links - Main social media */}
                 <motion.a
                   key="Mastodon"
-                  href="https://koze.kaubuntu.re/@cedric"
+                  href="https://bokantaj.o-k-i.net/@ced972"
                   target="_blank"
                   rel="me noopener noreferrer"
                   className="text-foreground/70 hover:text-foreground transition-colors"

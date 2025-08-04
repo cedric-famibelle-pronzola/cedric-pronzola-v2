@@ -164,7 +164,7 @@ const Contact = () => {
                 <div className="flex space-x-4">
                   {/* First row of links - Main social media */}
                   <motion.a
-                    href="https://koze.kaubuntu.re/@cedric"
+                    href="https://bokantaj.o-k-i.net/@ced972"
                     target="_blank"
                     rel="me noopener noreferrer"
                     className="p-3 bg-foreground/5 rounded-full text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-colors"

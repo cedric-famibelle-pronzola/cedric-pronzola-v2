@@ -188,8 +188,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         }
 
         .markdown-content table tr:nth-child(even) {
-          background-color: var(--foreground, rgba(255, 255, 255, 0.025));
-          opacity: 0.05;
+          background-color: rgba(30, 58, 138, 0.05); /* légère alternance, sans opacité */
         }
 
         .markdown-content table a {

@@ -167,7 +167,7 @@
     "blog": "Blog",
     "contact": "Contact",
     "social": "Réseaux",
-    "rightsReserved": "Tous droits réservés.",
+    "rightsReserved": "Sous licence AGPL-3.0.",
     "legalNotice": "Mentions légales"
   },
   "notFound": {
@@ -224,9 +224,10 @@
     },
 
     "copyright": {
-      "title": "Propriété intellectuelle",
-      "paragraph1": "Tout le contenu du présent site (illustrations, textes, logos, dénominations, images, vidéos) est la propriété de cedric-pronzola.dev et est protégé par les lois en vigueur sur le droit d'auteur. Toute reproduction, même partielle, de ce site est donc interdite sans autorisation expresse.",
-      "paragraph2": "Toute utilisation non autorisée du site ou de l'un quelconque des éléments qu'il contient est considérée comme constitutive d'une contrefaçon et passible de poursuites en vertu des dispositions des articles sur la propriété intellectuelle."
+      "title": "Propriété intellectuelle et licence",
+      "paragraph1": "Le code source de ce site web est disponible sous licence GNU Affero General Public License v3.0 (AGPL-3.0). Vous pouvez consulter le code source complet et les termes de la licence à l'adresse https://github.com/cedric-famibelle-pronzola/cedric-pronzola-v2.",
+      "paragraph2": "Le contenu (illustrations, textes, images, vidéos) reste la propriété de Cédric Famibelle-Pronzola et est protégé par les lois en vigueur sur le droit d'auteur, sauf mention contraire.",
+      "paragraph3": "La licence AGPL-3.0 garantit que ce logiciel reste libre et open source. Toute modification ou œuvre dérivée doit également être publiée sous la même licence."
     },
 
     "liability": {

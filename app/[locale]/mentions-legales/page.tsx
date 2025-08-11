@@ -113,6 +113,7 @@ export default async function LegalPage({
               <div className="space-y-4">
                 <p>{t('copyright.paragraph1')}</p>
                 <p>{t('copyright.paragraph2')}</p>
+                <p>{t('copyright.paragraph3')}</p>
               </div>
             </section>
 

@@ -230,6 +230,13 @@
       "paragraph3": "La licence AGPL-3.0 garantit que ce logiciel reste libre et open source. Toute modification ou œuvre dérivée doit également être publiée sous la même licence."
     },
 
+    "trademarks": {
+      "title": "Marques et icônes de tiers",
+      "paragraph1": "Ce site web utilise des icônes et des références à divers services et plateformes de tiers à des fins d'information et de navigation.",
+      "paragraph2": "Les marques déposées, logos et noms de marque suivants sont la propriété de leurs propriétaires respectifs : GitHub (GitHub, Inc.), Codeberg (Codeberg e.V.), Mastodon, X/Twitter (X Corp.), Instagram (Meta Platforms, Inc.), YouTube (Google LLC), PeerTube, Bluesky, Signal (Signal Technology Foundation), XMPP, SimpleX Chat, Session, et autres services référencés.",
+      "paragraph3": "L'utilisation de ces icônes et références n'implique aucun soutien, parrainage ou affiliation avec les propriétaires respectifs des marques déposées. Ces éléments sont utilisés sous les principes d'usage loyal à des fins d'identification et de liaison uniquement."
+    },
+
     "liability": {
       "title": "Limitations de responsabilité",
       "paragraph1": "cedric-pronzola.dev agit en tant qu'éditeur du site. cedric-pronzola.dev est responsable de la qualité et de la véracité du Contenu qu'il publie.",

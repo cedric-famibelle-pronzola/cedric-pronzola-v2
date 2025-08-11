@@ -1,0 +1,668 @@
+= Cédric Famibelle-Pronzola Portfolio Website
+:version: 2.0.0
+:toc: left
+:toc-title: Table of Contents
+:sectlinks:
+:sectnums:
+:source-highlighter: highlight.js
+:icons: font
+:author: Cédric Famibelle-Pronzola
+:email: contact@cedric-pronzola.dev
+:homepage: https://cedric-pronzola.dev
+:license: AGPL-3.0
+:docdate: {docdate}
+
+image:https://img.shields.io/badge/Next.js-15.x-black?style=for-the-badge&logo=next.js[Next.js]
+image:https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react[React]
+image:https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript[TypeScript]
+image:https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css[Tailwind CSS]
+image:https://img.shields.io/badge/Framer_Motion-12.x-0055FF?style=for-the-badge&logo=framer[Framer Motion]
+image:https://img.shields.io/badge/License-AGPL--3.0-blue?style=for-the-badge[License]
+
+A modern, multilingual portfolio website built with Next.js 15, showcasing web development projects, blog articles, and professional skills. This application demonstrates expertise in full-stack development, internationalization, and modern web technologies.
+
+== Overview
+
+This is the second version of Cédric Famibelle-Pronzola's personal portfolio website, designed as a comprehensive platform for showcasing professional work, sharing knowledge through blog posts, and facilitating professional connections. The website emphasizes performance and multilingual support.
+
+=== Key Features
+
+* **Multilingual Support**: Complete French and English translations using next-intl
+* **Modern Blog System**: Markdown-based articles with RSS/Atom/JSON feeds
+* **Project Showcase**: Interactive gallery of web development projects
+* **Contact Integration**: Professional contact form with email notifications
+* **SEO Optimized**: Complete meta tags, structured data, and sitemap generation
+* **Dark/Light Theme**: System-aware theme switching with manual override
+* **Progressive Web App**: Optimized for mobile devices with offline capabilities
+* **Performance Focused**: Server-side rendering, image optimization, and code splitting
+
+== Technology Stack
+
+=== Frontend Technologies
+
+[cols="1,3"]
+|===
+|Technology |Description
+
+|image:https://img.shields.io/badge/Next.js-15.x-black?logo=next.js[Next.js]
+|React framework with App Router, SSR, and advanced optimization features
+
+|image:https://img.shields.io/badge/React-19.x-61DAFB?logo=react[React]
+|Latest React version with concurrent features and improved performance
+
+|image:https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript[TypeScript]
+|Type-safe JavaScript development with latest language features
+
+|image:https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?logo=tailwind-css[Tailwind CSS]
+|Utility-first CSS framework for rapid UI development
+
+|image:https://img.shields.io/badge/Framer_Motion-12.x-0055FF?logo=framer[Framer Motion]
+|Production-ready motion library for React animations
+
+|image:https://img.shields.io/badge/next--intl-4.x-000000[next-intl]
+|Internationalization library for Next.js applications
+|===
+
+=== Content & Communication
+
+[cols="1,3"]
+|===
+|Technology |Description
+
+|image:https://img.shields.io/badge/Markdown-GFM-000000?logo=markdown[Markdown]
+|GitHub Flavored Markdown for blog content with remark processing
+
+|image:https://img.shields.io/badge/Nodemailer-6.x-22D3EE[Nodemailer]
+|Email sending functionality for contact form integration
+
+|image:https://img.shields.io/badge/Feed-4.x-FFA500[Feed]
+|RSS/Atom/JSON feed generation for blog content syndication
+
+|image:https://img.shields.io/badge/Gray--Matter-4.x-808080[Gray-Matter]
+|YAML front matter parser for blog post metadata
+|===
+
+=== Development Tools
+
+[cols="1,3"]
+|===
+|Technology |Description
+
+|image:https://img.shields.io/badge/ESLint-9.x-4B32C3?logo=eslint[ESLint]
+|JavaScript/TypeScript linting and code quality enforcement
+
+|image:https://img.shields.io/badge/PostCSS-8.x-DD3A0A?logo=postcss[PostCSS]
+|CSS processing and optimization pipeline
+
+|image:https://img.shields.io/badge/Flag--Icons-7.x-FF6B6B[Flag-Icons]
+|SVG country flag icons for language selection
+|===
+
+== Installation
+
+=== Prerequisites
+
+Ensure you have the following installed:
+
+* Node.js 18.x or higher
+* npm, yarn, pnpm, or bun package manager
+
+=== Quick Start
+
+[source,bash]
+----
+# Clone the repository
+git clone https://github.com/your-username/cedric-pronzola-v2.git
+cd cedric-pronzola-v2
+
+# Install dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+
+# Start development server
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+----
+
+The application will be available at http://localhost:3000.
+
+=== Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+[source,env]
+----
+# Email Configuration (for contact form)
+SMTP_HOST=your-smtp-host
+SMTP_PORT=587
+SMTP_USER=your-email@domain.com
+SMTP_PASS=your-email-password
+CONTACT_EMAIL=contact@yourdomain.com
+
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+----
+
+== Project Structure
+
+[source]
+----
+cedric-pronzola-v2/
+├── app/                          # Next.js App Router
+│   ├── [locale]/                 # Internationalized routes
+│   │   ├── blog/                 # Blog pages
+│   │   ├── projects/             # Projects showcase
+│   │   ├── mentions-legales/     # Legal pages
+│   │   └── layout.tsx            # Locale-specific layout
+│   ├── api/                      # API routes
+│   │   ├── contact/              # Contact form handler
+│   │   └── og/                   # Open Graph image generation
+│   ├── articles/                 # Blog content (Markdown)
+│   │   ├── en/                   # English articles
+│   │   └── fr/                   # French articles
+│   ├── components/               # React components
+│   └── lib/                      # Utility functions
+├── config/                       # Configuration files
+├── messages/                     # Internationalization messages
+│   ├── en.json                   # English translations
+│   └── fr.json                   # French translations
+├── public/                       # Static assets
+├── next.config.js               # Next.js configuration
+└── package.json                 # Project dependencies
+----
+
+== Development
+
+=== Available Scripts
+
+[cols="1,3"]
+|===
+|Command |Description
+
+|`npm run dev`
+|Start development server with Turbopack
+
+|`npm run build`
+|Create production build
+
+|`npm start`
+|Start production server
+
+|`npm run lint`
+|Run ESLint code quality checks
+|===
+
+=== Adding Blog Content
+
+Create new blog articles in the `app/articles/` directory:
+
+[source,markdown]
+----
+---
+title: "Your Article Title"
+date: "2024-01-15"
+excerpt: "Brief description of the article"
+tags: ["web-development", "javascript"]
+---
+
+# Your Article Content
+
+Write your content in Markdown format...
+----
+
+Articles must be created in both languages:
+* `app/articles/en/your-article-slug.md`
+* `app/articles/fr/your-article-slug.md`
+
+=== Internationalization
+
+Add new translations to the message files:
+
+* `messages/en.json` - English translations
+* `messages/fr.json` - French translations
+
+Use the `useTranslations` hook in components:
+
+[source,typescript]
+----
+import { useTranslations } from 'next-intl';
+
+function MyComponent() {
+  const t = useTranslations('home.about');
+  return <h1>{t('title')}</h1>;
+}
+----
+
+== Deployment
+
+For deployment, build the application:
+
+[source,bash]
+----
+npm run build
+npm start
+----
+
+Ensure environment variables are configured in your deployment environment.
+
+== Features
+
+=== Multilingual Support
+
+* Complete French and English translations
+* Automatic language detection based on browser preferences
+* Language switcher with country flags
+* Localized URLs and metadata
+
+=== Blog System
+
+* Markdown-based content management
+* GitHub Flavored Markdown support
+* Automatic RSS, Atom, and JSON feed generation
+* Social media sharing integration
+* SEO optimization with structured data
+
+=== Contact System
+
+* Professional contact form with validation
+* Rate limiting to prevent spam
+* Email notifications via SMTP
+* Multiple subject categories for better organization
+
+=== Performance Optimization
+
+* Server-side rendering for better SEO
+* Image optimization with Next.js Image component
+* Code splitting for reduced bundle sizes
+* Lazy loading of components and images
+
+
+== API Documentation
+
+=== Contact Form Endpoint
+
+`POST /api/contact`
+
+Sends contact form submissions via email.
+
+==== Request Body
+
+[source,json]
+----
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "subject": "project",
+  "message": "Your message here"
+}
+----
+
+==== Response
+
+[source,json]
+----
+{
+  "success": true,
+  "message": "Message sent successfully"
+}
+----
+
+=== Open Graph Image Generation
+
+`GET /api/og?title=Page+Title`
+
+Generates dynamic Open Graph images for social media sharing.
+
+== License
+
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+
+See the link:LICENSE[LICENSE] file for details.
+
+== Author
+
+**Cédric Famibelle-Pronzola**
+
+* Website: https://cedric-pronzola.dev
+* Email: contact@cedric-pronzola.dev
+* Mastodon: https://koze.kaubuntu.re/@cedric
+* GitHub: https://github.com/cedric-famibelle-pronzola
+* Codeberg: https://codeberg.org/cedric-famibelle-pronzola
+
+---
+
+'''
+
+[#french]
+== 🇫🇷 Site Portfolio de Cédric Famibelle-Pronzola
+
+image:https://img.shields.io/badge/Next.js-15.x-black?style=for-the-badge&logo=next.js[Next.js]
+image:https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react[React]
+image:https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript[TypeScript]
+image:https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css[Tailwind CSS]
+image:https://img.shields.io/badge/Framer_Motion-12.x-0055FF?style=for-the-badge&logo=framer[Framer Motion]
+image:https://img.shields.io/badge/License-AGPL--3.0-blue?style=for-the-badge[Licence]
+
+Un site portfolio moderne et multilingue construit avec Next.js 15, présentant des projets de développement web, des articles de blog et des compétences professionnelles. Cette application démontre une expertise en développement full-stack, internationalisation et technologies web modernes.
+
+=== Aperçu
+
+Il s'agit de la deuxième version du site portfolio personnel de Cédric Famibelle-Pronzola, conçu comme une plateforme complète pour présenter le travail professionnel, partager des connaissances à travers des articles de blog et faciliter les connexions professionnelles. Le site met l'accent sur les performances et le support multilingue.
+
+==== Caractéristiques Principales
+
+* **Support Multilingue** : Traductions complètes français et anglais utilisant next-intl
+* **Système de Blog Moderne** : Articles basés sur Markdown avec flux RSS/Atom/JSON
+* **Vitrine de Projets** : Galerie interactive de projets de développement web
+* **Intégration Contact** : Formulaire de contact professionnel avec notifications email
+* **SEO Optimisé** : Balises meta complètes, données structurées et génération de sitemap
+* **Thème Sombre/Clair** : Basculement de thème adaptatif au système avec override manuel
+* **Application Web Progressive** : Optimisée pour les appareils mobiles avec capacités hors ligne
+* **Axé Performance** : Rendu côté serveur, optimisation d'images et division du code
+
+=== Stack Technologique
+
+==== Technologies Frontend
+
+[cols="1,3"]
+|===
+|Technologie |Description
+
+|image:https://img.shields.io/badge/Next.js-15.x-black?logo=next.js[Next.js]
+|Framework React avec App Router, SSR et fonctionnalités d'optimisation avancées
+
+|image:https://img.shields.io/badge/React-19.x-61DAFB?logo=react[React]
+|Dernière version de React avec fonctionnalités concurrentes et performances améliorées
+
+|image:https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript[TypeScript]
+|Développement JavaScript type-safe avec les dernières fonctionnalités du langage
+
+|image:https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?logo=tailwind-css[Tailwind CSS]
+|Framework CSS utility-first pour un développement d'interface utilisateur rapide
+
+|image:https://img.shields.io/badge/Framer_Motion-12.x-0055FF?logo=framer[Framer Motion]
+|Bibliothèque de mouvement prête pour la production pour les animations React
+
+|image:https://img.shields.io/badge/next--intl-4.x-000000[next-intl]
+|Bibliothèque d'internationalisation pour les applications Next.js
+|===
+
+==== Contenu & Communication
+
+[cols="1,3"]
+|===
+|Technologie |Description
+
+|image:https://img.shields.io/badge/Markdown-GFM-000000?logo=markdown[Markdown]
+|GitHub Flavored Markdown pour le contenu du blog avec traitement remark
+
+|image:https://img.shields.io/badge/Nodemailer-6.x-22D3EE[Nodemailer]
+|Fonctionnalité d'envoi d'email pour l'intégration du formulaire de contact
+
+|image:https://img.shields.io/badge/Feed-4.x-FFA500[Feed]
+|Génération de flux RSS/Atom/JSON pour la syndication de contenu de blog
+
+|image:https://img.shields.io/badge/Gray--Matter-4.x-808080[Gray-Matter]
+|Analyseur YAML front matter pour les métadonnées d'articles de blog
+|===
+
+==== Outils de Développement
+
+[cols="1,3"]
+|===
+|Technologie |Description
+
+|image:https://img.shields.io/badge/ESLint-9.x-4B32C3?logo=eslint[ESLint]
+|Lintage JavaScript/TypeScript et application de qualité de code
+
+|image:https://img.shields.io/badge/PostCSS-8.x-DD3A0A?logo=postcss[PostCSS]
+|Pipeline de traitement et d'optimisation CSS
+
+|image:https://img.shields.io/badge/Flag--Icons-7.x-FF6B6B[Flag-Icons]
+|Icônes de drapeaux de pays SVG pour la sélection de langue
+|===
+
+=== Installation
+
+==== Prérequis
+
+Assurez-vous d'avoir installé :
+
+* Node.js 18.x ou supérieur
+* Gestionnaire de paquets npm, yarn, pnpm ou bun
+
+==== Démarrage Rapide
+
+[source,bash]
+----
+# Cloner le dépôt
+git clone https://github.com/your-username/cedric-pronzola-v2.git
+cd cedric-pronzola-v2
+
+# Installer les dépendances
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+
+# Démarrer le serveur de développement
+npm run dev
+# ou
+yarn dev
+# ou
+pnpm dev
+----
+
+L'application sera disponible à l'adresse http://localhost:3000.
+
+==== Variables d'Environnement
+
+Créez un fichier `.env.local` dans le répertoire racine :
+
+[source,env]
+----
+# Configuration Email (pour le formulaire de contact)
+SMTP_HOST=votre-host-smtp
+SMTP_PORT=587
+SMTP_USER=votre-email@domaine.com
+SMTP_PASS=votre-mot-de-passe-email
+CONTACT_EMAIL=contact@votredomaine.com
+
+# Configuration du Site
+NEXT_PUBLIC_SITE_URL=https://votredomaine.com
+----
+
+=== Structure du Projet
+
+[source]
+----
+cedric-pronzola-v2/
+├── app/                          # App Router Next.js
+│   ├── [locale]/                 # Routes internationalisées
+│   │   ├── blog/                 # Pages du blog
+│   │   ├── projects/             # Vitrine des projets
+│   │   ├── mentions-legales/     # Pages légales
+│   │   └── layout.tsx            # Layout spécifique à la locale
+│   ├── api/                      # Routes API
+│   │   ├── contact/              # Gestionnaire du formulaire de contact
+│   │   └── og/                   # Génération d'images Open Graph
+│   ├── articles/                 # Contenu du blog (Markdown)
+│   │   ├── en/                   # Articles en anglais
+│   │   └── fr/                   # Articles en français
+│   ├── components/               # Composants React
+│   └── lib/                      # Fonctions utilitaires
+├── config/                       # Fichiers de configuration
+├── messages/                     # Messages d'internationalisation
+│   ├── en.json                   # Traductions anglaises
+│   └── fr.json                   # Traductions françaises
+├── public/                       # Ressources statiques
+├── next.config.js               # Configuration Next.js
+└── package.json                 # Dépendances du projet
+----
+
+=== Développement
+
+==== Scripts Disponibles
+
+[cols="1,3"]
+|===
+|Commande |Description
+
+|`npm run dev`
+|Démarrer le serveur de développement avec Turbopack
+
+|`npm run build`
+|Créer un build de production
+
+|`npm start`
+|Démarrer le serveur de production
+
+|`npm run lint`
+|Exécuter les vérifications de qualité de code ESLint
+|===
+
+==== Ajouter du Contenu Blog
+
+Créez de nouveaux articles de blog dans le répertoire `app/articles/` :
+
+[source,markdown]
+----
+---
+title: "Titre de votre Article"
+date: "2024-01-15"
+excerpt: "Brève description de l'article"
+tags: ["développement-web", "javascript"]
+---
+
+# Contenu de votre Article
+
+Écrivez votre contenu au format Markdown...
+----
+
+Les articles doivent être créés dans les deux langues :
+* `app/articles/en/votre-slug-article.md`
+* `app/articles/fr/votre-slug-article.md`
+
+==== Internationalisation
+
+Ajoutez de nouvelles traductions aux fichiers de messages :
+
+* `messages/en.json` - Traductions anglaises
+* `messages/fr.json` - Traductions françaises
+
+Utilisez le hook `useTranslations` dans les composants :
+
+[source,typescript]
+----
+import { useTranslations } from 'next-intl';
+
+function MonComposant() {
+  const t = useTranslations('home.about');
+  return <h1>{t('title')}</h1>;
+}
+----
+
+=== Déploiement
+
+Pour le déploiement, construisez l'application :
+
+[source,bash]
+----
+npm run build
+npm start
+----
+
+Assurez-vous que les variables d'environnement sont configurées dans votre environnement de déploiement.
+
+=== Fonctionnalités
+
+==== Support Multilingue
+
+* Traductions complètes français et anglais
+* Détection automatique de langue basée sur les préférences du navigateur
+* Commutateur de langue avec drapeaux de pays
+* URLs et métadonnées localisées
+
+==== Système de Blog
+
+* Gestion de contenu basée sur Markdown
+* Support GitHub Flavored Markdown
+* Génération automatique de flux RSS, Atom et JSON
+* Intégration de partage sur les réseaux sociaux
+* Optimisation SEO avec données structurées
+
+==== Système de Contact
+
+* Formulaire de contact professionnel avec validation
+* Limitation de taux pour prévenir le spam
+* Notifications email via SMTP
+* Catégories de sujets multiples pour une meilleure organisation
+
+==== Optimisation des Performances
+
+* Rendu côté serveur pour un meilleur SEO
+* Optimisation d'images avec le composant Image Next.js
+* Division du code pour des tailles de bundle réduites
+* Chargement paresseux des composants et images
+
+
+=== Documentation API
+
+==== Point de Terminaison du Formulaire de Contact
+
+`POST /api/contact`
+
+Envoie les soumissions de formulaire de contact par email.
+
+==== Corps de la Requête
+
+[source,json]
+----
+{
+  "name": "Jean Dupont",
+  "email": "jean@exemple.com",
+  "subject": "projet",
+  "message": "Votre message ici"
+}
+----
+
+==== Réponse
+
+[source,json]
+----
+{
+  "success": true,
+  "message": "Message envoyé avec succès"
+}
+----
+
+==== Génération d'Images Open Graph
+
+`GET /api/og?title=Titre+Page`
+
+Génère des images Open Graph dynamiques pour le partage sur les réseaux sociaux.
+
+=== Licence
+
+Ce projet est sous licence GNU Affero General Public License v3.0 (AGPL-3.0).
+
+Voir le fichier link:LICENSE[LICENSE] pour les détails.
+
+=== Auteur
+
+**Cédric Famibelle-Pronzola**
+
+* Site web : https://cedric-pronzola.dev
+* Email : contact@cedric-pronzola.dev
+* Mastodon : https://koze.kaubuntu.re/@cedric
+* GitHub : https://github.com/cedric-famibelle-pronzola
+* Codeberg : https://codeberg.org/cedric-famibelle-pronzola
+
+---

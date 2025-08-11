@@ -39,7 +39,7 @@ export default async function Home({ params }: Props) {
     "url": "https://cedric-pronzola.dev",
     "image": "https://cedric-pronzola.dev/cedric-avatar.png",
     "sameAs": [
-      "https://github.com/ced972",
+      "https://github.com/cedric-famibelle-pronzola",
       "https://twitter.com/CedricPronzola"
     ],
     "jobTitle": "Développeur Web/Mobile",

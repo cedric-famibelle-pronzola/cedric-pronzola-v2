@@ -118,6 +118,15 @@ export default async function LegalPage({
             </section>
 
             <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">{t('trademarks.title')}</h2>
+              <div className="space-y-4">
+                <p>{t('trademarks.paragraph1')}</p>
+                <p>{t('trademarks.paragraph2')}</p>
+                <p>{t('trademarks.paragraph3')}</p>
+              </div>
+            </section>
+
+            <section className="mb-8">
               <h2 className="text-2xl font-bold mb-4">{t('liability.title')}</h2>
               <div className="space-y-2">
                 <p>{t('liability.paragraph1')}</p>

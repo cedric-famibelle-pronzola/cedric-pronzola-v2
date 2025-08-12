@@ -134,20 +134,17 @@ The application will be available at http://localhost:3000.
 
 === Environment Variables
 
-Create a `.env.local` file in the root directory:
+Copy the sample environment file and configure your settings:
 
-[source,env]
+[source,bash]
 ----
-# Email Configuration (for contact form)
-SMTP_HOST=your-smtp-host
-SMTP_PORT=587
-SMTP_USER=your-email@domain.com
-SMTP_PASS=your-email-password
-CONTACT_EMAIL=contact@yourdomain.com
+cp .env.sample .env.local
+----
 
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
-----
+Edit `.env.local` with your specific configuration. See `.env.sample` for all available variables and examples including:
+
+* **Site Configuration**: Base URL for your deployment
+* **SMTP Settings**: Email server configuration for the contact form  
 
 == Project Structure
 
@@ -472,20 +469,17 @@ L'application sera disponible à l'adresse http://localhost:3000.
 
 ==== Variables d'Environnement
 
-Créez un fichier `.env.local` dans le répertoire racine :
+Copiez le fichier d'exemple des variables d'environnement et configurez vos paramètres :
 
-[source,env]
+[source,bash]
 ----
-# Configuration Email (pour le formulaire de contact)
-SMTP_HOST=votre-host-smtp
-SMTP_PORT=587
-SMTP_USER=votre-email@domaine.com
-SMTP_PASS=votre-mot-de-passe-email
-CONTACT_EMAIL=contact@votredomaine.com
+cp .env.sample .env.local
+----
 
-# Configuration du Site
-NEXT_PUBLIC_SITE_URL=https://votredomaine.com
-----
+Modifiez `.env.local` avec votre configuration spécifique. Consultez `.env.sample` pour toutes les variables disponibles et des exemples incluant :
+
+* **Configuration du Site** : URL de base pour votre déploiement
+* **Paramètres SMTP** : Configuration du serveur email pour le formulaire de contact
 
 === Structure du Projet
 

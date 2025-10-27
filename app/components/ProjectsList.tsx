@@ -7,7 +7,7 @@ import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
 import { useTranslations } from 'next-intl';
 
-const projectIds = ['kaubuntu', 'oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
+const projectIds = ['fediverse-oki', 'kaubuntu', 'oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
 
 type ProjectsListProps = {
   showAll?: boolean;
@@ -26,14 +26,22 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
   // For the home page, we'd use just the first few projects
   const displayProjectIds = showAll ? projectIds : projectIds.slice(0, limit);
 
+  // Helper function to get the full domain for each project
+  function getFullDomain(id: string): string {
+    if (id === 'fediverse-oki') {
+      return 'fediverse.o-k-i.net';
+    }
+    return `${id}${getDomainExtension(id)}`;
+  }
+
   const projectsData = displayProjectIds.map((id, index) => ({
     id: index + 1,
     projectId: id,
     title: tHome(`projectsList.${id}.title`),
     description: tHome(`projectsList.${id}.description`),
     technologies: tHome(`projectsList.${id}.technologies`).split(','),
-    image: `/images/projects/${id}${getDomainExtension(id)}-800x450.webp`,
-    link: `https://${id}${getDomainExtension(id)}`,
+    image: `/images/projects/${getFullDomain(id)}-800x450.webp`,
+    link: `https://${getFullDomain(id)}`,
   }));
 
   // Helper function to get the domain extension for each project
@@ -45,7 +53,20 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
       case 'gong': return '.gp';
       case 'jwe': return '.ovh';
       case 'konstitisyon': return '.la';
+      case 'fediverse-oki': return '.o-k-i.net';
       default: return '';
+    }
+  }
+
+  // Helper function to get the Codeberg repository info for each project
+  function getCodebergRepo(id: string): { org: string; repo: string } {
+    switch(id) {
+      case 'kaubuntu':
+        return { org: 'Ka-Ubuntu', repo: 'kaubuntu.re' };
+      case 'fediverse-oki':
+        return { org: 'OKI', repo: 'FEDIVERSE-OKI' };
+      default:
+        return { org: 'OKI', repo: `${id}${getDomainExtension(id)}` };
     }
   }
 
@@ -91,7 +112,7 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
                 
                 <div className="flex justify-between pt-4">
                   <a
-                    href={`https://codeberg.org/${project.projectId === 'kaubuntu' ? 'Ka-Ubuntu' : 'OKI'}/${project.link.replace('https://', '')}`}
+                    href={`https://codeberg.org/${getCodebergRepo(project.projectId).org}/${getCodebergRepo(project.projectId).repo}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground/70 hover:text-foreground transition-colors"

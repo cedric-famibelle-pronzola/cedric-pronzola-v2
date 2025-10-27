@@ -73,6 +73,11 @@
           "title": "konstitisyon.la - Constitutional Platform",
           "description": "Collaborative application enabling citizens to draft, propose revisions and vote on the articles of a constitution.",
           "technologies": "Next.js,Directus"
+        },
+        "fediverse-oki": {
+          "title": "FEDIVERSE OKI - Federated Multimedia Platform",
+          "description": "Fork of kaubuntu.re, progressive web app integrating PeerTube and Mastodon to promote digital sovereignty and the fediverse.",
+          "technologies": "PHP,JavaScript,PWA,HTML5,CSS3"
         }
       }
     },

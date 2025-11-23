@@ -44,6 +44,11 @@
       "viewProject": "Voir le projet",
       "sourceCode": "Code source",
       "projectsList": {
+        "medias-francais-api": {
+          "title": "Médias Français API - API de données médiatiques",
+          "description": "API REST exposant les données de propriété des médias français, avec documentation Swagger et rate limiting intégré.",
+          "technologies": "Deno,Hono,TypeScript"
+        },
         "kaubuntu": {
           "title": "kaubuntu.re - Plateforme multimédia",
           "description": "Application web progressive intégrant PeerTube et Mastodon pour le mouvement politique Ka-Ubuntu, promouvant la souveraineté numérique à La Réunion.",

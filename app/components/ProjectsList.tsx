@@ -7,7 +7,7 @@ import AnimatedSection from './AnimatedSection';
 import ProjectImage from './ProjectImage';
 import { useTranslations } from 'next-intl';
 
-const projectIds = ['medias-francais-api', 'fediverse-oki', 'kaubuntu', 'oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
+const projectIds = ['medias-francais', 'medias-francais-api', 'fediverse-oki', 'kaubuntu', 'oki', 'nuvel', 'gong', 'jwe', 'konstitisyon'];
 
 type ProjectsListProps = {
   showAll?: boolean;
@@ -31,6 +31,8 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
     switch(id) {
       case 'fediverse-oki':
         return 'fediverse.o-k-i.net';
+      case 'medias-francais':
+        return 'medias-francais.fr';
       case 'medias-francais-api':
         return 'api.medias-francais.fr';
       default:
@@ -65,6 +67,8 @@ const ProjectsList = ({ showAll = false, limit = 4 }: ProjectsListProps) => {
   // Helper function to get the source code repository info for each project
   function getSourceRepo(id: string): { platform: string; org: string; repo: string } {
     switch(id) {
+      case 'medias-francais':
+        return { platform: 'github.com', org: 'cedric-famibelle-pronzola', repo: 'medias-francais' };
       case 'medias-francais-api':
         return { platform: 'github.com', org: 'cedric-famibelle-pronzola', repo: 'medias-francais-api' };
       case 'kaubuntu':

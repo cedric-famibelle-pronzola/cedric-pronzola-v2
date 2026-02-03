@@ -44,6 +44,11 @@
       "viewProject": "Voir le projet",
       "sourceCode": "Code source",
       "projectsList": {
+        "medias-francais": {
+          "title": "Médias Français - Visualisation des médias français",
+          "description": "Application React permettant de visualiser et explorer la propriété des médias français avec graphiques interactifs et interface moderne.",
+          "technologies": "React,TypeScript,Vite,Tailwind CSS,shadcn/ui,Recharts"
+        },
         "medias-francais-api": {
           "title": "Médias Français API - API de données médiatiques",
           "description": "API REST exposant les données de propriété des médias français, avec documentation Swagger et rate limiting intégré.",

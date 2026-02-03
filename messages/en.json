@@ -44,6 +44,11 @@
       "viewProject": "View Project",
       "sourceCode": "Source code",
       "projectsList": {
+        "medias-francais": {
+          "title": "Médias Français - French Media Visualization",
+          "description": "React application for visualizing and exploring French media ownership with interactive charts and modern interface.",
+          "technologies": "React,TypeScript,Vite,Tailwind CSS,shadcn/ui,Recharts"
+        },
         "medias-francais-api": {
           "title": "Médias Français API - Media Data API",
           "description": "REST API exposing French media ownership data, with Swagger documentation and built-in rate limiting.",

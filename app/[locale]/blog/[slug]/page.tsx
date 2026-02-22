@@ -9,6 +9,7 @@ import Footer from '../../../components/Footer';
 import JsonLd from '../../../components/JsonLd';
 import MarkdownContent from '../../../components/MarkdownContent';
 import ShareButtons from '../../../components/ShareButtons';
+import ArticleDate from '../../../components/ArticleDate';
 import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
@@ -18,12 +19,14 @@ const articleSlugMap: Record<string, Record<string, string>> = {
   // English articles
   'en': {
     'reunion-independence': 'l-independance-de-la-reunion',
-    'free-software-will-liberate-us': 'les-logiciels-libres-nous-libereront'
+    'free-software-will-liberate-us': 'les-logiciels-libres-nous-libereront',
+    'neocolonialism-and-global-inequalities': 'neocolonialisme-et-inegalites-mondiales'
   },
   // French articles
   'fr': {
     'l-independance-de-la-reunion': 'reunion-independence',
-    'les-logiciels-libres-nous-libereront': 'free-software-will-liberate-us'
+    'les-logiciels-libres-nous-libereront': 'free-software-will-liberate-us',
+    'neocolonialisme-et-inegalites-mondiales': 'neocolonialism-and-global-inequalities'
   }
 };
 
@@ -34,8 +37,17 @@ function getSlugInOtherLocale(slug: string, currentLocale: string, targetLocale:
   // Get the mapping for current locale
   const mappings = articleSlugMap[currentLocale];
 
-  // If mapping exists, return the mapped slug, otherwise return the original
-  return mappings?.[slug] || slug;
+  if (mappings?.[slug]) {
+    return mappings[slug];
+  }
+
+  const entries = Object.entries(mappings || {});
+  const foundEntry = entries.find(([key, value]) => value === slug);
+  if (foundEntry) {
+    return foundEntry[0];
+  }
+
+  return slug;
 }
 
 // Function to convert markdown to HTML
@@ -244,7 +256,7 @@ export default async function ArticlePage(
             <article className="prose prose-lg dark:prose-invert mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">{article.metadata.title}</h1>
               <div className="text-sm text-gray-500 mb-12">
-                <time dateTime={article.metadata.date}>{article.metadata.date}</time> •
+                <ArticleDate date={article.metadata.date} locale={locale} /> •
                 <span className="ml-2">{article.metadata.author.name}</span>
               </div>
               <ShareButtons

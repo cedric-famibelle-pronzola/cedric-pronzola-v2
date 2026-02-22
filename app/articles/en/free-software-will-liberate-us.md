@@ -1,7 +1,7 @@
 ---
 title: "Free software will liberate us!"
 description: "Free software will liberate us from the oligopolistic tyranny of the big tech groups, while paving the way for another world."
-date: "December 8, 2024"
+date: "2024-12-08"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

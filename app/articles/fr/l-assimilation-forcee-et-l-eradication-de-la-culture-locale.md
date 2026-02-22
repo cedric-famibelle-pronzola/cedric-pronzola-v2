@@ -1,7 +1,7 @@
 ---
 title: "L’assimilation forcée et l’éradication de la culture locale."
 description: "Discours prononcé le 29 mars 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée « Colonialisme : Un effacement des identités nationales et religieuses »"
-date: "1er avril 2025"
+date: "2025-04-01"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

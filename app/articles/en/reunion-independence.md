@@ -1,7 +1,7 @@
 ---
 title: "The independence of Reunion Island."
 description: "Speech delivered on January 21, 2025 in Baku (Azerbaijan) during the conference entitled 'The independence of Reunion Island: looking back at France's colonial legacy and the path to sovereignty'"
-date: "January 25, 2025"
+date: "2025-01-25"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

@@ -1,7 +1,7 @@
 ---
 title: "Les logiciels libres nous libéreront !"
 description: "Les logiciels libres nous libéreront de la tyrannie oligopolistique des grands groupes de la tech, tout en ouvrant la voie à un autre monde."
-date: "8 décembre 2024"
+date: "2024-12-08"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

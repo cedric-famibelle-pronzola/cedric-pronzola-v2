@@ -1,7 +1,7 @@
 ---
 title: "L'indépendance de La Réunion."
 description: "Discours prononcé le 21 janvier 2025 à Bakou (Azerbaïdjan) lors de la conférence intitulée « L'indépendance de la Réunion : retour sur l'héritage colonial de la France et sur la voie de la souveraineté »"
-date: "25 janvier 2025"
+date: "2025-01-25"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

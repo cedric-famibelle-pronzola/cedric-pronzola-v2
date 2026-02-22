@@ -1,7 +1,7 @@
 ---
 title: "Forced assimilation and the eradication of local culture."
 description: "Speech delivered on March 29, 2025, in Baku (Azerbaijan) during the conference entitled 'Colonialism: An Erasure of National and Religious Identities'"
-date: "April 1st, 2025"
+date: "2025-04-01"
 author:
   name: "Cédric Famibelle-Pronzola"
   url: "https://cedric-pronzola.dev"

@@ -5,6 +5,7 @@ import AnimatedSection from './AnimatedSection';
 import type { BlogPostMetadata } from '../types/blog';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import DateFormatter from './DateFormatter';
 
 interface BlogContentProps {
   posts: BlogPostMetadata[];
@@ -93,7 +94,7 @@ const BlogContent = ({ posts }: BlogContentProps) => {
                 >
                   <div className="p-6 flex flex-col h-full">
                     <div className="flex justify-between items-center mb-4">
-                      <time dateTime={post.date} className="text-sm text-foreground/60">{post.date}</time>
+                      <DateFormatter date={post.date} locale={locale} className="text-sm text-foreground/60" />
                     </div>
                     
                     <h2 className="text-xl font-bold mb-3">{post.title}</h2>

@@ -5,16 +5,22 @@ import { locales, defaultLocale } from './config/i18n';
 export default createMiddleware({
   // A list of all locales that are supported
   locales,
-  
+
   // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
   defaultLocale,
-  
+
   // The default locale should be used when visiting
   // a non-existent locale (e.g. `/es/about`)
   localePrefix: 'as-needed',
-  
+
   // Enable default locale detection based on headers/cookies/query
-  localeDetection: true
+  localeDetection: true,
+
+  // Mark the locale cookie as Secure since the site is served over HTTPS
+  localeCookie: {
+    secure: true,
+    sameSite: 'lax',
+  }
 });
 
 export const config = {

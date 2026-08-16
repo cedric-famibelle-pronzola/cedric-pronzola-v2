@@ -1,6 +1,6 @@
 ---
 title: "Happy Birthday Olivier Clémençon 🤡"
-description: "Ce mercredi 12 août, nous fêtons un anniversaire un peu spécial. En effet, ça fait 1 an jour pour jour, que l'ancien clown de la république de Saint-Pierre, Olivier Clémençon 🤡, a « invité » les agents du RAID, à défoncer la porte de chez moi, à 6H du mat en présence de mes enfants en bas âge."
+description: "This Wednesday, August 12, we’re celebrating a rather special anniversary. It’s been exactly one year to the day since Olivier Clémençon 🤡, the former “clown” of the Republic of Saint-Pierre, “invited” RAID officers to break down the door to my home at 6 a.m. while my young children were present."
 date: "2026-08-12"
 author:
   name: "Cédric Famibelle-Pronzola"
